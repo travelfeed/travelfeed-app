@@ -1,0 +1,56 @@
+@import '../../../scss/shared';
+
+.box {
+    width: 100%;
+    display: flex;
+    height: 140px;
+    margin-bottom: 6px;
+    //transform:translatex(0)
+}
+.content {
+    background-color: #fff;
+    width: 60%;
+    line-height: 1.4;
+    padding: 10px;
+    border-top: 3px solid darken(#ffc8b4,5%);
+}
+
+a:nth-child(even) .content {
+    background-color: lighten(#ffc8b4,5%);
+    border-top: 3px solid white;
+}
+
+.image {
+    overflow: hidden;
+    width: 40%;
+    border-top: 3px solid white;
+}
+
+a:nth-child(even) .image {
+    border-top: 3px solid darken(#ffc8b4,5%);
+}
+
+
+.image img {
+    width: 100%;
+    position: relative;
+    //transform: translateX(-60px);
+}
+
+@media screen and (max-width: 787px) {
+    /*.box {
+        width: 300px;
+        height: auto;
+    }
+    .content {
+        width: 60%;
+    }
+    .image img {
+        height: auto;
+        transform: none;
+    }*/
+    .box {
+        width: 100%;
+    }
+
+}

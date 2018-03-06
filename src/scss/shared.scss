@@ -1,0 +1,17 @@
+/**
+ * ENTRYPOINT: SHARED
+ *
+ * This file contains all re-usable stuff like variables, mixins, functions, etc.
+ * It can be included at modules for accessing globally defined styles.
+ */
+
+// libraries
+// -
+
+// internals
+@import 'variables/breakpoints';
+@import 'variables/colors';
+@import 'variables/text';
+@import 'mixins/utils';
+@import 'mixins/breakpoint';
+@import 'mixins/text';

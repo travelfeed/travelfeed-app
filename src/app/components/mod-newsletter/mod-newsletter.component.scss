@@ -1,0 +1,15 @@
+@import '../../../scss/shared';
+
+h1,
+h2,
+h3,
+h4 {
+    color: darken(#f5deb3,70%);
+}
+
+.cmp-mod-newsletter {
+    background-color: #f5deb3;
+    height: 100px;
+    padding: 10px;
+    width: 25%;
+}
