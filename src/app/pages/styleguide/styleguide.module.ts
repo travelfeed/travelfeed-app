@@ -6,8 +6,8 @@ import { FormInputModule } from '../../components/form-input/form-input.module'
 import { IconModule } from '../../components/icon/icon.module'
 import { ListModule } from '../../components/list/list.module'
 import { NewsletterModule } from '../../components/newsletter/newsletter.module'
-import { StyleguideComponent } from './styleguide.component'
 import { TravelPreviewModule } from '../../components/travel-preview/travel-preview.module'
+import { StyleguideComponent } from './styleguide.component'
 
 @NgModule({
     imports: [

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { NewsletterComponent } from './newsletter.component'
 
-describe('ModNewsletterComponent', () => {
+describe('NewsletterComponent', () => {
     let component: NewsletterComponent
     let fixture: ComponentFixture<NewsletterComponent>
 
