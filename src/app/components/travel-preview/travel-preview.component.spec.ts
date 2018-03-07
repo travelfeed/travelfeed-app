@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ModTravelPreviewComponent } from './mod-travel-preview.component'
+import { TravelPreviewComponent } from './travel-preview.component'
 
 describe('ModTravelPreviewComponent', () => {
-    let component: ModTravelPreviewComponent
-    let fixture: ComponentFixture<ModTravelPreviewComponent>
+    let component: TravelPreviewComponent
+    let fixture: ComponentFixture<TravelPreviewComponent>
 
     beforeEach(
         async(() => {
             TestBed.configureTestingModule({
-                declarations: [ModTravelPreviewComponent]
+                declarations: [TravelPreviewComponent]
             }).compileComponents()
         })
     )
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ModTravelPreviewComponent)
+        fixture = TestBed.createComponent(TravelPreviewComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })

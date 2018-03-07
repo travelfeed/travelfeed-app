@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ButtonModule } from '../button/button.module'
-import { ModNewsletterComponent } from './mod-newsletter.component'
+import { NewsletterComponent } from './newsletter.component'
 
 @NgModule({
     imports: [CommonModule, ButtonModule],
-    declarations: [ModNewsletterComponent],
-    exports: [ModNewsletterComponent]
+    declarations: [NewsletterComponent],
+    exports: [NewsletterComponent]
 })
-export class ModNewsletterModule {}
+export class NewsletterModule {}

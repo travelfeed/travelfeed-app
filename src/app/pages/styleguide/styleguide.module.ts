@@ -5,9 +5,9 @@ import { ButtonModule } from '../../components/button/button.module'
 import { FormInputModule } from '../../components/form-input/form-input.module'
 import { IconModule } from '../../components/icon/icon.module'
 import { ListModule } from '../../components/list/list.module'
-import { ModNewsletterModule } from '../../components/mod-newsletter/mod-newsletter.module'
-import { ModTravelPreviewModule } from '../../components/mod-travel-preview/mod-travel-preview.module'
+import { NewsletterModule } from '../../components/newsletter/newsletter.module'
 import { StyleguideComponent } from './styleguide.component'
+import { TravelPreviewModule } from '../../components/travel-preview/travel-preview.module'
 
 @NgModule({
     imports: [
@@ -17,8 +17,8 @@ import { StyleguideComponent } from './styleguide.component'
         FormInputModule,
         IconModule,
         ListModule,
-        ModNewsletterModule,
-        ModTravelPreviewModule
+        NewsletterModule,
+        TravelPreviewModule
     ],
     declarations: [StyleguideComponent],
     exports: []

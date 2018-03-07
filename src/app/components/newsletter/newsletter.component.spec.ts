@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ModNewsletterComponent } from './mod-newsletter.component'
+import { NewsletterComponent } from './newsletter.component'
 
 describe('ModNewsletterComponent', () => {
-    let component: ModNewsletterComponent
-    let fixture: ComponentFixture<ModNewsletterComponent>
+    let component: NewsletterComponent
+    let fixture: ComponentFixture<NewsletterComponent>
 
     beforeEach(
         async(() => {
             TestBed.configureTestingModule({
-                declarations: [ModNewsletterComponent]
+                declarations: [NewsletterComponent]
             }).compileComponents()
         })
     )
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ModNewsletterComponent)
+        fixture = TestBed.createComponent(NewsletterComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })
