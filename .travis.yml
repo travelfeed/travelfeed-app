@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - '9'
 install:
-  - yarn install
+  - npm install
 script:
-  - yarn run lint
+  - npm run lint
