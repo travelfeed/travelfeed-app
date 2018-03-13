@@ -7,6 +7,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { environment } from '../environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { StyleguideModule } from './pages/styleguide/styleguide.module'
+import { HomeModule } from './pages/home/home.module'
 import { AppComponent } from './app.component'
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
             }
         }),
         AppRoutingModule,
-        StyleguideModule
+        StyleguideModule,
+        HomeModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -4,6 +4,28 @@ $component: 'cmp-navigation';
 
 @include cmp-base($component) {
     width: 100%;
-    min-height: 60px;
-    background-color: #f5deb3;
+    background-color: #ffc8b4;
+
+    &__wrapper {
+        margin-left: $grid-mobile-padding;
+        margin-right: $grid-mobile-padding;
+
+        position: relative;
+
+        @include use-breakpoint(desktop) {
+            max-width: $grid-desktop-max-width;
+            margin-left: $grid-desktop-padding;
+            margin-right: $grid-desktop-padding;
+        }
+    }
+}
+
+@include cmp-base($component cmp-headline-h1) {
+    color: white;
+    left: 20px;
+    position: absolute;
+}
+
+@include cmp-base($component img) {
+    width: 100%;
 }
