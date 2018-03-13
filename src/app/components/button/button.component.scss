@@ -1,21 +1,27 @@
 @import '../../../scss/shared';
 
-.cmp-button {
-    border: none;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 8px 20px;
-    cursor: pointer;
+$component: 'cmp-button';
 
-    &:focus {
-        position: relative;
-        top: 2px;
-        margin-bottom: 3px;
+@include cmp-base($component, inline-block) {
+    &__button {
         border: none;
-        outline: none;
-    }
+        font-weight: 600;
+        font-size: 20px;
+        padding: 8px 20px;
+        cursor: pointer;
 
-    &--color1 {
+        &:focus {
+            position: relative;
+            top: 2px;
+            margin-bottom: 3px;
+            border: none;
+            outline: none;
+        }
+    }
+}
+
+@include cmp-modifier($component, 'color1') {
+    &__button {
         color: darken(#ffc8b4, 60%);
         background-color: #ffc8b4;
         border-bottom: 3px solid darken(#ffc8b4, 6%);
@@ -24,8 +30,10 @@
             background-color: lighten(#ffc8b4, 4%);
         }
     }
+}
 
-    &--color2 {
+@include cmp-modifier($component, 'color2') {
+    &__button {
         color: darken(#99dccb, 60%);
         background-color: #99dccb;
         border-bottom: 3px solid darken(#99dccb, 6%);
@@ -34,8 +42,10 @@
             background-color: lighten(#99dccb, 4%);
         }
     }
+}
 
-    &--color3 {
+@include cmp-modifier($component, 'color3') {
+    &__button {
         color: darken(#f5deb3, 60%);
         background-color: #f5deb3;
         border-bottom: 3px solid darken(#f5deb3, 6%);

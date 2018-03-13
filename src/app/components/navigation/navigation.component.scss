@@ -1,5 +1,9 @@
 @import '../../../scss/shared';
 
-.cmp-navigation {
+$component: 'cmp-navigation';
 
+@include cmp-base($component) {
+    width: 100%;
+    min-height: 60px;
+    background-color: #f5deb3;
 }

@@ -1,15 +1,10 @@
 @import '../../../scss/shared';
 
-h1,
-h2,
-h3,
-h4 {
-    color: darken(#f5deb3,70%);
-}
+$component: 'cmp-newsletter';
 
-.cmp-newsletter {
-    background-color: #f5deb3;
+@include cmp-base($component) {
+    width: 25%;
     height: 100px;
     padding: 10px;
-    width: 25%;
+    background-color: #f5deb3;
 }

@@ -1,5 +1,6 @@
 @import '../../../scss/shared';
 
-.cmp-form-input {
+$component: 'cmp-form-input';
 
+@include cmp-base($component, inline-block) {
 }

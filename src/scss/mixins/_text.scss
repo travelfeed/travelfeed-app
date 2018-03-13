@@ -3,7 +3,7 @@
  *
  * @param {string} $name
  */
- @mixin use-font($name) {
+@mixin use-font($name) {
     @if (not map-has-key($font-settings, $name)) {
         @error 'use-font: invalid font setting #{$name}';
     }
@@ -33,15 +33,22 @@
     @each $breakpoint-name, $breakpoint in $breakpoint-settings {
         @if (map-has-key($settings, $breakpoint-name)) {
             @include use-breakpoint($breakpoint-name) {
-                @include map-as-properties(map-get($settings, $breakpoint-name), '', font-settings spacing-settings);
+                @include map-as-properties(
+                    map-get($settings, $breakpoint-name),
+                    '',
+                    font-settings spacing-settings
+                );
             }
         }
     }
 
     @each $breakpoint-name, $properties in $settings {
-        @if (str-slice($breakpoint-name, 0, 6)=='custom') {
+        @if (str-slice($breakpoint-name, 0, 6) == 'custom') {
             @include use-breakpoint($breakpoint-name) {
-                @include map-as-properties(map-get($settings, $breakpoint-name), $ignore: (min-width, max-width));
+                @include map-as-properties(
+                    map-get($settings, $breakpoint-name),
+                    $ignore: (min-width, max-width)
+                );
             }
         }
     }

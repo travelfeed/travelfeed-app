@@ -1,15 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 @Component({
-    selector: 'cmp-btn',
+    selector: 'cmp-button',
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss']
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
+    @Input() public type: string = 'button'
     @Input() public color: string
-    @Input() public label: string = 'Buttontext'
+    @Input() public label: string = 'empty'
 
     public constructor() {}
-
-    public ngOnInit() {}
 }

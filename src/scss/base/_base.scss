@@ -1,36 +1,20 @@
-body {
-    background-color: #eee;
-    margin: 0;
-    padding: 0;
+@include normalize();
+
+* {
+    box-sizing: border-box;
 }
 
-navigation .container {
-    min-height: 60px;
-    width: 100%;
-    background-color: #f5deb3;
+html,
+body {
+    @include use-font(regular);
+}
+
+body {
+    background-color: #eee;
 }
 
 a {
     text-decoration: none;
-    color: #000;
-}
-
-h1,
-h2,
-h3,
-h4,
-p,
-i,
-strong,
-span {
-    font-family: sans-serif;
-    margin: 0;
-    margin-bottom: 10px;
-}
-
-h3,
-h4 {
-    margin: 5px 0;
 }
 
 strong {
@@ -43,14 +27,6 @@ strong {
     min-height: 100px;
     padding: 60px 40px;
     width: calc(100% + 40px);
-}
-
-.float-left {
-    float: left;
-}
-
-.float-right {
-    float: right;
 }
 
 .site {
@@ -68,6 +44,3 @@ strong {
 .text-justify {
     text-align: justify;
 }
-
-@media screen and (max-width: 787px) {}
-

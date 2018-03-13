@@ -1,11 +1,13 @@
-<a href="http://www.google.de" class="box" *ngFor="let modal of modals">
-  <div class="content">
-    <h3>{{ modal }}</h3>
-    <p class="text-justify">
-      It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-    </p>
-  </div>
-  <div class="image">
-    <img src="https://images4.alphacoders.com/153/153218.jpg" />
-  </div>
-</a>
+<div class="cmp-travel-preview">
+    <a href="http://www.google.de" class="cmp-travel-preview__box" *ngFor="let modal of modals">
+        <div class="cmp-travel-preview__content">
+            <h3>{{ modal }}</h3>
+            <p class="text-justify">
+              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+            </p>
+        </div>
+        <div class="cmp-travel-preview__image">
+            <img class="cmp-travel-preview__image-image" src="https://images4.alphacoders.com/153/153218.jpg" />
+        </div>
+    </a>
+</div>
