@@ -28,7 +28,7 @@ export class AuthService {
                     this.userId = data.userId
                     this.authToken = data.authToken
 
-                    return this.http.get<User>(`${this.baseUri}/users/${data.userId}`)
+                    return this.http.get<User>(`${this.baseUri}/user/${data.userId}`)
                 })
             )
     }
