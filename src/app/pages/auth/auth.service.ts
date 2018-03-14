@@ -4,8 +4,7 @@ import { Observable } from 'rxjs/Observable'
 import { switchMap } from 'rxjs/operators'
 import { of } from 'rxjs/observable/of'
 import { environment } from '../../../environments/environment'
-import { ApiResponse } from '../../typings'
-import { User } from './typings'
+import { ApiResponse, User } from './typings'
 
 @Injectable()
 export class AuthService {
