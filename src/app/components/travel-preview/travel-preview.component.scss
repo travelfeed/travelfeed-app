@@ -3,44 +3,69 @@
 $component: 'cmp-travel-preview';
 
 @include cmp-base($component) {
-    &__box {
-        width: 100%;
-        display: flex;
-        height: 140px;
-        margin-bottom: 6px;
-        //transform:translatex(0)
+    overflow: hidden;
+    height: 500px;
+    width: 100%;
+    display: block;
+    margin: 0;
+    position: relative;
 
-        @include use-breakpoint(phablet) {
-            width: 100%;
-        }
+    &--title {
+        color: #777;
+        font-size: 22px;
     }
 
-    &__content {
-        background-color: #fff;
-        width: 60%;
-        line-height: 1.4;
+    &--text {
+        color: #fff;
+        line-height: 22px;
+        opacity: 0;
+        margin-right: 20%;
         padding: 10px;
-        border-top: 3px solid darken(#ffc8b4, 5%);
+        -webkit-transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -moz-transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -o-transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    &__image {
+    &--img:hover &--text {
+        opacity: 1;
+        font-size: 18px;
+        background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    &--img {
+        cursor: pointer;
+        float: left;
+        width: 20%;
+        height: 100%;
+        padding: 10px;
         overflow: hidden;
-        width: 40%;
-        border-top: 3px solid white;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
 
-        &-image {
-            width: 100%;
-            position: relative;
-            //transform: translateX(-60px);
-        }
+        -webkit-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -moz-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -o-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    &__box:nth-child(even) &__content {
-        background-color: lighten(#ffc8b4, 5%);
-        border-top: 3px solid white;
+    // Wenn Maus auf Modul haben alle Bilder 16% breite
+    &:hover &--img {
+        width: 16%;
+        -webkit-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -moz-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -o-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    &__box:nth-child(even) &__image {
-        border-top: 3px solid darken(#ffc8b4, 5%);
+    // ausser das Bild welches gerade gehovert wird
+    &--img:hover {
+        width: 36% !important;
+        -webkit-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        -moz-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        -o-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     }
 }

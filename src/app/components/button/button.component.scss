@@ -34,7 +34,7 @@ $component: 'cmp-button';
 
 @include cmp-modifier($component, 'color2') {
     &__button {
-        color: darken(#99dccb, 60%);
+        color: darken(#99dccb, 40%);
         background-color: #99dccb;
         border-bottom: 3px solid darken(#99dccb, 6%);
 
@@ -46,7 +46,7 @@ $component: 'cmp-button';
 
 @include cmp-modifier($component, 'color3') {
     &__button {
-        color: darken(#f5deb3, 60%);
+        color: darken(#f5deb3, 40%);
         background-color: #f5deb3;
         border-bottom: 3px solid darken(#f5deb3, 6%);
 

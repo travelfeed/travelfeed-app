@@ -8,7 +8,9 @@ import { Component, Input } from '@angular/core'
 export class FormInputComponent {
     @Input() public type: string = 'text'
     @Input() public name: string
+    @Input() public label: string = 'empty'
     @Input() public autocomplete: string
+    @Input() public icon: string = ''
 
     public constructor() {}
 }

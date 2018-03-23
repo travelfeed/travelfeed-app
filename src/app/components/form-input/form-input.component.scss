@@ -2,5 +2,92 @@
 
 $component: 'cmp-form-input';
 
-@include cmp-base($component, inline-block) {
+$custom-easing: cubic-bezier(1, 0.1, 0, 0.9);
+$color: #99dccb;
+$darkColor: darken($color, 40%);
+$gray: #ccc;
+
+.row {
+    position: relative;
+    overflow: hidden;
+}
+input[type='text'],
+input[type='password'],
+textarea {
+    width: 100%;
+    height: 40px;
+    padding: 10px 10px 10px 105px;
+    box-sizing: border-box;
+    border: 1px solid $gray;
+    color: $darkColor;
+    border-radius: 3px;
+    transition: all 0.3s $custom-easing;
+}
+
+textarea {
+    height: auto;
+    min-height: 200px;
+    padding: 50px 10px 10px 10px;
+}
+
+input[type='text'] + label,
+input[type='password'] + label,
+textarea + label {
+    padding: 0 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 100px;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $darkColor;
+    background: $color;
+    border-radius: 3px 0 0 3px;
+    transition: all 0.3s $custom-easing;
+    transform: translateZ(0) translateX(0);
+}
+
+textarea + label {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+}
+
+input[type='text']:focus,
+input[type='password']:focus {
+    padding-left: 10px;
+}
+
+textarea:focus {
+    padding-top: 10px;
+}
+
+input[type='text']:focus + label,
+input[type='password']:focus + label {
+    transform: translateZ(0) translateX(-100%);
+}
+
+textarea:focus + label {
+    transform: translateZ(0) translateY(-100%);
+}
+
+.cmp-form-input {
+    position: relative;
+    margin-bottom: 6px;
+}
+
+cmp-icon {
+    position: absolute;
+    color: $darkColor;
+    font-size: 22px;
+    top: 6px;
+    right: 10px;
+    width: 20px;
+    text-align: center;
 }

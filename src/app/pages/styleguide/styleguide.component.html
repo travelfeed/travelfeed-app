@@ -1,27 +1,13 @@
+
 <h1>Navigation</h1>
 <cmp-navigation></cmp-navigation>
+
 
 <cmp-headline-h1 text="Colors"></cmp-headline-h1>
 <cmp-container color="1">
     <cmp-button color="color2" class=""></cmp-button>
 </cmp-container>
 <cmp-container type="wide" color="1">
-    <cmp-button color="color2" class=""></cmp-button>
-</cmp-container>
-
-<cmp-container color="2">
-    <cmp-button color="color1" class=""></cmp-button>
-</cmp-container>
-<cmp-container type="wide" color="2">
-    <cmp-button color="color1" class=""></cmp-button>
-</cmp-container>
-
-<cmp-container color="3">
-    <cmp-button color="color1" class=""></cmp-button>
-    <cmp-button color="color2" class=""></cmp-button>
-</cmp-container>
-<cmp-container type="wide" color="3">
-    <cmp-button color="color1" class=""></cmp-button>
     <cmp-button color="color2" class=""></cmp-button>
 </cmp-container>
 
@@ -44,8 +30,11 @@
 <cmp-button color="color2"></cmp-button>
 
 <cmp-headline-h3 text="Input Fields"></cmp-headline-h3>
-<cmp-form-input></cmp-form-input>
-<cmp-form-input type="password"></cmp-form-input>
+<cmp-container>
+    <cmp-form-input type="text" name="test" label="test" icon="user"></cmp-form-input>
+</cmp-container>
+<h1>Login Modul</h1>
+<cmp-login></cmp-login>
 
 <cmp-headline-h3 text="Icons"></cmp-headline-h3>
 <cmp-icon name="cog"></cmp-icon>
@@ -77,9 +66,9 @@
 <cmp-container type="wide" color="1">
     <cmp-headline-h1 text="Modules"></cmp-headline-h1>
     <cmp-headline-h2 text="travel-preview"></cmp-headline-h2>
-    <div style="width:40%;">
+    <cmp-container>
         <cmp-travel-preview></cmp-travel-preview>
-    </div>
+    </cmp-container>
 </cmp-container>
 
 <cmp-headline-h2 text="Newsletter"></cmp-headline-h2>
