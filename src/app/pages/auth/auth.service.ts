@@ -12,11 +12,11 @@ export class AuthService {
 
     public constructor(private http: HttpClient) {}
 
-    public signin(username: string, password: string): Observable<User> {
+    public signin(email: string, password: string): Observable<User> {
         console.log('==> AuthService::signin')
         return this.http
             .post<ApiResponse>(`${this.baseUri}/auth/signin`, {
-                username: username,
+                email: email,
                 password: password
             })
             .pipe(

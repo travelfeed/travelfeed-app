@@ -25,15 +25,15 @@ export class SignInComponent implements OnInit {
         })
 
         this.signInForm = this.formBuilder.group({
-            username: ['', Validators.required],
+            email: ['', Validators.required],
             password: ['', Validators.required]
         })
     }
 
     public signin(): void {
-        const { username, password } = this.signInForm.value
+        const { email, password } = this.signInForm.value
 
-        this.authService.signin(username, password).subscribe(result => {
+        this.authService.signin(email, password).subscribe(result => {
             this.router.navigate(['/auth'])
         })
     }
