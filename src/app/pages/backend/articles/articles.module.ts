@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { DemoComponent } from './demo.component'
+import { ArticlesComponent } from './articles.component'
 
 @NgModule({
     imports: [CommonModule],
-    declarations: [DemoComponent]
+    declarations: [ArticlesComponent]
 })
-export class DemoModule {}
+export class ArticlesModule {}
