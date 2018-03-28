@@ -3,11 +3,16 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
 import { switchMap, map } from 'rxjs/operators'
 import { of } from 'rxjs/observable/of'
+import { LocalStorage } from 'ngx-store'
 import { environment } from '../../../environments/environment'
 import { ApiResponse, User } from './typings'
 
 @Injectable()
 export class AuthService {
+    @LocalStorage() public userId: string
+
+    @LocalStorage() public authToken: string
+
     private readonly baseUri: string = environment.apiBaseUrl
 
     public constructor(private http: HttpClient) {}
@@ -69,29 +74,5 @@ export class AuthService {
 
     public isSignedIn(): Observable<boolean> {
         return of(this.authToken !== null && this.userId !== null)
-    }
-
-    public set userId(userId: string) {
-        if (userId === null) {
-            localStorage.removeItem('userId')
-        } else {
-            localStorage.setItem('userId', userId)
-        }
-    }
-
-    public get userId(): string {
-        return localStorage.getItem('userId')
-    }
-
-    public set authToken(authToken: string) {
-        if (authToken === null) {
-            localStorage.removeItem('authToken')
-        } else {
-            localStorage.setItem('authToken', authToken)
-        }
-    }
-
-    public get authToken(): string {
-        return localStorage.getItem('authToken')
     }
 }
