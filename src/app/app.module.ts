@@ -7,6 +7,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { environment } from '../environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { StyleguideModule } from './pages/styleguide/styleguide.module'
+import { AuthModule } from './pages/auth/auth.module'
+import { BackendModule } from './pages/backend/backend.module'
 import { HomeModule } from './pages/home/home.module'
 import { AppComponent } from './app.component'
 
@@ -29,6 +31,8 @@ export function HttpLoaderFactory(http: HttpClient) {
             }
         }),
         AppRoutingModule,
+        AuthModule,
+        BackendModule,
         StyleguideModule,
         HomeModule
     ],

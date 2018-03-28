@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { FEmailComponent } from './f-email.component'
+import { SignOutComponent } from './sign-out.component'
 
-describe('FEmailComponent', () => {
-    let component: FEmailComponent
-    let fixture: ComponentFixture<FEmailComponent>
+describe('SignOutPageComponent', () => {
+    let component: SignOutComponent
+    let fixture: ComponentFixture<SignOutComponent>
 
     beforeEach(
         async(() => {
             TestBed.configureTestingModule({
-                declarations: [FEmailComponent]
+                declarations: [SignOutComponent]
             }).compileComponents()
         })
     )
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(FEmailComponent)
+        fixture = TestBed.createComponent(SignOutComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })

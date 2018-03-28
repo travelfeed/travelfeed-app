@@ -1,0 +1,16 @@
+<div class="cmp-sign-in">
+
+    <cmp-f-input class="cmp-sign-in__input" type="text" name="username" label="username" icon="user"></cmp-f-input>
+    <cmp-f-input class="cmp-sign-in__input" type="password" name="password" label="password" icon="key"></cmp-f-input>
+    <cmp-f-button class="cmp-sign-in__button" theme="color1" text="Registrieren"></cmp-f-button>
+    <cmp-f-button class="cmp-sign-in__button float-right" theme="color2" text="Anmelden"></cmp-f-button>
+
+    <form [formGroup]="signInForm" (submit)="signin()">
+        <input type="text" placeholder="username" formControlName="username" />
+        <input type="text" placeholder="password" formControlName="password" />
+        <button type="submit">Signin</button>
+    </form>
+
+    <pre>{{signInForm.value | json}}</pre>
+    <pre>{{authService.isSignedIn() | async | json}}</pre>
+</div>
