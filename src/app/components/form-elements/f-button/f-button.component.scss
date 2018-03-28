@@ -1,0 +1,67 @@
+@import '../../../../scss/shared';
+
+$component: 'cmp-f-button';
+
+@include cmp-base($component, block) {
+    @include cmp-form-button();
+
+    &__button {
+        height: 40px;
+        padding: 10px 20px;
+    }
+}
+
+@include cmp-modifier($component, 'primary') {
+    &__button {
+        background: rgba($color-primary, .6);
+        color: $color-white1;
+        transition: background .2s;
+
+        &:hover {
+            background: $color-primary;
+        }
+    }
+}
+
+@include cmp-modifier($component, 'secondary') {
+    &__button {
+        background: $color-white2;
+        color: $color-primary;
+    }
+}
+
+@include cmp-modifier($component, 'color1') {
+    &__button {
+        color: darken(#ffc8b4, 60%);
+        background-color: #ffc8b4;
+        border-bottom: 3px solid darken(#ffc8b4, 6%);
+
+        &:hover {
+            background-color: lighten(#ffc8b4, 4%);
+        }
+    }
+}
+
+@include cmp-modifier($component, 'color2') {
+    &__button {
+        color: darken(#99dccb, 40%);
+        background-color: #99dccb;
+        border-bottom: 3px solid darken(#99dccb, 6%);
+
+        &:hover {
+            background-color: lighten(#99dccb, 4%);
+        }
+    }
+}
+
+@include cmp-modifier($component, 'color3') {
+    &__button {
+        color: darken(#f5deb3, 40%);
+        background-color: #f5deb3;
+        border-bottom: 3px solid darken(#f5deb3, 6%);
+
+        &:hover {
+            background-color: lighten(#f5deb3, 4%);
+        }
+    }
+}
