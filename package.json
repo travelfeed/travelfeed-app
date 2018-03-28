@@ -36,6 +36,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "fuzzysearch": "^1.0.3",
+    "ngx-store": "^1.4.1",
     "normalize-scss": "^7.0.1",
     "rxjs": "^5.5.6",
     "susy": "^3.0.3",

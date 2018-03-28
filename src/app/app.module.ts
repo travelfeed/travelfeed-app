@@ -4,6 +4,7 @@ import { ServiceWorkerModule } from '@angular/service-worker'
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
+import { WebStorageModule } from 'ngx-store'
 import { environment } from '../environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { StyleguideModule } from './pages/styleguide/styleguide.module'
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient]
             }
         }),
+        WebStorageModule,
         AppRoutingModule,
         AuthModule,
         BackendModule,
