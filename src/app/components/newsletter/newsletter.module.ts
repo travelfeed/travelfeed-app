@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { ButtonModule } from '../button/button.module'
+import { FormElementsModule } from '../form-elements/form-elements.module'
 import { NewsletterComponent } from './newsletter.component'
 
 @NgModule({
-    imports: [CommonModule, ButtonModule],
+    imports: [CommonModule, FormElementsModule],
     declarations: [NewsletterComponent],
     exports: [NewsletterComponent]
 })

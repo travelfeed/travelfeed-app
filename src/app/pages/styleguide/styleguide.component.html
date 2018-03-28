@@ -5,10 +5,10 @@
 
 <cmp-headline-h1 text="Colors"></cmp-headline-h1>
 <cmp-container color="1">
-    <cmp-button color="color2" class=""></cmp-button>
+    <cmp-f-button theme="color2" class=""></cmp-f-button>
 </cmp-container>
 <cmp-container type="wide" color="1">
-    <cmp-button color="color2" class=""></cmp-button>
+    <cmp-f-button theme="color2" class=""></cmp-f-button>
 </cmp-container>
 
 <cmp-headline-h1 text="Fonts"></cmp-headline-h1>
@@ -26,15 +26,15 @@
 
 
 <cmp-headline-h3 text="Buttons"></cmp-headline-h3>
-<cmp-button color="color1"></cmp-button>
-<cmp-button color="color2"></cmp-button>
+<cmp-f-button theme="color1"></cmp-f-button>
+<cmp-f-button theme="color2"></cmp-f-button>
 
 <cmp-headline-h3 text="Input Fields"></cmp-headline-h3>
 <cmp-container>
-    <cmp-form-input type="text" name="test" label="test" icon="user"></cmp-form-input>
+    <form [formGroup]="demoForm" (submit)="submit()">
+        <cmp-f-input type="text" name="test" label="test" icon="user" [(model)]="model.test" [fc]="test"></cmp-f-input>
+    </form>
 </cmp-container>
-<h1>Login Modul</h1>
-<cmp-login></cmp-login>
 
 <cmp-headline-h3 text="Icons"></cmp-headline-h3>
 <cmp-icon name="cog"></cmp-icon>

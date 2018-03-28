@@ -19,6 +19,8 @@ export class FormElement {
 
     @Input() public autofocus: boolean
 
+    @Input() public icon: string
+
     public focus: boolean = false
 
     public constructor() {}
