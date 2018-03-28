@@ -6,12 +6,5 @@ import { Component } from '@angular/core'
     styleUrls: ['./travel-preview.component.scss']
 })
 export class TravelPreviewComponent {
-    public modals = [
-        'Hallo Stella',
-        'Test Import',
-        'Wilde Rivertour durch Bolivien',
-        'Das sind gute Neuigkeiten'
-    ]
-
     public constructor() {}
 }

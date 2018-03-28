@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ButtonComponent } from './button.component'
+import { FTextAreaComponent } from './f-text-area.component'
 
-describe('ButtonComponent', () => {
-    let component: ButtonComponent
-    let fixture: ComponentFixture<ButtonComponent>
+describe('FTextAreaComponent', () => {
+    let component: FTextAreaComponent
+    let fixture: ComponentFixture<FTextAreaComponent>
 
     beforeEach(
         async(() => {
             TestBed.configureTestingModule({
-                declarations: [ButtonComponent]
+                declarations: [FTextAreaComponent]
             }).compileComponents()
         })
     )
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ButtonComponent)
+        fixture = TestBed.createComponent(FTextAreaComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })

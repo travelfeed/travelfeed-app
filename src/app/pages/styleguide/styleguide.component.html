@@ -1,28 +1,13 @@
 <h1>Navigation</h1>
 <cmp-navigation></cmp-navigation>
 
+
 <cmp-headline-h1 text="Colors"></cmp-headline-h1>
 <cmp-container color="1">
-    <cmp-button color="color2" class=""></cmp-button>
+    <cmp-f-button theme="color2" class=""></cmp-f-button>
 </cmp-container>
 <cmp-container type="wide" color="1">
-    <cmp-button color="color2" class=""></cmp-button>
-</cmp-container>
-
-<cmp-container color="2">
-    <cmp-button color="color1" class=""></cmp-button>
-</cmp-container>
-<cmp-container type="wide" color="2">
-    <cmp-button color="color1" class=""></cmp-button>
-</cmp-container>
-
-<cmp-container color="3">
-    <cmp-button color="color1" class=""></cmp-button>
-    <cmp-button color="color2" class=""></cmp-button>
-</cmp-container>
-<cmp-container type="wide" color="3">
-    <cmp-button color="color1" class=""></cmp-button>
-    <cmp-button color="color2" class=""></cmp-button>
+    <cmp-f-button theme="color2" class=""></cmp-f-button>
 </cmp-container>
 
 <cmp-headline-h1 text="Fonts"></cmp-headline-h1>
@@ -35,17 +20,21 @@
 
 <p>p Das ist ein Paragraph</p>
 <i>i Das ist ein kursiv</i>
-<p>Das ist ein <strong>strong element</strong> in einem p Tag</p>
+<p>Das ist ein
+    <strong>strong element</strong> in einem p Tag</p>
 <span>span element</span>
 
 
 <cmp-headline-h3 text="Buttons"></cmp-headline-h3>
-<cmp-button color="color1"></cmp-button>
-<cmp-button color="color2"></cmp-button>
+<cmp-f-button theme="color1"></cmp-f-button>
+<cmp-f-button theme="color2"></cmp-f-button>
 
 <cmp-headline-h3 text="Input Fields"></cmp-headline-h3>
-<cmp-form-input></cmp-form-input>
-<cmp-form-input type="password"></cmp-form-input>
+<cmp-container>
+    <form [formGroup]="demoForm" (submit)="submit()">
+        <cmp-f-input type="text" name="test" label="test" icon="user" [(model)]="model.test" [fc]="test"></cmp-f-input>
+    </form>
+</cmp-container>
 
 <cmp-headline-h3 text="Icons"></cmp-headline-h3>
 <cmp-icon name="cog"></cmp-icon>
@@ -77,9 +66,9 @@
 <cmp-container type="wide" color="1">
     <cmp-headline-h1 text="Modules"></cmp-headline-h1>
     <cmp-headline-h2 text="travel-preview"></cmp-headline-h2>
-    <div style="width:40%;">
+    <cmp-container>
         <cmp-travel-preview></cmp-travel-preview>
-    </div>
+    </cmp-container>
 </cmp-container>
 
 <cmp-headline-h2 text="Newsletter"></cmp-headline-h2>

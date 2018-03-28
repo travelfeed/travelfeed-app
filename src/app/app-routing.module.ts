@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { HomeComponent } from './pages/home/home.component'
 import { StyleguideComponent } from './pages/styleguide/styleguide.component'
 import { BackendComponent } from './pages/backend/backend.component'
 import { ArticlesComponent } from './pages/backend/articles/articles.component'
@@ -13,7 +14,7 @@ export const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'styleguide'
+        component: HomeComponent
     },
     {
         path: 'styleguide',
@@ -57,6 +58,10 @@ export const routes: Routes = [
                 component: RegistrationComponent
             }
         ]
+    },
+    {
+        path: '**',
+        redirectTo: ''
     }
 ]
 
