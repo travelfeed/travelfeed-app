@@ -4,11 +4,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { AuthService } from '../auth.service'
 
 @Component({
-    selector: 'cmp-sign-in-page',
-    templateUrl: './sign-in-page.component.html',
-    styleUrls: ['./sign-in-page.component.scss']
+    selector: 'cmp-sign-in',
+    templateUrl: './sign-in.component.html',
+    styleUrls: ['./sign-in.component.scss']
 })
-export class SignInPageComponent implements OnInit {
+export class SignInComponent implements OnInit {
     public signInForm: FormGroup
 
     public constructor(
@@ -18,6 +18,12 @@ export class SignInPageComponent implements OnInit {
     ) {}
 
     public ngOnInit(): void {
+        this.authService.isSignedIn().subscribe((authenticated: boolean) => {
+            if (authenticated) {
+                this.router.navigate(['../backend'])
+            }
+        })
+
         this.signInForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]

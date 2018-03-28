@@ -1,0 +1,11 @@
+<div class="cmp-registration">
+    <form [formGroup]="registrationForm" (submit)="register()">
+        <input type="text" placeholder="username" formControlName="username" />
+        <input type="password" placeholder="password" formControlName="password" />
+        <input type="email" placeholder="email" formControlName="email" />
+        <button type="submit">Register</button>
+    </form>
+
+    <pre>{{registrationForm.value | json}}</pre>
+    <pre>{{authService.isSignedIn() | async | json}}</pre>
+</div>

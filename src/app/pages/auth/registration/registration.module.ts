@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ReactiveFormsModule } from '@angular/forms'
-import { SignInPageComponent } from './sign-in-page.component'
+import { RegistrationComponent } from './registration.component'
 
 @NgModule({
     imports: [CommonModule, ReactiveFormsModule],
-    declarations: [SignInPageComponent]
+    declarations: [RegistrationComponent]
 })
-export class SignInPageModule {}
+export class RegistrationPageModule {}

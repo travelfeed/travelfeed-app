@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
-import { switchMap } from 'rxjs/operators'
+import { switchMap, map } from 'rxjs/operators'
 import { of } from 'rxjs/observable/of'
 import { environment } from '../../../environments/environment'
 import { ApiResponse, User } from './typings'
@@ -13,6 +13,7 @@ export class AuthService {
     public constructor(private http: HttpClient) {}
 
     public signin(username: string, password: string): Observable<User> {
+        console.log('==> AuthService::signin')
         return this.http
             .post<ApiResponse>(`${this.baseUri}/auth/signin`, {
                 username: username,
@@ -27,14 +28,43 @@ export class AuthService {
                     this.userId = data.userId
                     this.authToken = data.authToken
 
-                    return this.http.get<User>(`${this.baseUri}/user/${data.userId}`)
+                    return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
                 })
             )
     }
 
     public signout() {
-        this.userId = null
-        this.authToken = null
+        console.log('==> AuthService::signout')
+        return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null).pipe(
+            map(({ status, data }: ApiResponse) => {
+                this.userId = null
+                this.authToken = null
+
+                return null
+            })
+        )
+    }
+
+    public register(username: string, password: string, email: string) {
+        console.log('==> AuthService::register')
+        return this.http
+            .post<ApiResponse>(`${this.baseUri}/auth/register`, {
+                username: username,
+                password: password,
+                email: email
+            })
+            .pipe(
+                switchMap(({ status, data }: ApiResponse) => {
+                    if (status < 200 || status >= 300) {
+                        return of(null)
+                    }
+
+                    this.userId = data.userId
+                    this.authToken = data.authToken
+
+                    return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
+                })
+            )
     }
 
     public isSignedIn(): Observable<boolean> {

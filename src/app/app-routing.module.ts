@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { StyleguideComponent } from './pages/styleguide/styleguide.component'
-import { AuthComponent } from './pages/auth/auth.component'
-import { SignInPageComponent } from './pages/auth/sign-in-page/sign-in-page.component'
-import { DemoComponent } from './pages/auth/demo/demo.component'
+import { BackendComponent } from './pages/backend/backend.component'
+import { ArticlesComponent } from './pages/backend/articles/articles.component'
 import { AuthGuard } from './pages/auth/auth.guard'
+import { AuthComponent } from './pages/auth/auth.component'
+import { SignInComponent } from './pages/auth/sign-in/sign-in.component'
+import { SignOutComponent } from './pages/auth/sign-out/sign-out.component'
+import { RegistrationComponent } from './pages/auth/registration/registration.component'
 
 export const routes: Routes = [
     {
@@ -17,22 +20,41 @@ export const routes: Routes = [
         component: StyleguideComponent
     },
     {
+        path: 'backend',
+        component: BackendComponent,
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'articles'
+            },
+            {
+                path: 'articles',
+                canActivate: [AuthGuard],
+                component: ArticlesComponent
+            }
+        ]
+    },
+    {
         path: 'auth',
         component: AuthComponent,
         children: [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'demo'
+                redirectTo: 'signin'
             },
             {
                 path: 'signin',
-                component: SignInPageComponent
+                component: SignInComponent
             },
             {
-                path: 'demo',
-                component: DemoComponent,
-                canActivate: [AuthGuard]
+                path: 'signout',
+                component: SignOutComponent
+            },
+            {
+                path: 'register',
+                component: RegistrationComponent
             }
         ]
     }
