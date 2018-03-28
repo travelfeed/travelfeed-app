@@ -1,7 +1,12 @@
 @mixin cmp-form-element() {
     @include use-text(copy);
+    position: relative;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 6px;
+
+    &__input {
+        outline: none;
+    }
 
     &__errors {
         margin-top: 10px;
@@ -10,7 +15,7 @@
 
 @mixin cmp-form-input() {
     &__control {
-        height: 35px;
+        height: 40px;
         line-height: 35px;
         margin-top: 20px;
         position: relative;
@@ -25,62 +30,35 @@
     }
 
     &__label {
-        width: 100%;
-        height: 100%;
+        padding: 0 10px;
         position: absolute;
         top: 0;
+        bottom: 0;
         left: 0;
-        color: $color-primary;
-        opacity: .5;
-        transition: all .2s;
-        pointer-events: none;
-    }
-
-    &__line {
-        &::before,
-        &::after {
-            height: 4px;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            display: block;
-            opacity: .2;
-            transition: width .2s, opacity .2s, background .2s;
-            content: ' ';
-        }
-
-        &::before {
-            width: 100%;
-            background: rgba($color-grey1, .8);
-        }
-
-        &::after {
-            width: 0;
-            background: $color-primary;
-        }
+        height: 40px;
+        line-height: 40px;
+        font-size: 12px;
+        font-weight: bold;
+        width: 100px;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: darken(#99dccb, 40%);
+        background: #99dccb;
+        border-radius: 3px 0 0 3px;
+        transition: all 0.3s cubic-bezier(1, 0.1, 0, 0.9);
+        transform: translateZ(0) translateX(0);
     }
 
     &--filled &__label,
     &--focus &__label {
-        font-size: ms(-1);
-        height: 15px;
-        line-height: 15px;
-        top: -15px;
+        transform: translateZ(0) translateX(-100%);
     }
 
-    &--focus &__line::after {
-        opacity: 1;
-        width: 100%;
-    }
-
-    &--invalid &__label,
-    &--invalid &__input {
-        color: $color-red;
-    }
-
-    &--invalid &__line::before,
-    &--invalid &__line::after {
-        background: $color-red;
+    &--filled &__input,
+    &--focus &__input {
+        padding-left: 10px;
     }
 }
 
@@ -95,11 +73,7 @@
 
     &__input {
         width: 100%;
-        height: 22px;
-        line-height: 22px;
-        padding: 5px 0 0 0;
-        resize: none;
-        transition: height .2s;
+        border-radius: 3px 3px 0 0;
     }
 
     &__label {
@@ -108,42 +82,15 @@
         position: absolute;
         top: 0;
         left: 0;
-        color: $color-primary;
+        color: #99dccb-primary;
         opacity: .5;
         transition: all .2s;
         pointer-events: none;
     }
 
-    &__line {
-        &::before,
-        &::after {
-            height: 4px;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            display: block;
-            opacity: .2;
-            transition: width .2s, opacity .2s, background .2s;
-            content: ' ';
-        }
-
-        &::before {
-            width: 100%;
-            background: rgba($color-grey1, .8);
-        }
-
-        &::after {
-            width: 0;
-            background: $color-primary;
-        }
-    }
-
     &--filled &__label,
     &--focus &__label {
-        font-size: ms(-1);
-        height: 15px;
-        line-height: 15px;
-        top: -15px;
+        transform: translateZ(0) translateX(-100%);
     }
 
     &--filled &__control,
@@ -154,11 +101,7 @@
     &--filled &__input,
     &--focus &__input {
         height: 150px;
-    }
-
-    &--focus &__line::after {
-        opacity: 1;
-        width: 100%;
+        padding-top: 10px;
     }
 }
 
