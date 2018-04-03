@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
-import { switchMap, map } from 'rxjs/operators'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import { switchMap, map, filter } from 'rxjs/operators'
 import { of } from 'rxjs/observable/of'
+import { fromEvent } from 'rxjs/observable/fromEvent'
 import { LocalStorage } from 'ngx-store'
 import { environment } from '../../../environments/environment'
 import { ApiResponse, User } from './typings'
@@ -17,6 +19,13 @@ export class AuthService {
 
     public constructor(private http: HttpClient) {}
 
+    /**
+     * Signs the given user in with the given data and returns the user data.
+     *
+     * @param {string} email
+     * @param {string} password
+     * @returns {Observable<User>}
+     */
     public signin(email: string, password: string): Observable<User> {
         console.log('==> AuthService::signin')
         return this.http
@@ -38,6 +47,11 @@ export class AuthService {
             )
     }
 
+    /**
+     * Signs the user out of the application.
+     *
+     * @returns {Observable<ApiResponse>}
+     */
     public signout() {
         console.log('==> AuthService::signout')
         return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null).pipe(
@@ -50,7 +64,15 @@ export class AuthService {
         )
     }
 
-    public register(username: string, password: string, email: string) {
+    /**
+     * Registers the user with the given data.
+     *
+     * @param {string} username
+     * @param {string} password
+     * @param {stirng} email
+     * @returns {Observable<ApiResponse>}
+     */
+    public register(username: string, password: string, email: string): Observable<ApiResponse> {
         console.log('==> AuthService::register')
         return this.http
             .post<ApiResponse>(`${this.baseUri}/auth/register`, {
@@ -72,7 +94,16 @@ export class AuthService {
             )
     }
 
+    /**
+     * Checks and watches the current auth state of the user in localstorage.
+     *
+     * @returns {Observable<boolean>}
+     */
     public isSignedIn(): Observable<boolean> {
-        return of(this.authToken !== null && this.userId !== null)
+        return new BehaviorSubject(this.authToken !== null && this.userId !== null).pipe(
+            switchMap(() => fromEvent(window, 'storage')),
+            filter(({ key }: StorageEvent) => key === 'authToken' || key === 'userId'),
+            map(() => this.authToken !== null && this.userId !== null)
+        )
     }
 }
