@@ -1,4 +1,6 @@
+export type SocketEventName = 'connect' | 'disconnect' | 'message' | 'custom'
+
 export interface SocketEvent {
-    name: 'message' | 'custom'
+    name: SocketEventName
     data: any
 }

@@ -5,19 +5,31 @@ import { Observable } from 'rxjs/Observable'
 import { of } from 'rxjs/observable/of'
 import { fromEvent } from 'rxjs/observable/fromEvent'
 import { merge } from 'rxjs/observable/merge'
-import { filter } from 'rxjs/operators'
+import { filter, map } from 'rxjs/operators'
 import { environment } from '../../../environments/environment'
-import { SocketEvent } from './typings'
+import { SocketEvent, SocketEventName } from './typings'
 
 @Injectable()
 export class SocketService {
     private socket: SocketIOClient.Socket = connect(environment.socketUrl)
-    private events: Subject<SocketEvent> = new Subject()
+    private events: Subject<SocketEvent> = new Subject<SocketEvent>()
 
     public constructor() {
-        const events: Array<any> = ['connect', 'disconnect', 'message', 'custom']
+        const events: Array<SocketEventName> = ['connect', 'disconnect', 'message', 'custom']
+        const transformEvent = (event: SocketEventName): Observable<SocketEvent> => {
+            return fromEvent<any>(this.socket, event).pipe(
+                map(data => ({
+                    name: event,
+                    data: data
+                }))
+            )
+        }
 
-        merge(...events.map(event => fromEvent(this.socket, event)))
+        merge(...events.map(event => transformEvent(event)))
+            .pipe(filter(value => typeof value !== 'undefined'))
+            .subscribe(event => {
+                this.events.next(event)
+            })
     }
 
     public send(event: string | SocketEvent): void

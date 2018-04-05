@@ -1,4 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, OnDestroy } from '@angular/core'
+import { takeWhile } from 'rxjs/operators'
 import { SocketService } from './services/socket/socket.service'
 import { SocketEvent } from './services/socket/typings'
 
@@ -7,25 +8,20 @@ import { SocketEvent } from './services/socket/typings'
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-    public constructor(public socketService: SocketService) {
-        this.socketService.connection.subscribe(socket => {})
+export class AppComponent implements OnDestroy {
+    private alive: boolean = true
 
-        this.socketService.messages.subscribe((event: SocketEvent): void => {
-            console.log('==> messages ==>', event.name, event.data)
+    public constructor(public socketService: SocketService) {
+        this.socketService.connection.pipe(takeWhile(() => this.alive)).subscribe(socket => {
+            console.log(socket)
         })
 
-        this.socketService.all.subscribe((event: SocketEvent) => {
+        this.socketService.all.pipe(takeWhile(() => this.alive)).subscribe((event: SocketEvent) => {
             console.log('==> all ==>', event)
         })
+    }
 
-        // demo time
-        this.socketService.send('demo #1')
-        this.socketService.send({
-            name: 'message',
-            data: 'demo #2'
-        })
-        this.socketService.send('custom', 'demo #3')
-        setTimeout(() => this.socketService.send('demo #4'), 4000)
+    public ngOnDestroy(): void {
+        this.alive = false
     }
 }
