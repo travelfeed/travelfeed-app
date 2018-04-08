@@ -12,6 +12,7 @@ import { AuthModule } from './pages/auth/auth.module'
 import { BackendModule } from './pages/backend/backend.module'
 import { HomeModule } from './pages/home/home.module'
 import { AppComponent } from './app.component'
+import { TravelogueModule } from './pages/travelogue/travelogue.module'
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, '/assets/translations/')
@@ -36,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         AuthModule,
         BackendModule,
         StyleguideModule,
-        HomeModule
+        HomeModule,
+        TravelogueModule
     ],
     providers: [],
     bootstrap: [AppComponent]

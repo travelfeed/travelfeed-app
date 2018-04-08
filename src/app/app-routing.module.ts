@@ -9,12 +9,17 @@ import { AuthComponent } from './pages/auth/auth.component'
 import { SignInComponent } from './pages/auth/sign-in/sign-in.component'
 import { SignOutComponent } from './pages/auth/sign-out/sign-out.component'
 import { RegistrationComponent } from './pages/auth/registration/registration.component'
+import { TravelogueComponent } from './pages/travelogue/travelogue.component'
 
 export const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
         component: HomeComponent
+    },
+    {
+        path: 'travelogue',
+        component: TravelogueComponent
     },
     {
         path: 'styleguide',
@@ -58,6 +63,11 @@ export const routes: Routes = [
                 component: RegistrationComponent
             }
         ]
+    },
+    {
+        path: '',
+        pathMatch: 'full',
+        component: HomeComponent
     },
     {
         path: '**',
