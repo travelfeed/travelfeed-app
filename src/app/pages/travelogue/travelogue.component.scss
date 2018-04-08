@@ -1,0 +1,9 @@
+@import '../../../scss/shared';
+
+$component: 'cmp-travelogue';
+
+@include cmp-base($component, block) {
+    &__map {
+        height: 300px;
+    }
+}
