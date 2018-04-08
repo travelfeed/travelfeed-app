@@ -40,11 +40,9 @@ export class SignInComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit(): void {
-        this.authService.isSignedIn().subscribe((authenticated: boolean) => {
-            if (authenticated) {
-                this.router.navigate(['../backend'])
-            }
-        })
+        if (this.authService.isSignedIn()) {
+            this.router.navigate(['../backend'])
+        }
     }
 
     public ngOnDestroy(): void {
@@ -66,7 +64,7 @@ export class SignInComponent implements OnInit, OnDestroy {
             .signin(email, password)
             .pipe(takeWhile(() => this.alive))
             .subscribe(result => {
-                this.router.navigate(['/auth'])
+                this.router.navigate(['../backend'])
             })
     }
 }
