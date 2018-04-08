@@ -21,6 +21,16 @@ strong {
     color: red;
 }
 
+button,
+input,
+textarea,
+select,
+[type='submit'] {
+    background-color: transparent;
+    outline: 0;
+    -webkit-appearance: none;
+}
+
 .colorcontainer {
     background-color: #ffc8b4;
     margin: 0 -20px;
