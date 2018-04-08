@@ -52,7 +52,7 @@ export class AuthService {
      *
      * @returns {Observable<ApiResponse>}
      */
-    public signout() {
+    public signout(): Observable<ApiResponse> {
         console.log('==> AuthService::signout')
         return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null).pipe(
             map(({ status, data }: ApiResponse) => {
