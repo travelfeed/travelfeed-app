@@ -111,6 +111,9 @@ export class AuthService {
      * @returns {boolean}
      */
     public isSignedIn(): boolean {
-        return this.authToken !== '' && this.userId !== ''
+        const validAuthToken: boolean = this.authToken !== null && this.authToken !== ''
+        const validUserId: boolean = this.userId !== null && this.userId !== ''
+
+        return validAuthToken && validUserId
     }
 }
