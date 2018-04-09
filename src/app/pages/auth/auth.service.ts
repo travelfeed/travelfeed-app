@@ -3,30 +3,19 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
 import { switchMap } from 'rxjs/operators'
 import { of } from 'rxjs/observable/of'
+import { LocalStorage } from 'ngx-store'
 import { environment } from '../../../environments/environment'
 import { ApiResponse, User } from './typings'
 
 @Injectable()
 export class AuthService {
+    @LocalStorage() public userId: string = null
+
+    @LocalStorage() public authToken: string = null
+
     private readonly baseUri: string = environment.apiBaseUrl
 
     public constructor(private http: HttpClient) {}
-
-    public get userId(): string {
-        return localStorage.getItem('userId')
-    }
-
-    public set userId(value: string) {
-        localStorage.setItem('userId', value)
-    }
-
-    public get authToken(): string {
-        return localStorage.getItem('authToken')
-    }
-
-    public set authToken(value: string) {
-        localStorage.setItem('authToken', value)
-    }
 
     /**
      * Signs the given user in with the given data and returns the user data.
@@ -71,8 +60,7 @@ export class AuthService {
         this.userId = ''
         this.authToken = ''
 
-        return of(null)
-        // return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null)
+        return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null)
     }
 
     /**
