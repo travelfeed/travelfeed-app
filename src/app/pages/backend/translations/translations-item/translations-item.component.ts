@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Input, Output, EventEmitter } from '@angular/core'
+import { Component, AfterViewInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Translation } from '../typings'
 import { TranslationsService } from '../translations.service'
@@ -10,7 +10,7 @@ import { ApiResponse } from '../../../../shared/typings'
     templateUrl: './translations-item.component.html',
     styleUrls: ['./translations-item.component.scss']
 })
-export class TranslationsItemComponent implements OnDestroy {
+export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
     @Input() public translation: Translation
 
     @Output() public translationChange: EventEmitter<Translation> = new EventEmitter()
@@ -19,6 +19,8 @@ export class TranslationsItemComponent implements OnDestroy {
 
     public model: string = null
 
+    public saving: boolean = false
+
     private alive: boolean = true
 
     public constructor(
@@ -26,7 +28,15 @@ export class TranslationsItemComponent implements OnDestroy {
         private translationsService: TranslationsService
     ) {
         this.translationForm = this.formBuilder.group({
-            input: [null, [Validators.required, Validators.email]]
+            input: [null, []]
+        })
+    }
+
+    public ngAfterViewInit(): void {
+        setTimeout(() => {
+            this.translationForm.setValue({
+                input: this.translation.value
+            })
         })
     }
 
@@ -39,11 +49,15 @@ export class TranslationsItemComponent implements OnDestroy {
     }
 
     public save(): void {
-        const { translation } = this.translationForm.value
+        const value = this.translationForm.value.input
+        const update: Translation = { ...this.translation, value }
 
+        this.saving = true
         this.translationsService
-            .save(translation)
+            .save(update)
             .pipe(takeWhile(() => this.alive))
-            .subscribe(() => {})
+            .subscribe(() => {
+                this.saving = false
+            })
     }
 }

@@ -11,13 +11,14 @@ import { takeWhile, switchMap, filter } from 'rxjs/operators'
 export class TranslationsViewComponent implements OnInit, OnDestroy {
     public translations: Array<Translation>
 
-    public saving: boolean = false
+    public loading: boolean = false
 
     private alive: boolean = true
 
     public constructor(public translationsService: TranslationsService) {}
 
     public ngOnInit(): void {
+        this.loading = true
         this.translationsService.language$
             .pipe(
                 takeWhile(() => this.alive),
@@ -28,30 +29,11 @@ export class TranslationsViewComponent implements OnInit, OnDestroy {
             )
             .subscribe((translations: Array<Translation>) => {
                 this.translations = translations
+                this.loading = false
             })
     }
 
     public ngOnDestroy(): void {
         this.alive = false
-    }
-
-    public save(translation: Translation): void {
-        this.saving = true
-        this.translationsService
-            .save(translation)
-            .pipe(takeWhile(() => this.alive))
-            .subscribe(() => {
-                this.saving = false
-            })
-    }
-
-    public saveAll(): void {
-        this.saving = true
-        this.translationsService
-            .saveAll(this.translations)
-            .pipe(takeWhile(() => this.alive))
-            .subscribe(() => {
-                this.saving = false
-            })
     }
 }

@@ -25,10 +25,6 @@ export class TranslationsService {
             .pipe(map((response: ApiResponse) => response.data as Array<Translation>))
     }
 
-    public saveAll(translations: Array<Translation>): Observable<ApiResponse> {
-        return this.http.post<ApiResponse>(`${this.baseUri}/translation`, translations)
-    }
-
     public save(translation: Translation): Observable<ApiResponse> {
         return this.http.post<ApiResponse>(
             `${this.baseUri}/translation/${translation.id}`,

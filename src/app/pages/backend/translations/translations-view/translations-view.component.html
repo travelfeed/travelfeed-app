@@ -1,6 +1,3 @@
 <div class="cmp-translations-view">
-    <div class="cmp-translations-view__items">
-        <cmp-translations-item class="cmp-translations-view__item" [translation]="item" *ngFor="let item of translations"></cmp-translations-item>
-    </div>
-    <cmp-f-button type="button" theme="color1" text="SAVE" (click)="saveAll()"></cmp-f-button>
+    <cmp-translations-item class="cmp-translations-view__item" [translation]="item" *ngFor="let item of translations"></cmp-translations-item>
 </div>
