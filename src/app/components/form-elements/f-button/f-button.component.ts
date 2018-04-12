@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 import { FormElement } from '../form-element'
 import { FButtonType } from '../typings'
 
@@ -15,6 +15,8 @@ export class FButtonComponent {
     @Input() public theme: string = ''
 
     @Input() public disabled: boolean = false
+
+    @Output() public click: EventEmitter<void> = new EventEmitter()
 
     public constructor() {}
 
