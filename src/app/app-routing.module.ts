@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from './pages/home/home.component'
 import { StyleguideComponent } from './pages/styleguide/styleguide.component'
 import { BackendComponent } from './pages/backend/backend.component'
+import { TranslationsComponent } from './pages/backend/translations/translations.component'
 import { ArticlesComponent } from './pages/backend/articles/articles.component'
 import { ArticlesOverviewComponent } from './pages/backend/articles/articles-overview/articles-overview.component'
 import { ArticlesDetailsComponent } from './pages/backend/articles/articles-details/articles-details.component'
@@ -35,6 +36,11 @@ export const routes: Routes = [
                 path: '',
                 pathMatch: 'full',
                 redirectTo: 'articles'
+            },
+            {
+                path: 'translations',
+                canActivate: [AuthGuard],
+                component: TranslationsComponent
             },
             {
                 path: 'articles',

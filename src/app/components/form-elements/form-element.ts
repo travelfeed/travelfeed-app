@@ -1,5 +1,5 @@
 import { Input, Output, EventEmitter } from '@angular/core'
-import { AbstractControl } from '@angular/forms'
+import { AbstractControl, FormControl } from '@angular/forms'
 import { FormErrorMessages } from './f-error/f-error.component'
 
 export class FormElement {
@@ -11,7 +11,7 @@ export class FormElement {
 
     @Output() public modelChange: EventEmitter<string> = new EventEmitter()
 
-    @Input() public fc: AbstractControl
+    @Input() public fc: AbstractControl = new FormControl()
 
     @Input() public messages: FormErrorMessages
 

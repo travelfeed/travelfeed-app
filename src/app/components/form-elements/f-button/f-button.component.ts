@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 import { FormElement } from '../form-element'
+import { FButtonType } from '../typings'
 
 @Component({
     selector: 'cmp-f-button',
@@ -7,13 +8,15 @@ import { FormElement } from '../form-element'
     styleUrls: ['./f-button.component.scss']
 })
 export class FButtonComponent {
-    @Input() public type: string = 'button'
+    @Input() public type: FButtonType = 'button'
 
     @Input() public text: string
 
     @Input() public theme: string = ''
 
     @Input() public disabled: boolean = false
+
+    @Output() public click: EventEmitter<void> = new EventEmitter()
 
     public constructor() {}
 

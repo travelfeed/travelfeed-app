@@ -5,7 +5,8 @@ import { switchMap } from 'rxjs/operators'
 import { of } from 'rxjs/observable/of'
 import { LocalStorage } from 'ngx-store'
 import { environment } from '../../../environments/environment'
-import { ApiResponse, User } from './typings'
+import { ApiResponse } from '../../shared/typings'
+import { User } from './typings'
 
 @Injectable()
 export class AuthService {
