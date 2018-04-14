@@ -5,8 +5,6 @@ import { StyleguideComponent } from './pages/styleguide/styleguide.component'
 import { BackendComponent } from './pages/backend/backend.component'
 import { TranslationsComponent } from './pages/backend/translations/translations.component'
 import { ArticlesComponent } from './pages/backend/articles/articles.component'
-import { ArticlesOverviewComponent } from './pages/backend/articles/articles-overview/articles-overview.component'
-import { ArticlesDetailsComponent } from './pages/backend/articles/articles-details/articles-details.component'
 import { AuthGuard } from './pages/auth/auth.guard'
 import { AuthComponent } from './pages/auth/auth.component'
 import { SignInComponent } from './pages/auth/sign-in/sign-in.component'
@@ -45,16 +43,15 @@ export const routes: Routes = [
             {
                 path: 'articles',
                 canActivate: [AuthGuard],
-                component: ArticlesComponent,
                 children: [
                     {
                         path: '',
                         pathMatch: 'full',
-                        component: ArticlesOverviewComponent
+                        component: ArticlesComponent
                     },
                     {
                         path: ':id',
-                        component: ArticlesDetailsComponent
+                        component: ArticlesComponent
                     }
                 ]
             }

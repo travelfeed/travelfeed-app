@@ -1,3 +1,6 @@
-<p>
-    articles-details works!
-</p>
+<div class="cmp-articles-details">
+    <div class="cmp-articles-details__wrapper" *ngIf="(articlesService.selected$ | async) as article">
+        <h2>Article {{article.id}}</h2>
+        <pre>{{article|json}}</pre>
+    </div>
+</div>
