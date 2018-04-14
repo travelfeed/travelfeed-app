@@ -1,0 +1,8 @@
+<div class="cmp-backend-notifications">
+    <div class="cmp-backend-notifications__wrapper">
+        <div class="cmp-backend-notifications__item cmp-backend-notifications__item--{{item.type}}" *ngFor="let item of items" @fade>
+            <div class="cmp-backend-notifications__text">{{item.text}}</div>
+            <div class="cmp-backend-notifications__dismiss" (click)="dismiss(item)">DISMISS</div>
+        </div>
+    </div>
+</div>
