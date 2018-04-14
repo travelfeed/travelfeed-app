@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 
 @Component({
     selector: 'cmp-translations',
     templateUrl: './translations.component.html',
     styleUrls: ['./translations.component.scss']
 })
-export class TranslationsComponent implements OnInit {
+export class TranslationsComponent {
     public constructor() {}
-
-    public ngOnInit() {}
 }

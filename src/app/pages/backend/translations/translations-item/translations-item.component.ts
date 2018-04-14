@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core'
+import { Component, AfterViewInit, OnDestroy, Input } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Translation } from '../typings'
 import { TranslationsService } from '../translations.service'
@@ -13,13 +13,13 @@ import { ApiResponse } from '../../../../shared/typings'
 export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
     @Input() public translation: Translation
 
-    @Output() public translationChange: EventEmitter<Translation> = new EventEmitter()
-
     public translationForm: FormGroup
 
     public model: string = null
 
-    public saving: boolean = false
+    public loading: boolean = false
+
+    public changed: boolean = false
 
     private alive: boolean = true
 
@@ -29,6 +29,9 @@ export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
     ) {
         this.translationForm = this.formBuilder.group({
             input: [null, []]
+        })
+        this.translationForm.valueChanges.pipe(takeWhile(() => this.alive)).subscribe(() => {
+            this.changed = this.translationForm.dirty
         })
     }
 
@@ -52,12 +55,22 @@ export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
         const value = this.translationForm.value.input
         const update: Translation = { ...this.translation, value }
 
-        this.saving = true
+        this.loading = true
         this.translationsService
             .save(update)
             .pipe(takeWhile(() => this.alive))
             .subscribe(() => {
-                this.saving = false
+                this.loading = false
+            })
+    }
+
+    public delete(): void {
+        this.loading = true
+        this.translationsService
+            .delete(this.translation)
+            .pipe(takeWhile(() => this.alive))
+            .subscribe(() => {
+                this.loading = false
             })
     }
 }

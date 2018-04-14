@@ -23,9 +23,8 @@ export class TranslationsViewComponent implements OnInit, OnDestroy {
             .pipe(
                 takeWhile(() => this.alive),
                 filter(language => language !== null),
-                switchMap((language: TranslationLanguage) => {
-                    return this.translationsService.fetchTranslations(language)
-                })
+                switchMap(language => this.translationsService.fetchTranslations(language)),
+                switchMap(() => this.translationsService.translations$)
             )
             .subscribe((translations: Array<Translation>) => {
                 this.translations = translations

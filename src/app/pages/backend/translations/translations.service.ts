@@ -11,18 +11,23 @@ import { Translation, TranslationLanguage } from './typings'
 export class TranslationsService {
     public language$: BehaviorSubject<TranslationLanguage> = new BehaviorSubject(null)
 
+    public translations$: BehaviorSubject<Array<Translation>> = new BehaviorSubject([])
+
     private readonly baseUri: string = environment.apiBaseUrl
 
     public constructor(private http: HttpClient) {}
 
     public fetchLanguages(): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(`${this.baseUri}/translation`)
+        return this.http.get<ApiResponse>(`${this.baseUri}/translation`).pipe()
     }
 
-    public fetchTranslations(language: TranslationLanguage): Observable<Array<Translation>> {
-        return this.http
-            .get<ApiResponse>(`${this.baseUri}/translation/${language.id}`)
-            .pipe(map((response: ApiResponse) => response.data as Array<Translation>))
+    public fetchTranslations(language: TranslationLanguage): Observable<void> {
+        return this.http.get<ApiResponse>(`${this.baseUri}/translation/${language.id}`).pipe(
+            map((response: ApiResponse) => response.data as Array<Translation>),
+            map((translations: Array<Translation>) => {
+                this.translations$.next(translations)
+            })
+        )
     }
 
     public save(translation: Translation): Observable<ApiResponse> {
@@ -30,5 +35,14 @@ export class TranslationsService {
             `${this.baseUri}/translation/${translation.id}`,
             translation
         )
+    }
+
+    public delete(translation: Translation): Observable<void> {
+        return this.http
+            .delete<ApiResponse>(`${this.baseUri}/translation/${translation.id}`)
+            .pipe(
+                switchMap(response => this.language$),
+                switchMap(language => this.fetchTranslations(language))
+            )
     }
 }
