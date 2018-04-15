@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core'
     styleUrls: ['./country-preview.component.scss']
 })
 export class CountryPreviewComponent implements OnInit {
-    constructor() {}
+    public constructor() {}
 
-    ngOnInit() {}
+    public ngOnInit() {}
 }
