@@ -1,0 +1,10 @@
+/**
+ * Grid settings
+ */
+$susy: (
+    columns: susy-repeat(12),
+    gutters: 1/12
+);
+$grid-desktop-max-width: 1200px;
+$grid-desktop-padding: calc((100vw - #{$grid-desktop-max-width}) / 2);
+$grid-mobile-padding: 20px;

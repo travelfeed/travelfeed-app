@@ -1,0 +1,6 @@
+@import '../../../scss/shared';
+
+$component: 'cmp-list';
+
+@include cmp-base($component, block) {
+}

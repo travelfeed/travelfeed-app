@@ -1,56 +1,82 @@
 @import '../../../scss/shared';
 
-.box {
-    width: 100%;
-    display: flex;
-    height: 140px;
-    margin-bottom: 6px;
-    //transform:translatex(0)
-}
-.content {
-    background-color: #fff;
-    width: 60%;
-    line-height: 1.4;
-    padding: 10px;
-    border-top: 3px solid darken(#ffc8b4,5%);
-}
+$component: 'cmp-travel-preview';
 
-a:nth-child(even) .content {
-    background-color: lighten(#ffc8b4,5%);
-    border-top: 3px solid white;
-}
-
-.image {
+@include cmp-base($component) {
     overflow: hidden;
-    width: 40%;
-    border-top: 3px solid white;
-}
-
-a:nth-child(even) .image {
-    border-top: 3px solid darken(#ffc8b4,5%);
-}
-
-
-.image img {
+    height: 500px;
     width: 100%;
+    display: block;
+    margin: 0 0 60px 0;
     position: relative;
-    //transform: translateX(-60px);
-}
 
-@media screen and (max-width: 787px) {
-    /*.box {
-        width: 300px;
-        height: auto;
-    }
-    .content {
-        width: 60%;
-    }
-    .image img {
-        height: auto;
-        transform: none;
-    }*/
-    .box {
-        width: 100%;
+    &--title {
+        color: #777;
+        font-size: 22px;
+        @media (max-width: map-get($breakpoint-settings, tablet)) {
+            color: green;
+        }
     }
 
+    &--text {
+        color: #fff;
+        padding: 10px;
+    }
+
+    &--img {
+        cursor: pointer;
+        float: left;
+        width: 50%;
+        height: 100%;
+        padding: 10px;
+        overflow: hidden;
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    @media (min-width: map-get($breakpoint-settings, desktop)) {
+        &--text {
+            opacity: 0;
+            margin-right: 20%;
+            line-height: 22px;
+            -webkit-transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -moz-transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -o-transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        &--img:hover &--text {
+            opacity: 1;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+
+        &--img {
+            width: 20%;
+            -webkit-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -moz-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -o-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        // Wenn Maus auf Modul haben alle Bilder 16% breite
+        &:hover &--img {
+            width: 16%;
+            -webkit-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -moz-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            -o-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        // ausser das Bild welches gerade gehovert wird
+        &--img:hover {
+            width: 36% !important;
+            -webkit-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            -moz-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            -o-transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        }
+    }
 }

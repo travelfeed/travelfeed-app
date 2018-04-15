@@ -1,0 +1,12 @@
+<div class="cmp-registration">
+    <form [formGroup]="registrationForm" (submit)="register()">
+        <cmp-f-input class="cmp-registration__input" name="username" label="username" [(model)]="model.username" [fc]="username"
+            icon="user"></cmp-f-input>
+        <cmp-f-email class="cmp-registration__input" name="email" label="email" [(model)]="model.email" [fc]="email" autocomplete="email"
+            icon="user"></cmp-f-email>
+        <cmp-f-password class="cmp-registration__input" name="password" label="password" [(model)]="model.password" [fc]="password"
+            autocomplete="current-password" icon="key"></cmp-f-password>
+
+        <cmp-f-button class="cmp-registration__button" type="submit" theme="color2" text="Register"></cmp-f-button>
+    </form>
+</div>

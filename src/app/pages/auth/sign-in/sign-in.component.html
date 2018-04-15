@@ -1,0 +1,9 @@
+<div class="cmp-sign-in">
+    <form [formGroup]="signInForm" (submit)="signin()">
+        <cmp-f-email class="cmp-sign-in__input" name="email" label="email" [(model)]="model.email" [fc]="email" autocomplete="email"
+            icon="user"></cmp-f-email>
+        <cmp-f-password class="cmp-sign-in__input" name="password" label="password" [(model)]="model.password" [fc]="password" autocomplete="current-password"
+            icon="key"></cmp-f-password>
+        <cmp-f-button class="cmp-sign-in__button" type="submit" theme="color2" text="Anmelden"></cmp-f-button>
+    </form>
+</div>
