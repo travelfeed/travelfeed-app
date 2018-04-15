@@ -28,6 +28,16 @@
             "editor.formatOnPaste": false,
             "editor.formatOnSave": false,
             "editor.formatOnType": false
+        },
+        "[html]": {
+            "editor.formatOnPaste": false,
+            "editor.formatOnSave": false,
+            "editor.formatOnType": false
+        },
+        "[scss]": {
+            "editor.formatOnPaste": false,
+            "editor.formatOnSave": false,
+            "editor.formatOnType": false
         }
     }
 }
