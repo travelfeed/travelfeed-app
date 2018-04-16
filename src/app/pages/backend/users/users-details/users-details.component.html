@@ -1,0 +1,6 @@
+<div class="cmp-users-details">
+    <div class="cmp-users-details__wrapper" *ngIf="(usersService.selected$ | async) as user">
+        <h2>User {{user.id}}</h2>
+        <pre>{{user|json}}</pre>
+    </div>
+</div>
