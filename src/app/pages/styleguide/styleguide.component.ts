@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { TestFormModel } from './typings'
 
 @Component({
     selector: 'cmp-styleguide',
@@ -9,10 +8,6 @@ import { TestFormModel } from './typings'
 })
 export class StyleguideComponent {
     public demoForm: FormGroup
-
-    public model: TestFormModel = {
-        test: ''
-    }
 
     public constructor(private formBuilder: FormBuilder) {
         this.demoForm = this.formBuilder.group({

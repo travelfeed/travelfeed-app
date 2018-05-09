@@ -150,8 +150,8 @@
     "directive-selector": [
       true,
       "attribute",
-      "cmp",
-      "camelCase"
+      "",
+      "kebab-case"
     ],
     "component-selector": [
       true,
