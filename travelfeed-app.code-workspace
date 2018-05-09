@@ -13,29 +13,26 @@
             "path": "./src/app/pages"
         },
         {
-            "path": "./src/app/services"
-        },
-        {
             "path": "./src/scss"
         }
     ],
     "settings": {
-        "editor.formatOnPaste": true,
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
         "tslint.autoFixOnSave": true,
         "[json]": {
-            "editor.formatOnPaste": false,
+            "editor.formatOnSave": false,
+            "editor.formatOnType": false
+        },
+        "[jsonc]": {
             "editor.formatOnSave": false,
             "editor.formatOnType": false
         },
         "[html]": {
-            "editor.formatOnPaste": false,
             "editor.formatOnSave": false,
             "editor.formatOnType": false
         },
         "[scss]": {
-            "editor.formatOnPaste": false,
             "editor.formatOnSave": false,
             "editor.formatOnType": false
         }
