@@ -1,16 +1,9 @@
 <div class="cmp-sign-in">
-
-    <cmp-f-input class="cmp-sign-in__input" type="text" name="username" label="username" icon="user"></cmp-f-input>
-    <cmp-f-input class="cmp-sign-in__input" type="password" name="password" label="password" icon="key"></cmp-f-input>
-    <cmp-f-button class="cmp-sign-in__button" theme="color1" text="Registrieren"></cmp-f-button>
-    <cmp-f-button class="cmp-sign-in__button float-right" theme="color2" text="Anmelden"></cmp-f-button>
-
     <form [formGroup]="signInForm" (submit)="signin()">
-        <input type="text" placeholder="email" formControlName="email" />
-        <input type="password" placeholder="password" formControlName="password" />
-        <button type="submit">Signin</button>
+        <cmp-f-email class="cmp-sign-in__input" name="email" label="email" [(model)]="model.email" [fc]="email" autocomplete="email"
+            icon="user"></cmp-f-email>
+        <cmp-f-password class="cmp-sign-in__input" name="password" label="password" [(model)]="model.password" [fc]="password" autocomplete="current-password"
+            icon="key"></cmp-f-password>
+        <cmp-f-button class="cmp-sign-in__button" type="submit" theme="color2" text="Anmelden"></cmp-f-button>
     </form>
-
-    <pre>{{signInForm.value | json}}</pre>
-    <pre>{{authService.isSignedIn() | async | json}}</pre>
 </div>

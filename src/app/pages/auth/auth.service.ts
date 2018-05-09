@@ -1,24 +1,34 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs/Observable'
-import { switchMap, map } from 'rxjs/operators'
-import { of } from 'rxjs/observable/of'
+import { Observable, of } from 'rxjs'
+import { switchMap } from 'rxjs/operators'
 import { LocalStorage } from 'ngx-store'
 import { environment } from '../../../environments/environment'
 import { ApiResponse, User } from './typings'
 
 @Injectable()
 export class AuthService {
-    @LocalStorage() public userId: string
+    @LocalStorage() public userId: string = null
 
-    @LocalStorage() public authToken: string
+    @LocalStorage() public authToken: string = null
 
     private readonly baseUri: string = environment.apiBaseUrl
 
     public constructor(private http: HttpClient) {}
 
+    /**
+     * Signs the given user in with the given data and returns the user data.
+     *
+     * @param {string} email
+     * @param {string} password
+     * @returns {Observable<User>}
+     */
     public signin(email: string, password: string): Observable<User> {
         console.log('==> AuthService::signin')
+
+        this.userId = ''
+        this.authToken = ''
+
         return this.http
             .post<ApiResponse>(`${this.baseUri}/auth/signin`, {
                 email: email,
@@ -38,19 +48,29 @@ export class AuthService {
             )
     }
 
-    public signout() {
+    /**
+     * Signs the user out of the application.
+     *
+     * @returns {Observable<ApiResponse>}
+     */
+    public signout(): Observable<ApiResponse> {
         console.log('==> AuthService::signout')
-        return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null).pipe(
-            map(({ status, data }: ApiResponse) => {
-                this.userId = null
-                this.authToken = null
 
-                return null
-            })
-        )
+        this.userId = ''
+        this.authToken = ''
+
+        return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null)
     }
 
-    public register(username: string, password: string, email: string) {
+    /**
+     * Registers the user with the given data.
+     *
+     * @param {string} username
+     * @param {string} password
+     * @param {stirng} email
+     * @returns {Observable<ApiResponse>}
+     */
+    public register(username: string, password: string, email: string): Observable<ApiResponse> {
         console.log('==> AuthService::register')
         return this.http
             .post<ApiResponse>(`${this.baseUri}/auth/register`, {
@@ -72,7 +92,15 @@ export class AuthService {
             )
     }
 
-    public isSignedIn(): Observable<boolean> {
-        return of(this.authToken !== null && this.userId !== null)
+    /**
+     * Checks and watches the current auth state of the user in localstorage.
+     *
+     * @returns {boolean}
+     */
+    public isSignedIn(): boolean {
+        const validAuthToken: boolean = this.authToken !== null && this.authToken !== ''
+        const validUserId: boolean = this.userId !== null && this.userId !== ''
+
+        return validAuthToken && validUserId
     }
 }
