@@ -1,8 +1,7 @@
 {
   "extends": [
     "tslint:latest",
-    "tslint-config-prettier",
-    "rxjs-tslint-rules"
+    "tslint-config-prettier"
   ],
   "rulesDirectory": [
     "node_modules/codelyzer"
@@ -29,7 +28,6 @@
     "forin": true,
     "import-blacklist": [
       true,
-      "rxjs",
       "rxjs/Rx"
     ],
     "import-spacing": true,
@@ -121,24 +119,6 @@
       "single"
     ],
     "radix": true,
-    "rxjs-no-add": {
-      "options": [
-        {
-          "allowObservables": false,
-          "allowOperators": false
-        }
-      ],
-      "severity": "error"
-    },
-    "rxjs-no-patched": {
-      "options": [
-        {
-          "allowObservables": false,
-          "allowOperators": false
-        }
-      ],
-      "severity": "error"
-    },
     "semicolon": [
       true,
       "never"
