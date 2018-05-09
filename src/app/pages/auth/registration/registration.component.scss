@@ -1,0 +1,19 @@
+@import '../../../../scss/shared';
+
+$component: 'cmp-registration';
+
+@include cmp-base($component) {
+    background-color: #f5deb3;
+    width: 35%;
+    padding: 50px 100px 20px;
+    margin: 0 auto;
+
+    &__input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    &__button {
+        margin-top: 10px;
+    }
+}

@@ -25,8 +25,6 @@ export class AuthService {
      * @returns {Observable<User>}
      */
     public signin(email: string, password: string): Observable<User> {
-        console.log('==> AuthService::signin')
-
         this.userId = ''
         this.authToken = ''
 
@@ -55,8 +53,6 @@ export class AuthService {
      * @returns {Observable<ApiResponse>}
      */
     public signout(): Observable<ApiResponse> {
-        console.log('==> AuthService::signout')
-
         this.userId = ''
         this.authToken = ''
 
@@ -72,7 +68,6 @@ export class AuthService {
      * @returns {Observable<ApiResponse>}
      */
     public register(username: string, password: string, email: string): Observable<ApiResponse> {
-        console.log('==> AuthService::register')
         return this.http
             .post<ApiResponse>(`${this.baseUri}/auth/register`, {
                 username: username,

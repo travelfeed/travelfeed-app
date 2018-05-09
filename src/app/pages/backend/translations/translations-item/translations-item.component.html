@@ -1,7 +1,7 @@
 <div class="cmp-translations-item" [ngClass]="{'cmp-translations-item--changed': changed}">
     <div class="cmp-translations-item__wrapper" *ngIf="translation">
         <form [formGroup]="translationForm">
-            <cmp-f-input class="" name="input" [label]="translation.key.key" [(model)]="model" [fc]="input"></cmp-f-input>
+            <cmp-f-input class="" name="input" [label]="translation.key.key" [fc]="input"></cmp-f-input>
             <cmp-f-button type="button" theme="color1" text="SAVE" [disabled]="loading" (click)="save()"></cmp-f-button>
             <cmp-f-button type="button" theme="color2" text="DELETE" [disabled]="loading" (click)="delete()"></cmp-f-button>
         </form>

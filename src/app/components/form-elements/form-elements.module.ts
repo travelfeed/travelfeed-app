@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
 import { ReactiveFormsModule } from '@angular/forms'
 import { SharedModule } from '../../shared/shared.module'
 import { IconModule } from '../icon/icon.module'
@@ -12,10 +11,31 @@ import { FButtonComponent } from './f-button/f-button.component'
 import { FSelectComponent } from './f-select/f-select.component'
 import { FTextAreaComponent } from './f-text-area/f-text-area.component'
 import { FPasswordComponent } from './f-password/f-password.component'
+import { FDateComponent } from './f-date/f-date.component'
+import { FCheckboxComponent } from './f-checkbox/f-checkbox.component'
+import { FRadiobuttonComponent } from './f-radiobutton/f-radiobutton.component'
 import { FErrorComponent } from './f-error/f-error.component'
+import { FExplanationComponent } from './f-explanation/f-explanation.component'
 
 @NgModule({
-    imports: [CommonModule, ReactiveFormsModule, SharedModule, IconModule],
+    imports: [
+        ReactiveFormsModule,
+        SharedModule.registerDynamicComponents([
+            FRowComponent,
+            FColumnComponent,
+            FInputComponent,
+            FEmailComponent,
+            FPhoneComponent,
+            FButtonComponent,
+            FSelectComponent,
+            FTextAreaComponent,
+            FPasswordComponent,
+            FDateComponent,
+            FCheckboxComponent,
+            FRadiobuttonComponent
+        ]),
+        IconModule
+    ],
     declarations: [
         FRowComponent,
         FColumnComponent,
@@ -26,7 +46,11 @@ import { FErrorComponent } from './f-error/f-error.component'
         FSelectComponent,
         FTextAreaComponent,
         FPasswordComponent,
-        FErrorComponent
+        FDateComponent,
+        FCheckboxComponent,
+        FRadiobuttonComponent,
+        FErrorComponent,
+        FExplanationComponent
     ],
     exports: [
         FRowComponent,
@@ -38,7 +62,11 @@ import { FErrorComponent } from './f-error/f-error.component'
         FSelectComponent,
         FTextAreaComponent,
         FPasswordComponent,
-        FErrorComponent
+        FDateComponent,
+        FCheckboxComponent,
+        FRadiobuttonComponent,
+        FErrorComponent,
+        FExplanationComponent
     ]
 })
 export class FormElementsModule {}

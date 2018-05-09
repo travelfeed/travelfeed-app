@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
+import { AbstractControl, FormControl } from '@angular/forms'
 import { takeWhile, map } from 'rxjs/operators'
 import { TranslationsService } from '../translations.service'
 import { ApiResponse } from '../../../../shared/typings'
-import { FSelectOption } from '../../../../components/form-elements/typings'
+import { FSelectOption, FSelectPlaceholder } from '../../../../components/form-elements/typings'
 import { TranslationLanguage } from '../typings'
 
 @Component({
@@ -11,7 +12,15 @@ import { TranslationLanguage } from '../typings'
     styleUrls: ['./translations-overview.component.scss']
 })
 export class TranslationsOverviewComponent implements OnInit, OnDestroy {
+    public select: AbstractControl = new FormControl()
+
     public options: Array<FSelectOption> = []
+
+    public placeholder: FSelectPlaceholder = {
+        label: 'Please select',
+        selectable: false,
+        value: null
+    }
 
     private alive: boolean = true
 
@@ -23,8 +32,8 @@ export class TranslationsOverviewComponent implements OnInit, OnDestroy {
             .pipe(
                 takeWhile(() => this.alive),
                 map((response: ApiResponse) => {
-                    return response.data.map((item: TranslationLanguage) => ({
-                        text: item.name,
+                    return response.data.map((item: TranslationLanguage): FSelectOption => ({
+                        label: item.name,
                         value: item
                     }))
                 })
@@ -32,17 +41,13 @@ export class TranslationsOverviewComponent implements OnInit, OnDestroy {
             .subscribe((options: Array<FSelectOption>) => {
                 this.options = options
             })
+
+        this.select.valueChanges.pipe(takeWhile(() => this.alive)).subscribe(value => {
+            this.translationsService.language$.next(value)
+        })
     }
 
     public ngOnDestroy(): void {
         this.alive = false
-    }
-
-    public get language(): TranslationLanguage {
-        return this.translationsService.language$.getValue()
-    }
-
-    public set language(value: TranslationLanguage) {
-        this.translationsService.language$.next(value)
     }
 }
