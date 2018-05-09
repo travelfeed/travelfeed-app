@@ -1,12 +1,14 @@
-import { Component, Input } from '@angular/core'
-import { FormElement } from '../form-element'
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
 
 @Component({
     selector: 'cmp-f-button',
     templateUrl: './f-button.component.html',
-    styleUrls: ['./f-button.component.scss']
+    styleUrls: ['./f-button.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FButtonComponent {
+    public static readonly cmpName: string = 'FButtonComponent'
+
     @Input() public type: string = 'button'
 
     @Input() public text: string
@@ -18,12 +20,8 @@ export class FButtonComponent {
     public constructor() {}
 
     public getThemeModifiers(): object {
-        return this.theme.split(',').reduce(
-            (prev, current) => ({
-                ...prev,
-                [`cmp-f-button--${current}`]: true
-            }),
-            {}
-        )
+        return this.theme
+            .split(',')
+            .reduce((prev, current) => ({ [`cmp-f-button--${current}`]: true, ...prev }), {})
     }
 }

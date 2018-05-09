@@ -1,9 +1,19 @@
 <div class="cmp-sign-in">
     <form [formGroup]="signInForm" (submit)="signin()">
-        <cmp-f-email class="cmp-sign-in__input" name="email" label="email" [(model)]="model.email" [fc]="email" autocomplete="email"
-            icon="user"></cmp-f-email>
-        <cmp-f-password class="cmp-sign-in__input" name="password" label="password" [(model)]="model.password" [fc]="password" autocomplete="current-password"
-            icon="key"></cmp-f-password>
-        <cmp-f-button class="cmp-sign-in__button" type="submit" theme="color2" text="Anmelden"></cmp-f-button>
+        <cmp-f-row>
+            <cmp-f-column>
+                <cmp-f-email class="cmp-sign-in__input" name="email" label="email" [fc]="email" [validation]="validation.email" autocomplete="email" icon="user"></cmp-f-email>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row>
+            <cmp-f-column>
+                <cmp-f-password class="cmp-sign-in__input" name="password" label="password" [fc]="password" [validation]="validation.password" autocomplete="current-password" icon="key"></cmp-f-password>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row>
+            <cmp-f-column align="right">
+                <cmp-f-button class="cmp-sign-in__button" type="submit" theme="color2" text="Anmelden"></cmp-f-button>
+            </cmp-f-column>
+        </cmp-f-row>
     </form>
 </div>
