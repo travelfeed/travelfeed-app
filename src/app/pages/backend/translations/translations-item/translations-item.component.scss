@@ -3,8 +3,13 @@
 $component: 'cmp-translations-item';
 
 @include cmp-base($component) {
-    &__wrapper {
-        display: flex;
+    &__value {
+        width: auto;
+        flex: 1;
+    }
+
+    &__actions {
+        max-width: 320px;
     }
 
     &__input {
@@ -12,6 +17,6 @@ $component: 'cmp-translations-item';
     }
 
     &__button {
-
+        margin-left: 20px;
     }
 }

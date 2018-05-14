@@ -59,6 +59,7 @@ export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
             .pipe(takeWhile(() => this.alive))
             .subscribe(() => {
                 this.loading = false
+                this.changed = false
             })
     }
 

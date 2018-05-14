@@ -18,7 +18,7 @@ export class TranslationsService {
     public constructor(private http: HttpClient) {}
 
     public fetchLanguages(): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(`${this.baseUri}/translation`).pipe()
+        return this.http.get<ApiResponse>(`${this.baseUri}/translation`)
     }
 
     public fetchTranslations(language: TranslationLanguage): Observable<void> {

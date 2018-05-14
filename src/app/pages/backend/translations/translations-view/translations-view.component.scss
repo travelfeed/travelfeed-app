@@ -1,0 +1,9 @@
+@import '../../../../../scss/shared';
+
+$component: 'cmp-translations-view';
+
+@include cmp-base($component) {
+    &__item {
+        margin-top: 30px;
+    }
+}

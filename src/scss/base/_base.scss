@@ -25,7 +25,8 @@ button,
 input,
 textarea,
 select,
-[type='submit'] {
+html [type='button'],
+html [type='submit'] {
     background-color: transparent;
     outline: 0;
     border: 0;

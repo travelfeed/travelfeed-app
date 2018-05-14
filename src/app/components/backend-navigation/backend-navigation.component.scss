@@ -22,7 +22,6 @@ $component: 'cmp-backend-navigation';
         margin: 0;
         padding: 7px 10px;
         color: rgba($color-white1, .6);
-        font-size: 20px;
         background-color: transparent;
         transition: color .2s, background-color .2s;
         cursor: pointer;
@@ -76,12 +75,14 @@ $component: 'cmp-backend-navigation';
     }
 
     &__icon {
-        margin-left: 23px;
+        margin-left: 22px;
+        font-size: 19px;
     }
 
     &__text {
         margin-left: 15px;
         opacity: 0;
+        font-size: 15px;
         transition: opacity .4s;
     }
 }
