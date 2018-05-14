@@ -23,8 +23,6 @@ export class FButtonComponent {
     public constructor() {}
 
     public getThemeModifiers(): object {
-        return this.theme
-            .split(',')
-            .reduce((prev, current) => ({ [`cmp-f-button--${current}`]: true, ...prev }), {})
+        return this.theme.split(',').reduce((prev, current) => ({ [`cmp-f-button--${current}`]: true, ...prev }), {})
     }
 }

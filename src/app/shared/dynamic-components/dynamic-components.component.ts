@@ -88,9 +88,7 @@ export class DynamicComponentsComponent implements OnInit {
      * @returns {ComponentFactory}
      */
     private resolveComponentFactory(name: string): ComponentFactory {
-        const factories: Array<ComponentFactory> = Array.from(
-            this.componentFactoryResolver['_factories'].keys(),
-        )
+        const factories: Array<ComponentFactory> = Array.from(this.componentFactoryResolver['_factories'].keys())
 
         return factories.find(item => item.cmpName === name)
     }

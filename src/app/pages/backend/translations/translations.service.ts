@@ -31,18 +31,12 @@ export class TranslationsService {
     }
 
     public save(translation: Translation): Observable<ApiResponse> {
-        return this.http.post<ApiResponse>(
-            `${this.baseUri}/translation/${translation.id}`,
-            translation,
-        )
+        return this.http.post<ApiResponse>(`${this.baseUri}/translation/${translation.id}`, translation)
     }
 
     public delete(translation: Translation): Observable<void> {
         return this.http
             .delete<ApiResponse>(`${this.baseUri}/translation/${translation.id}`)
-            .pipe(
-                switchMap(response => this.language$),
-                switchMap(language => this.fetchTranslations(language)),
-            )
+            .pipe(switchMap(response => this.language$), switchMap(language => this.fetchTranslations(language)))
     }
 }

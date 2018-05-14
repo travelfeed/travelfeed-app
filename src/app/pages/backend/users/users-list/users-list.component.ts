@@ -16,11 +16,9 @@ export class UsersListComponent implements OnInit, OnDestroy {
     public constructor(private usersService: UsersService) {}
 
     public ngOnInit(): void {
-        this.usersService.users$
-            .pipe(takeWhile(() => this.alive))
-            .subscribe((users: Array<User>) => {
-                this.users = users
-            })
+        this.usersService.users$.pipe(takeWhile(() => this.alive)).subscribe((users: Array<User>) => {
+            this.users = users
+        })
     }
 
     public ngOnDestroy(): void {

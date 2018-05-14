@@ -9,11 +9,9 @@ export class BackendNotificationsService {
     public notification$: Subject<BackendNotification> = new Subject()
 
     public constructor(private router: Router) {
-        this.router.events
-            .pipe(filter((event: RouterEvent) => event instanceof NavigationStart))
-            .subscribe(event => {
-                this.clear()
-            })
+        this.router.events.pipe(filter((event: RouterEvent) => event instanceof NavigationStart)).subscribe(event => {
+            this.clear()
+        })
     }
 
     public send(notification: BackendNotification): void {

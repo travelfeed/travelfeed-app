@@ -4,8 +4,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: rgba($color-secondary, .6);
-    transition: color .2s;
+    color: rgba($color-secondary, 0.6);
+    transition: color 0.2s;
     cursor: pointer;
 
     &__icon {
@@ -19,7 +19,7 @@
         left: 50%;
         bottom: -5px;
         background-color: #61718c;
-        transition: width .2s, left .2s;
+        transition: width 0.2s, left 0.2s;
         content: ' ';
     }
 
@@ -68,11 +68,7 @@
     @each $breakpoint-name, $breakpoint in $breakpoint-settings {
         @if (map-has-key($settings, $breakpoint-name)) {
             @include use-breakpoint($breakpoint-name) {
-                @include map-as-properties(
-                    map-get($settings, $breakpoint-name),
-                    '',
-                    font-settings spacing-settings
-                );
+                @include map-as-properties(map-get($settings, $breakpoint-name), '', font-settings spacing-settings);
             }
         }
     }
@@ -80,10 +76,7 @@
     @each $breakpoint-name, $properties in $settings {
         @if (str-slice($breakpoint-name, 0, 6) == 'custom') {
             @include use-breakpoint($breakpoint-name) {
-                @include map-as-properties(
-                    map-get($settings, $breakpoint-name),
-                    $ignore: (min-width, max-width)
-                );
+                @include map-as-properties(map-get($settings, $breakpoint-name), $ignore: (min-width, max-width));
             }
         }
     }

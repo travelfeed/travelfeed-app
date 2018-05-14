@@ -21,14 +21,14 @@ $component: 'cmp-backend-navigation';
         min-width: 60px;
         margin: 0;
         padding: 7px 10px;
-        color: rgba($color-white1, .6);
+        color: rgba($color-white1, 0.6);
         background-color: transparent;
-        transition: color .2s, background-color .2s;
+        transition: color 0.2s, background-color 0.2s;
         cursor: pointer;
 
         &:hover {
-            background-color: rgba($color-secondary, .1);
-            color: rgba($color-white1, .8);
+            background-color: rgba($color-secondary, 0.1);
+            color: rgba($color-white1, 0.8);
         }
     }
 
@@ -50,12 +50,12 @@ $component: 'cmp-backend-navigation';
 
     &__item:hover,
     &__item.active {
-        background-color: rgba($color-secondary, .1);
+        background-color: rgba($color-secondary, 0.1);
     }
 
     &__item.active &__icon,
     &__item.active &__text {
-        color: rgba($color-white1, .8);
+        color: rgba($color-white1, 0.8);
     }
 
     &__link {
@@ -70,8 +70,8 @@ $component: 'cmp-backend-navigation';
     &__icon,
     &__text {
         line-height: 60px;
-        color: rgba($color-white1, .6);
-        transition: color .2s, background-color .2s;
+        color: rgba($color-white1, 0.6);
+        transition: color 0.2s, background-color 0.2s;
     }
 
     &__icon {
@@ -83,7 +83,7 @@ $component: 'cmp-backend-navigation';
         margin-left: 15px;
         opacity: 0;
         font-size: 15px;
-        transition: opacity .4s;
+        transition: opacity 0.4s;
     }
 }
 

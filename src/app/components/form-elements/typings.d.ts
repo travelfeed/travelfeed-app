@@ -1,15 +1,7 @@
 export const MODULE = 'form-elements'
 
 export interface FValidation {
-    type:
-        | 'min'
-        | 'max'
-        | 'required'
-        | 'requiredTrue'
-        | 'email'
-        | 'minLength'
-        | 'maxLength'
-        | 'pattern'
+    type: 'min' | 'max' | 'required' | 'requiredTrue' | 'email' | 'minLength' | 'maxLength' | 'pattern'
     value?: string | number
     message: string
 }

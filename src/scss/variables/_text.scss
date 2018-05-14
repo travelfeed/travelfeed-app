@@ -55,7 +55,6 @@ $text-settings: (
     headline-h3: (all: (font-settings: bold, font-size: 31px, line-height: 1.5)),
     headline-h4: (all: (font-settings: bold, font-size: 25px, line-height: 1.5)),
     headline-h5: (all: (font-settings: bold, font-size: 20px, line-height: 1.6)),
-    headline-h6:
-        (all: (font-settings: bold, font-size: 16px, line-height: 2, text-transform: uppercase)),
+    headline-h6: (all: (font-settings: bold, font-size: 16px, line-height: 2, text-transform: uppercase)),
     copy: (all: (font-settings: regular, font-size: 16px, line-height: 1.5))
 );
