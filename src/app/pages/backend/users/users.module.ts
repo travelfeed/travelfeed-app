@@ -9,6 +9,6 @@ import { UsersService } from './users.service'
 @NgModule({
     imports: [CommonModule, AppRoutingModule],
     declarations: [UsersComponent, UsersListComponent, UsersDetailsComponent],
-    providers: [UsersService]
+    providers: [UsersService],
 })
 export class UsersModule {}

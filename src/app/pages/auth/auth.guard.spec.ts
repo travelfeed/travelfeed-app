@@ -5,7 +5,7 @@ import { AuthGuard } from './auth.guard'
 describe('AuthGuard', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [AuthGuard]
+            providers: [AuthGuard],
         })
     })
 
@@ -13,6 +13,6 @@ describe('AuthGuard', () => {
         'should ...',
         inject([AuthGuard], (guard: AuthGuard) => {
             expect(guard).toBeTruthy()
-        })
+        }),
     )
 })

@@ -17,15 +17,15 @@ export const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: HomeComponent
+        component: HomeComponent,
     },
     {
         path: 'travelogue',
-        component: TravelogueComponent
+        component: TravelogueComponent,
     },
     {
         path: 'styleguide',
-        component: StyleguideComponent
+        component: StyleguideComponent,
     },
     {
         path: 'backend',
@@ -34,12 +34,12 @@ export const routes: Routes = [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'articles'
+                redirectTo: 'articles',
             },
             {
                 path: 'translations',
                 canActivate: [AuthGuard],
-                component: TranslationsComponent
+                component: TranslationsComponent,
             },
             {
                 path: 'articles',
@@ -48,13 +48,13 @@ export const routes: Routes = [
                     {
                         path: '',
                         pathMatch: 'full',
-                        component: ArticlesComponent
+                        component: ArticlesComponent,
                     },
                     {
                         path: ':id',
-                        component: ArticlesComponent
-                    }
-                ]
+                        component: ArticlesComponent,
+                    },
+                ],
             },
             {
                 path: 'users',
@@ -63,15 +63,15 @@ export const routes: Routes = [
                     {
                         path: '',
                         pathMatch: 'full',
-                        component: UsersComponent
+                        component: UsersComponent,
                     },
                     {
                         path: ':id',
-                        component: UsersComponent
-                    }
-                ]
-            }
-        ]
+                        component: UsersComponent,
+                    },
+                ],
+            },
+        ],
     },
     {
         path: 'auth',
@@ -80,36 +80,36 @@ export const routes: Routes = [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'signin'
+                redirectTo: 'signin',
             },
             {
                 path: 'signin',
-                component: SignInComponent
+                component: SignInComponent,
             },
             {
                 path: 'signout',
-                component: SignOutComponent
+                component: SignOutComponent,
             },
             {
                 path: 'register',
-                component: RegistrationComponent
-            }
-        ]
+                component: RegistrationComponent,
+            },
+        ],
     },
     {
         path: '',
         pathMatch: 'full',
-        component: HomeComponent
+        component: HomeComponent,
     },
     {
         path: '**',
-        redirectTo: ''
-    }
+        redirectTo: '',
+    },
 ]
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
-    declarations: []
+    declarations: [],
 })
 export class AppRoutingModule {}

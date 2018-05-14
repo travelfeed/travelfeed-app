@@ -6,13 +6,11 @@ describe('SignOutPageComponent', () => {
     let component: SignOutComponent
     let fixture: ComponentFixture<SignOutComponent>
 
-    beforeEach(
-        async(() => {
-            TestBed.configureTestingModule({
-                declarations: [SignOutComponent]
-            }).compileComponents()
-        })
-    )
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [SignOutComponent],
+        }).compileComponents()
+    }))
 
     beforeEach(() => {
         fixture = TestBed.createComponent(SignOutComponent)

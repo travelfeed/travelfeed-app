@@ -21,7 +21,7 @@ export class UsersService {
         return this.http.get<ApiResponse>(`${this.baseUri}/user`).pipe(
             map((response: ApiResponse) => {
                 return response.data as Array<User>
-            })
+            }),
         )
     }
 
@@ -29,7 +29,7 @@ export class UsersService {
         return this.http.get<ApiResponse>(`${this.baseUri}/user/${userId}`).pipe(
             map((response: ApiResponse) => {
                 return response.data as User
-            })
+            }),
         )
     }
 }

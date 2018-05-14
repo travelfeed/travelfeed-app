@@ -15,9 +15,9 @@ import { TranslationsItemComponent } from './translations-item/translations-item
         TranslationsComponent,
         TranslationsOverviewComponent,
         TranslationsViewComponent,
-        TranslationsItemComponent
+        TranslationsItemComponent,
     ],
     exports: [TranslationsComponent],
-    providers: [TranslationsService]
+    providers: [TranslationsService],
 })
 export class TranslationsModule {}

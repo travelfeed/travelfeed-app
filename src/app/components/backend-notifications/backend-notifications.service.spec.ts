@@ -5,7 +5,7 @@ import { BackendNotificationsService } from './backend-notifications.service'
 describe('BackendNotificationsService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [BackendNotificationsService]
+            providers: [BackendNotificationsService],
         })
     })
 
@@ -13,6 +13,6 @@ describe('BackendNotificationsService', () => {
         'should be created',
         inject([BackendNotificationsService], (service: BackendNotificationsService) => {
             expect(service).toBeTruthy()
-        })
+        }),
     )
 })

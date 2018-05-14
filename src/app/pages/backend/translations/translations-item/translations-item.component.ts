@@ -8,7 +8,7 @@ import { ApiResponse } from '../../../../shared/typings'
 @Component({
     selector: 'cmp-translations-item',
     templateUrl: './translations-item.component.html',
-    styleUrls: ['./translations-item.component.scss']
+    styleUrls: ['./translations-item.component.scss'],
 })
 export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
     @Input() public translation: Translation
@@ -25,10 +25,10 @@ export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
 
     public constructor(
         private formBuilder: FormBuilder,
-        private translationsService: TranslationsService
+        private translationsService: TranslationsService,
     ) {
         this.translationForm = this.formBuilder.group({
-            input: [null, []]
+            input: [null, []],
         })
         this.translationForm.valueChanges.pipe(takeWhile(() => this.alive)).subscribe(() => {
             this.changed = this.translationForm.dirty
@@ -36,10 +36,8 @@ export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
     }
 
     public ngAfterViewInit(): void {
-        setTimeout(() => {
-            this.translationForm.setValue({
-                input: this.translation.value
-            })
+        this.translationForm.setValue({
+            input: this.translation.value,
         })
     }
 

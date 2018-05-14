@@ -28,14 +28,14 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserModule,
         BrowserAnimationsModule,
         ServiceWorkerModule.register('/ngsw-worker.js', {
-            enabled: environment.production
+            enabled: environment.production,
         }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
                 useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
+                deps: [HttpClient],
+            },
         }),
         NgProgressModule.forRoot(),
         NgProgressHttpModule,
@@ -46,9 +46,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         BackendModule,
         StyleguideModule,
         HomeModule,
-        TravelogueModule
+        TravelogueModule,
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

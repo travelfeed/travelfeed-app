@@ -21,7 +21,7 @@ export class ArticlesService {
         return this.http.get<ApiResponse>(`${this.baseUri}/article`).pipe(
             map((response: ApiResponse) => {
                 return response.data as Array<Article>
-            })
+            }),
         )
     }
 
@@ -29,7 +29,7 @@ export class ArticlesService {
         return this.http.get<ApiResponse>(`${this.baseUri}/article/${articleId}`).pipe(
             map((response: ApiResponse) => {
                 return response.data as Article
-            })
+            }),
         )
     }
 }

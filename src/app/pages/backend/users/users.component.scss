@@ -6,15 +6,17 @@ $component: 'cmp-users';
     &__wrapper {
         min-height: 100vh;
         display: flex;
-        background: rgb(190, 190, 190);
+        background-color: $color-white2;
     }
 
     &__list {
+        padding: 60px 40px;
         flex: 2;
     }
 
     &__details {
+        padding: 60px 40px;
         flex: 3;
-        background: rgb(165, 165, 165);
+        background-color: $color-white3;
     }
 }

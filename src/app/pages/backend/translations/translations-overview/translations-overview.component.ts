@@ -9,7 +9,7 @@ import { TranslationLanguage } from '../typings'
 @Component({
     selector: 'cmp-translations-overview',
     templateUrl: './translations-overview.component.html',
-    styleUrls: ['./translations-overview.component.scss']
+    styleUrls: ['./translations-overview.component.scss'],
 })
 export class TranslationsOverviewComponent implements OnInit, OnDestroy {
     public select: AbstractControl = new FormControl()
@@ -19,7 +19,7 @@ export class TranslationsOverviewComponent implements OnInit, OnDestroy {
     public placeholder: FSelectPlaceholder = {
         label: 'Please select',
         selectable: false,
-        value: null
+        value: null,
     }
 
     private alive: boolean = true
@@ -34,9 +34,9 @@ export class TranslationsOverviewComponent implements OnInit, OnDestroy {
                 map((response: ApiResponse) => {
                     return response.data.map((item: TranslationLanguage): FSelectOption => ({
                         label: item.name,
-                        value: item
+                        value: item,
                     }))
-                })
+                }),
             )
             .subscribe((options: Array<FSelectOption>) => {
                 this.options = options

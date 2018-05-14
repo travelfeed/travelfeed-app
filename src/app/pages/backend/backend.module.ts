@@ -20,7 +20,7 @@ import { BackendComponent } from './backend.component'
         BackendNavigationModule,
         TranslationsModule,
         ArticlesModule,
-        UsersModule
+        UsersModule,
     ],
     declarations: [BackendComponent],
     providers: [
@@ -29,8 +29,8 @@ import { BackendComponent } from './backend.component'
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
-            multi: true
-        }
-    ]
+            multi: true,
+        },
+    ],
 })
 export class BackendModule {}

@@ -6,7 +6,7 @@ import { Article } from '../typings'
 @Component({
     selector: 'cmp-articles-list',
     templateUrl: './articles-list.component.html',
-    styleUrls: ['./articles-list.component.scss']
+    styleUrls: ['./articles-list.component.scss'],
 })
 export class ArticlesListComponent implements OnInit, OnDestroy {
     public articles: Array<Article>

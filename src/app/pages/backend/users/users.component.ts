@@ -7,7 +7,7 @@ import { User } from './typings'
 @Component({
     selector: 'cmp-users',
     templateUrl: './users.component.html',
-    styleUrls: ['./users.component.scss']
+    styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit, OnDestroy {
     public users: Array<User> = []
@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     public constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private usersService: UsersService
+        private usersService: UsersService,
     ) {}
 
     public ngOnInit(): void {
@@ -29,7 +29,7 @@ export class UsersComponent implements OnInit, OnDestroy {
                 switchMap((params: ParamMap) => {
                     this.params = params
                     return this.usersService.fetchUsers()
-                })
+                }),
             )
             .subscribe((users: Array<User>) => {
                 // redirect to first user if id is not present

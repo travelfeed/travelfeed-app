@@ -6,7 +6,7 @@ import { User } from '../typings'
 @Component({
     selector: 'cmp-users-list',
     templateUrl: './users-list.component.html',
-    styleUrls: ['./users-list.component.scss']
+    styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit, OnDestroy {
     public users: Array<User>

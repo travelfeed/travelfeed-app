@@ -6,6 +6,6 @@ import { RegistrationComponent } from './registration.component'
 
 @NgModule({
     imports: [CommonModule, ReactiveFormsModule, FormElementsModule],
-    declarations: [RegistrationComponent]
+    declarations: [RegistrationComponent],
 })
 export class RegistrationPageModule {}

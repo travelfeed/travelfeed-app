@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import { SharedModule } from '../../../shared/shared.module'
+import { FormElementsModule } from '../../../components/form-elements/form-elements.module'
 import { AppRoutingModule } from '../../../app-routing.module'
 import { ArticlesComponent } from './articles.component'
 import { ArticlesListComponent } from './articles-list/articles-list.component'
@@ -7,8 +8,8 @@ import { ArticlesDetailsComponent } from './articles-details/articles-details.co
 import { ArticlesService } from './articles.service'
 
 @NgModule({
-    imports: [CommonModule, AppRoutingModule],
+    imports: [SharedModule, FormElementsModule, AppRoutingModule],
     declarations: [ArticlesComponent, ArticlesListComponent, ArticlesDetailsComponent],
-    providers: [ArticlesService]
+    providers: [ArticlesService],
 })
 export class ArticlesModule {}

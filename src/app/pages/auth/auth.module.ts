@@ -17,7 +17,7 @@ import { AuthInterceptor } from './auth.interceptor'
         AppRoutingModule,
         SignInModule,
         SignOutPageModule,
-        RegistrationPageModule
+        RegistrationPageModule,
     ],
     declarations: [AuthComponent],
     providers: [
@@ -26,8 +26,8 @@ import { AuthInterceptor } from './auth.interceptor'
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
-            multi: true
-        }
-    ]
+            multi: true,
+        },
+    ],
 })
 export class AuthModule {}

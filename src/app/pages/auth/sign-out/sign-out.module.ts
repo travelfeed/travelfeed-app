@@ -4,6 +4,6 @@ import { SignOutComponent } from './sign-out.component'
 
 @NgModule({
     imports: [CommonModule],
-    declarations: [SignOutComponent]
+    declarations: [SignOutComponent],
 })
 export class SignOutPageModule {}

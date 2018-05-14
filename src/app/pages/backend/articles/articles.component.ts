@@ -7,7 +7,7 @@ import { Article } from './typings'
 @Component({
     selector: 'cmp-articles',
     templateUrl: './articles.component.html',
-    styleUrls: ['./articles.component.scss']
+    styleUrls: ['./articles.component.scss'],
 })
 export class ArticlesComponent implements OnInit, OnDestroy {
     public articles: Array<Article> = []
@@ -19,7 +19,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
     public constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private articlesService: ArticlesService
+        private articlesService: ArticlesService,
     ) {}
 
     public ngOnInit(): void {
@@ -29,7 +29,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
                 switchMap((params: ParamMap) => {
                     this.params = params
                     return this.articlesService.fetchArticles()
-                })
+                }),
             )
             .subscribe((articles: Array<Article>) => {
                 // redirect to first article if id is not present

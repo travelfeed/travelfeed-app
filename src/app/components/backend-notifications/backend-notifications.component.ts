@@ -13,17 +13,17 @@ import { BackendNotification } from './typings'
             state('in', style({})),
             transition(':leave', [
                 style({
-                    opacity: 1
+                    opacity: 1,
                 }),
                 animate(
                     800,
                     style({
-                        opacity: 0
-                    })
-                )
-            ])
-        ])
-    ]
+                        opacity: 0,
+                    }),
+                ),
+            ]),
+        ]),
+    ],
 })
 export class BackendNotificationsComponent implements OnInit, OnDestroy {
     public items: Array<BackendNotification> = []

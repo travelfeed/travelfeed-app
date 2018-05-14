@@ -5,7 +5,7 @@ import { ArticlesService } from './articles.service'
 describe('ArticlesService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [ArticlesService]
+            providers: [ArticlesService],
         })
     })
 
@@ -13,6 +13,6 @@ describe('ArticlesService', () => {
         'should be created',
         inject([ArticlesService], (service: ArticlesService) => {
             expect(service).toBeTruthy()
-        })
+        }),
     )
 })

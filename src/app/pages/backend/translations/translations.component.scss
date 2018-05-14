@@ -1,0 +1,19 @@
+@import '../../../../scss/shared';
+
+$component: 'cmp-translations';
+
+@include cmp-base($component) {
+    &__wrapper {
+        min-height: 100vh;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        background-color: $color-white2;
+    }
+
+    &__overview {
+    }
+
+    &__view {
+    }
+}

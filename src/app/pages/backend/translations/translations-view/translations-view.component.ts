@@ -6,7 +6,7 @@ import { takeWhile, switchMap, filter } from 'rxjs/operators'
 @Component({
     selector: 'cmp-translations-view',
     templateUrl: './translations-view.component.html',
-    styleUrls: ['./translations-view.component.scss']
+    styleUrls: ['./translations-view.component.scss'],
 })
 export class TranslationsViewComponent implements OnInit, OnDestroy {
     public translations: Array<Translation>
@@ -24,7 +24,7 @@ export class TranslationsViewComponent implements OnInit, OnDestroy {
                 takeWhile(() => this.alive),
                 filter(language => language !== null),
                 switchMap(language => this.translationsService.fetchTranslations(language)),
-                switchMap(() => this.translationsService.translations$)
+                switchMap(() => this.translationsService.translations$),
             )
             .subscribe((translations: Array<Translation>) => {
                 this.translations = translations

@@ -31,7 +31,7 @@ export class AuthService {
         return this.http
             .post<ApiResponse>(`${this.baseUri}/auth/signin`, {
                 email: email,
-                password: password
+                password: password,
             })
             .pipe(
                 switchMap(({ status, data }: ApiResponse) => {
@@ -43,7 +43,7 @@ export class AuthService {
                     this.authToken = data.authToken
 
                     return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
-                })
+                }),
             )
     }
 
@@ -72,7 +72,7 @@ export class AuthService {
             .post<ApiResponse>(`${this.baseUri}/auth/register`, {
                 username: username,
                 password: password,
-                email: email
+                email: email,
             })
             .pipe(
                 switchMap(({ status, data }: ApiResponse) => {
@@ -84,7 +84,7 @@ export class AuthService {
                     this.authToken = data.authToken
 
                     return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
-                })
+                }),
             )
     }
 

@@ -7,6 +7,6 @@ import { BackendNotificationsService } from './backend-notifications.service'
     imports: [CommonModule],
     declarations: [BackendNotificationsComponent],
     exports: [BackendNotificationsComponent],
-    providers: [BackendNotificationsService]
+    providers: [BackendNotificationsService],
 })
 export class BackendNotificationsModule {}

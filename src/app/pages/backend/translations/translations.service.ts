@@ -26,14 +26,14 @@ export class TranslationsService {
             map((response: ApiResponse) => response.data as Array<Translation>),
             map((translations: Array<Translation>) => {
                 this.translations$.next(translations)
-            })
+            }),
         )
     }
 
     public save(translation: Translation): Observable<ApiResponse> {
         return this.http.post<ApiResponse>(
             `${this.baseUri}/translation/${translation.id}`,
-            translation
+            translation,
         )
     }
 
@@ -42,7 +42,7 @@ export class TranslationsService {
             .delete<ApiResponse>(`${this.baseUri}/translation/${translation.id}`)
             .pipe(
                 switchMap(response => this.language$),
-                switchMap(language => this.fetchTranslations(language))
+                switchMap(language => this.fetchTranslations(language)),
             )
     }
 }
