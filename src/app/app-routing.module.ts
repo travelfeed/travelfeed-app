@@ -29,6 +29,7 @@ export const routes: Routes = [
     },
     {
         path: 'backend',
+        canActivate: [AuthGuard],
         component: BackendComponent,
         children: [
             {
@@ -38,12 +39,10 @@ export const routes: Routes = [
             },
             {
                 path: 'translations',
-                canActivate: [AuthGuard],
                 component: TranslationsComponent,
             },
             {
                 path: 'articles',
-                canActivate: [AuthGuard],
                 children: [
                     {
                         path: '',
@@ -58,7 +57,6 @@ export const routes: Routes = [
             },
             {
                 path: 'users',
-                canActivate: [AuthGuard],
                 children: [
                     {
                         path: '',
