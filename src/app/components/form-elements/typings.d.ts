@@ -1,3 +1,5 @@
+export const MODULE = 'form-elements'
+
 export interface FValidation {
     type:
         | 'min'

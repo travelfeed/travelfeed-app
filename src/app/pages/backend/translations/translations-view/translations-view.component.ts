@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { TranslationsService } from '../translations.service'
-import { TranslationLanguage, Translation } from '../typings'
 import { takeWhile, switchMap, filter } from 'rxjs/operators'
+import { TranslationsService } from '../translations.service'
+import { Translation } from '../typings'
 
 @Component({
     selector: 'cmp-translations-view',

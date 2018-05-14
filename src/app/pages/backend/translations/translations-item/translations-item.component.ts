@@ -1,9 +1,9 @@
 import { Component, AfterViewInit, OnDestroy, Input } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Translation } from '../typings'
-import { TranslationsService } from '../translations.service'
 import { takeWhile, map } from 'rxjs/operators'
+import { TranslationsService } from '../translations.service'
 import { ApiResponse } from '../../../../shared/typings'
+import { Translation } from '../typings'
 
 @Component({
     selector: 'cmp-translations-item',

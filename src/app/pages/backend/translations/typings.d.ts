@@ -1,3 +1,5 @@
+export const MODULE = 'translations'
+
 export interface TranslationLanguage {
     id: string
     name: string
