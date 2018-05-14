@@ -17,9 +17,9 @@ export class SharedModule {
                 {
                     provide: ANALYZE_FOR_ENTRY_COMPONENTS,
                     useValue: components,
-                    multi: true
-                }
-            ]
+                    multi: true,
+                },
+            ],
         }
     }
 }

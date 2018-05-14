@@ -6,13 +6,11 @@ describe('CountryPreviewComponent', () => {
     let component: CountryPreviewComponent
     let fixture: ComponentFixture<CountryPreviewComponent>
 
-    beforeEach(
-        async(() => {
-            TestBed.configureTestingModule({
-                declarations: [CountryPreviewComponent]
-            }).compileComponents()
-        })
-    )
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [CountryPreviewComponent],
+        }).compileComponents()
+    }))
 
     beforeEach(() => {
         fixture = TestBed.createComponent(CountryPreviewComponent)

@@ -24,9 +24,9 @@ import { StyleguideComponent } from './styleguide.component'
         ListModule,
         NewsletterModule,
         TravelPreviewModule,
-        CountryPreviewModule
+        CountryPreviewModule,
     ],
     declarations: [StyleguideComponent],
-    exports: []
+    exports: [],
 })
 export class StyleguideModule {}

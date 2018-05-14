@@ -6,6 +6,6 @@ import { NewsletterComponent } from './newsletter.component'
 @NgModule({
     imports: [CommonModule, FormElementsModule],
     declarations: [NewsletterComponent],
-    exports: [NewsletterComponent]
+    exports: [NewsletterComponent],
 })
 export class NewsletterModule {}

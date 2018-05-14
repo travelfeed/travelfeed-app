@@ -4,6 +4,6 @@ import { TravelogueComponent } from './travelogue.component'
 
 @NgModule({
     imports: [CommonModule],
-    declarations: [TravelogueComponent]
+    declarations: [TravelogueComponent],
 })
 export class TravelogueModule {}

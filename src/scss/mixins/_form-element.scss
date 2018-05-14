@@ -18,7 +18,7 @@
         height: 100%;
         border: 0;
         display: block;
-        transition: color .2s;
+        transition: color 0.2s;
     }
 
     &__label {
@@ -28,8 +28,8 @@
         top: 0;
         left: 0;
         color: $color-primary;
-        opacity: .5;
-        transition: all .2s;
+        opacity: 0.5;
+        transition: all 0.2s;
         pointer-events: none;
     }
 
@@ -41,14 +41,14 @@
             bottom: -5px;
             left: 0;
             display: block;
-            opacity: .2;
-            transition: width .2s, opacity .2s, background .2s;
+            opacity: 0.2;
+            transition: width 0.2s, opacity 0.2s, background 0.2s;
             content: ' ';
         }
 
         &::before {
             width: 100%;
-            background: rgba($color-grey1, .8);
+            background: rgba($color-grey1, 0.8);
         }
 
         &::after {
@@ -88,12 +88,12 @@
         top: 2px;
         right: 10px;
         color: $color-primary;
-        opacity: .5;
-        transition: opacity .2s;
+        opacity: 0.5;
+        transition: opacity 0.2s;
     }
 
     &--visible &__input {
-        color: rgba($color-grey1, .8);
+        color: rgba($color-grey1, 0.8);
     }
 
     &--visible &__toggle {
@@ -107,7 +107,7 @@
         line-height: 35px;
         margin-top: 20px;
         position: relative;
-        transition: min-height .2s;
+        transition: min-height 0.2s;
     }
 
     &__input {
@@ -116,7 +116,7 @@
         line-height: 22px;
         padding: 5px 0 0 0;
         resize: none;
-        transition: height .2s;
+        transition: height 0.2s;
     }
 
     &__label {
@@ -126,8 +126,8 @@
         top: 0;
         left: 0;
         color: $color-primary;
-        opacity: .5;
-        transition: all .2s;
+        opacity: 0.5;
+        transition: all 0.2s;
         pointer-events: none;
     }
 
@@ -139,8 +139,8 @@
             bottom: -5px;
             left: 0;
             display: block;
-            opacity: .2;
-            transition: width .2s, opacity .2s, background .2s;
+            opacity: 0.2;
+            transition: width 0.2s, opacity 0.2s, background 0.2s;
             content: ' ';
         }
 
@@ -181,7 +181,7 @@
 
 @mixin cmp-form-button() {
     margin-top: 15px;
-    transition: opacity .2s;
+    transition: opacity 0.2s;
     cursor: pointer;
 
     &__button {
@@ -189,7 +189,7 @@
     }
 
     &--disabled {
-        opacity: .6;
+        opacity: 0.6;
         user-select: none;
         cursor: not-allowed;
     }
@@ -216,15 +216,15 @@
         height: 35px;
         background-color: transparent;
         border: 3px $color-primary solid;
-        opacity: .5;
-        transition: background-color .4s, opacity .4s;
+        opacity: 0.5;
+        transition: background-color 0.4s, opacity 0.4s;
     }
 
     &__check {
         stroke-dasharray: 130px 130px;
         stroke-dashoffset: 130px;
         transition: stroke-dashoffset 1s;
-        transition-delay: .2s;
+        transition-delay: 0.2s;
     }
 
     &__label {
@@ -234,7 +234,7 @@
         top: 0;
         left: 0;
         padding-left: 50px;
-        opacity: .5;
+        opacity: 0.5;
     }
 
     &--filled &__symbol {
@@ -265,14 +265,14 @@
         background-color: transparent;
         border: 3px $color-primary solid;
         border-radius: 100%;
-        opacity: .5;
-        transition: background-color .4s, opacity .4s;
+        opacity: 0.5;
+        transition: background-color 0.4s, opacity 0.4s;
     }
 
     &__circle {
         r: 0;
-        transition: r .2s;
-        transition-delay: .1s;
+        transition: r 0.2s;
+        transition-delay: 0.1s;
     }
 
     &__label {
@@ -282,7 +282,7 @@
         top: 0;
         left: 0;
         padding-left: 50px;
-        opacity: .5;
+        opacity: 0.5;
     }
 
     &__control--checked &__symbol {
@@ -299,7 +299,7 @@
     margin-top: 10px;
     margin-bottom: 5px;
     color: $color-red;
-    opacity: .5;
+    opacity: 0.5;
 }
 
 @mixin cmp-form-explanation() {}

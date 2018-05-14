@@ -44,7 +44,7 @@ export class FInputComponent implements OnInit {
             [prefixed('focus')]: this.focus,
             [prefixed('filled')]: this.fc.value && this.fc.value !== '',
             [prefixed('invalid')]: this.fc.touched && !this.fc.valid,
-            [prefixed('required')]: this.isRequired()
+            [prefixed('required')]: this.isRequired(),
         }
     }
 

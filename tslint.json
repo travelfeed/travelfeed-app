@@ -147,12 +147,6 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector": [
-      true,
-      "attribute",
-      "",
-      "kebab-case"
-    ],
     "component-selector": [
       true,
       "element",
