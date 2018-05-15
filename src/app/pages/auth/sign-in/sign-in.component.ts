@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'
 import { Router } from '@angular/router'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup } from '@angular/forms'
 import { takeWhile } from 'rxjs/operators'
 import { AuthService } from '../auth.service'
 import { FValidationConfig } from '../../../components/form-elements/typings'
@@ -56,6 +56,7 @@ export class SignInComponent implements OnInit, OnDestroy {
             email: null,
             password: null,
         })
+
         this.changeDetectorRef.detectChanges()
 
         if (this.authService.isAuthenticated()) {

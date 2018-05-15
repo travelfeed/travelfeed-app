@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs'
-import { filter, catchError, switchMap } from 'rxjs/operators'
+import { catchError, switchMap } from 'rxjs/operators'
 import { AuthService } from './auth.service'
 
 @Injectable()
@@ -24,13 +24,14 @@ export class AuthInterceptor implements HttpInterceptor {
      */
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
         return next.handle(this.injectToken(request)).pipe(
-            filter(response => response instanceof HttpErrorResponse),
             catchError(error => {
-                switch (error.status) {
-                    case 401:
-                        return this.invalidateToken(error)
-                    case 403:
-                        return this.refreshToken(request, next)
+                if (error instanceof HttpErrorResponse) {
+                    switch (error.status) {
+                        case 401:
+                            return this.invalidateToken(error)
+                        case 403:
+                            return this.refreshToken(request, next)
+                    }
                 }
 
                 return throwError(error)
