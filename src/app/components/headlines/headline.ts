@@ -6,7 +6,7 @@ export class Headline {
 
     @Input() public icon: string
 
-    @Input() public iconPosition: IconPosition
+    @Input() public iconPosition: IconPosition = 'left'
 
     public constructor() {}
 }
