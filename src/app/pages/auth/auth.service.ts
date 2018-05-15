@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
-import { switchMap } from 'rxjs/operators'
+import { switchMap, map } from 'rxjs/operators'
 import { LocalStorage } from 'ngx-store'
 import { environment } from '../../../environments/environment'
 import { ApiResponse } from '../../shared/typings'
@@ -12,6 +12,8 @@ export class AuthService {
     @LocalStorage() public userId: string = null
 
     @LocalStorage() public authToken: string = null
+
+    @LocalStorage() public refreshToken: string = null
 
     private readonly baseUri: string = environment.apiBaseUrl
 
@@ -27,6 +29,7 @@ export class AuthService {
     public signin(email: string, password: string): Observable<User> {
         this.userId = ''
         this.authToken = ''
+        this.refreshToken = ''
 
         return this.http
             .post<ApiResponse>(`${this.baseUri}/auth/signin`, {
@@ -41,6 +44,7 @@ export class AuthService {
 
                     this.userId = data.userId
                     this.authToken = data.authToken
+                    this.refreshToken = data.refreshToken
 
                     return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
                 }),
@@ -55,8 +59,30 @@ export class AuthService {
     public signout(): Observable<ApiResponse> {
         this.userId = ''
         this.authToken = ''
+        this.refreshToken = ''
 
         return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null)
+    }
+
+    /**
+     * Tries to refresh the user auth session using the stored refresh token.
+     *
+     * @returns {Observable<ApiResponse>}
+     */
+    public refresh(): Observable<ApiResponse> {
+        return this.http
+            .post<ApiResponse>(`${this.baseUri}/auth/token`, {
+                userId: this.userId,
+                refreshToken: this.refreshToken,
+            })
+            .pipe(
+                map((response: ApiResponse) => {
+                    this.authToken = response.data.authToken
+                    this.refreshToken = response.data.refreshToken
+
+                    return response
+                }),
+            )
     }
 
     /**
@@ -82,6 +108,7 @@ export class AuthService {
 
                     this.userId = data.userId
                     this.authToken = data.authToken
+                    this.refreshToken = data.refreshToken
 
                     return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
                 }),
