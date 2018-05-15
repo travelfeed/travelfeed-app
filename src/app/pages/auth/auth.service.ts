@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { JwtHelperService } from '@auth0/angular-jwt'
 import { Observable, of } from 'rxjs'
 import { switchMap, map } from 'rxjs/operators'
 import { LocalStorage } from 'ngx-store'
@@ -18,7 +17,7 @@ export class AuthService {
 
     private readonly baseUri: string = environment.apiBaseUrl
 
-    public constructor(private http: HttpClient, private jwtHelperService: JwtHelperService) {}
+    public constructor(private http: HttpClient) {}
 
     /**
      * Signs the given user in with the given data and returns the user data.
@@ -27,7 +26,7 @@ export class AuthService {
      * @param {string} password
      * @returns {Observable<User>}
      */
-    public signin(email: string, password: string): Observable<User> {
+    public signin(email: string, password: string): Observable<any> {
         this.userId = ''
         this.authToken = ''
         this.refreshToken = ''
@@ -38,7 +37,7 @@ export class AuthService {
                 password: password,
             })
             .pipe(
-                switchMap(({ status, data }: ApiResponse) => {
+                map(({ status, data }: ApiResponse) => {
                     if (status < 200 || status >= 300) {
                         return of(null)
                     }
@@ -47,7 +46,7 @@ export class AuthService {
                     this.authToken = data.authToken
                     this.refreshToken = data.refreshToken
 
-                    return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
+                    return of(null)
                 }),
             )
     }
@@ -94,7 +93,7 @@ export class AuthService {
      * @param {stirng} email
      * @returns {Observable<ApiResponse>}
      */
-    public register(username: string, password: string, email: string): Observable<ApiResponse> {
+    public register(username: string, password: string, email: string): Observable<any> {
         return this.http
             .post<ApiResponse>(`${this.baseUri}/auth/register`, {
                 username: username,
@@ -102,7 +101,7 @@ export class AuthService {
                 email: email,
             })
             .pipe(
-                switchMap(({ status, data }: ApiResponse) => {
+                map(({ status, data }: ApiResponse) => {
                     if (status < 200 || status >= 300) {
                         return of(null)
                     }
@@ -111,7 +110,7 @@ export class AuthService {
                     this.authToken = data.authToken
                     this.refreshToken = data.refreshToken
 
-                    return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
+                    return of(null)
                 }),
             )
     }
@@ -127,11 +126,6 @@ export class AuthService {
 
         // validate user data and tokens
         if (emptyUserId || emptyAuthToken) {
-            return false
-        }
-
-        // check token expiration date
-        if (this.jwtHelperService.isTokenExpired(this.authToken)) {
             return false
         }
 
