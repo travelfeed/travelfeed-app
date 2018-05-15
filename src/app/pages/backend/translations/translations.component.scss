@@ -5,15 +5,15 @@ $component: 'cmp-translations';
 @include cmp-base($component) {
     &__wrapper {
         min-height: 100vh;
-        padding: 60px 40px;
+        padding: 20px 40px 60px;
         display: flex;
         flex-direction: column;
         background-color: $color-white2;
     }
 
-    &__overview {
-    }
-
-    &__view {
+    &__title {
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 1px dotted rgba($color-grey1, .4);
     }
 }

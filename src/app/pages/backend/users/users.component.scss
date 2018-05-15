@@ -10,12 +10,18 @@ $component: 'cmp-users';
     }
 
     &__list {
-        padding: 60px 40px;
+        padding: 20px 40px 60px;
         flex: 2;
     }
 
+    &__title {
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 1px dotted rgba($color-grey1, .4);
+    }
+
     &__details {
-        padding: 60px 40px;
+        padding: 20px 40px 60px;
         flex: 3;
         background-color: $color-white3;
     }
