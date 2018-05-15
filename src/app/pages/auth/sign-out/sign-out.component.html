@@ -1,5 +1,22 @@
 <div class="cmp-sign-out">
-    <button type="button" (click)="signout()">Signout</button>
-
-    <pre>{{authService.isAuthenticated() | json}}</pre>
+    <div class="cmp-sign-out__wrapper">
+        <cmp-f-row>
+            <cmp-f-column>
+                <cmp-headline-h2 text="Abmelden"></cmp-headline-h2>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row>
+            <cmp-f-column>
+                <div>Du bist angemeldet als <cmp-link icon="user" [target]="['/backend/users', user.id]" [text]="user.email"></cmp-link>.</div>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row layout="1-1">
+            <cmp-f-column>
+                <cmp-f-button type="button" theme="secondary" text="Zurück" icon="arrow-left" (click)="back()"></cmp-f-button>
+            </cmp-f-column>
+            <cmp-f-column>
+                <cmp-f-button type="submit" theme="primary" text="Abmelden" icon="sign-out" (click)="signout()"></cmp-f-button>
+            </cmp-f-column>
+        </cmp-f-row>
+    </div>
 </div>

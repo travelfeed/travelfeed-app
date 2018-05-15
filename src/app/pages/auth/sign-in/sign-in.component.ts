@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'
+import { Location } from '@angular/common'
 import { Router } from '@angular/router'
 import { FormBuilder, FormGroup } from '@angular/forms'
 import { takeWhile } from 'rxjs/operators'
@@ -46,6 +47,7 @@ export class SignInComponent implements OnInit, OnDestroy {
 
     public constructor(
         private changeDetectorRef: ChangeDetectorRef,
+        private location: Location,
         private router: Router,
         private formBuilder: FormBuilder,
         public authService: AuthService,
@@ -74,6 +76,10 @@ export class SignInComponent implements OnInit, OnDestroy {
 
     public get password() {
         return this.signInForm.get('password')
+    }
+
+    public back(): void {
+        this.location.back()
     }
 
     public signin(): void {
