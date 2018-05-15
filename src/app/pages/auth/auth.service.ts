@@ -71,7 +71,7 @@ export class AuthService {
      */
     public refresh(): Observable<ApiResponse> {
         return this.http
-            .post<ApiResponse>(`${this.baseUri}/auth/token`, {
+            .post<ApiResponse>(`${this.baseUri}/auth/refresh`, {
                 userId: this.userId,
                 refreshToken: this.refreshToken,
             })
