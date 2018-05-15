@@ -30,7 +30,9 @@ export class UsersComponent implements OnInit, OnDestroy {
             .subscribe((users: Array<User>) => {
                 // redirect to first user if id is not present
                 if (!this.params.has('id')) {
-                    return this.router.navigate(['/backend/users', users[0].id])
+                    return this.router.navigate(['/backend/users', users[0].id], {
+                        replaceUrl: true,
+                    })
                 }
 
                 // select user of current id

@@ -34,7 +34,9 @@ export class ArticlesComponent implements OnInit, OnDestroy {
             .subscribe((articles: Array<Article>) => {
                 // redirect to first article if id is not present
                 if (!this.params.has('id')) {
-                    return this.router.navigate(['/backend/articles', articles[0].id])
+                    return this.router.navigate(['/backend/articles', articles[0].id], {
+                        replaceUrl: true,
+                    })
                 }
 
                 // select article of current id
