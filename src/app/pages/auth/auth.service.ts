@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
+import { JwtHelperService } from '@auth0/angular-jwt'
 import { Observable, of } from 'rxjs'
 import { switchMap, map } from 'rxjs/operators'
 import { LocalStorage } from 'ngx-store'
@@ -17,7 +18,7 @@ export class AuthService {
 
     private readonly baseUri: string = environment.apiBaseUrl
 
-    public constructor(private http: HttpClient) {}
+    public constructor(private http: HttpClient, private jwtHelperService: JwtHelperService) {}
 
     /**
      * Signs the given user in with the given data and returns the user data.
@@ -120,10 +121,20 @@ export class AuthService {
      *
      * @returns {boolean}
      */
-    public isSignedIn(): boolean {
-        const validAuthToken: boolean = this.authToken !== null && this.authToken !== ''
-        const validUserId: boolean = this.userId !== null && this.userId !== ''
+    public isAuthenticated(): boolean {
+        const emptyUserId = !this.userId || this.userId === ''
+        const emptyAuthToken = !this.authToken || this.authToken === ''
 
-        return validAuthToken && validUserId
+        // validate user data and tokens
+        if (emptyUserId || emptyAuthToken) {
+            return false
+        }
+
+        // check token expiration date
+        if (this.jwtHelperService.isTokenExpired(this.authToken)) {
+            return false
+        }
+
+        return true
     }
 }

@@ -58,7 +58,7 @@ export class SignInComponent implements OnInit, OnDestroy {
         })
         this.changeDetectorRef.detectChanges()
 
-        if (this.authService.isSignedIn()) {
+        if (this.authService.isAuthenticated()) {
             this.router.navigate(['../backend'])
         }
     }

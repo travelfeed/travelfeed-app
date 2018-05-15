@@ -45,7 +45,7 @@ export class AuthInterceptor implements HttpInterceptor {
      * @returns {HttpRequest<any>}
      */
     private injectToken(request: HttpRequest<any>): HttpRequest<any> {
-        if (!this.authService.isSignedIn()) {
+        if (!this.authService.isAuthenticated()) {
             return request
         }
 
