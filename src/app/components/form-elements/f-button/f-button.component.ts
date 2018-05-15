@@ -14,6 +14,8 @@ export class FButtonComponent {
 
     @Input() public text: string
 
+    @Input() public icon: string
+
     @Input() public theme: string = ''
 
     @Input() public disabled: boolean = false

@@ -10,6 +10,10 @@ $component: 'cmp-f-button';
         line-height: 23px;
         padding: 10px 20px;
     }
+
+    &__icon {
+        margin-right: 10px;
+    }
 }
 
 @include cmp-modifier($component, 'primary') {
