@@ -20,7 +20,7 @@ $component: 'cmp-backend-navigation';
         height: 60px;
         min-width: 60px;
         margin: 0;
-        padding: 7px 10px;
+        padding: 0;
         font-size: 21px;
         color: rgba($color-white1, 0.6);
         background-color: transparent;
@@ -70,19 +70,20 @@ $component: 'cmp-backend-navigation';
 
     &__icon,
     &__text {
-        max-height: 60px;
+        height: 60px;
         line-height: 60px;
         color: rgba($color-white1, 0.6);
         transition: color 0.2s, background-color 0.2s;
     }
 
     &__icon {
-        margin-left: 22px;
+        min-width: 20px;
+        margin-left: 21px;
         font-size: 19px;
     }
 
     &__text {
-        margin-left: 15px;
+        margin-left: 18px;
         opacity: 0;
         font-size: 15px;
         transition: opacity 0.4s;
