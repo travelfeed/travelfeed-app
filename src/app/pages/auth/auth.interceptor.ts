@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@angular/common/http'
-import { Observable, throwError } from 'rxjs'
-import { catchError, switchMap } from 'rxjs/operators'
+import { Observable, throwError, of } from 'rxjs'
+import { catchError, switchMap, filter, delayWhen } from 'rxjs/operators'
+import { NetworkService } from '../../shared/network/network.service'
 import { AuthService } from './auth.service'
 
 @Injectable()
@@ -13,7 +14,11 @@ export class AuthInterceptor implements HttpInterceptor {
      * @param {Router} router
      * @param {AuthService} authService
      */
-    public constructor(private router: Router, private authService: AuthService) {}
+    public constructor(
+        private router: Router,
+        private networkService: NetworkService,
+        private authService: AuthService,
+    ) {}
 
     /**
      * Catch all failed requests and tries to refresh the auth if possible.
@@ -23,6 +28,17 @@ export class AuthInterceptor implements HttpInterceptor {
      * @returns {Observable<any>}
      */
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
+        // cache requests while we are offline
+        if (!this.networkService.online) {
+            return of(null).pipe(
+                delayWhen(() => this.networkService.online$.pipe(filter(online => !!online))),
+                switchMap(() => next.handle(this.injectToken(request))),
+                catchError(error => {
+                    return throwError(error)
+                }),
+            )
+        }
+
         return next.handle(this.injectToken(request)).pipe(
             catchError(error => {
                 if (error instanceof HttpErrorResponse) {
