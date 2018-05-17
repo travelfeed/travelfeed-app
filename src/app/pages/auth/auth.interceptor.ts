@@ -3,6 +3,7 @@ import { Router } from '@angular/router'
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@angular/common/http'
 import { Observable, throwError, of } from 'rxjs'
 import { catchError, switchMap, filter, delayWhen } from 'rxjs/operators'
+import { environment } from '../../../environments/environment'
 import { NetworkService } from '../../shared/network/network.service'
 import { AuthService } from './auth.service'
 
@@ -29,17 +30,18 @@ export class AuthInterceptor implements HttpInterceptor {
      */
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
         // cache requests while we are offline
-        if (!this.networkService.online) {
+        if (environment.production && !this.networkService.online) {
             return of(null).pipe(
                 delayWhen(() => this.networkService.online$.pipe(filter(online => !!online))),
-                switchMap(() => next.handle(this.injectToken(request))),
+                switchMap(() => this.handleRequest(request, next)),
                 catchError(error => {
                     return throwError(error)
                 }),
             )
         }
 
-        return next.handle(this.injectToken(request)).pipe(
+        // catch auth errors and retry
+        return this.handleRequest(request, next).pipe(
             catchError(error => {
                 if (error instanceof HttpErrorResponse) {
                     switch (error.status) {
@@ -53,6 +55,16 @@ export class AuthInterceptor implements HttpInterceptor {
                 return throwError(error)
             }),
         )
+    }
+
+    /**
+     * Handles the request and injects the auth token.
+     *
+     * @param {HttpRequest<any>} request
+     * @param {HttpHandler} next
+     */
+    private handleRequest(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
+        return next.handle(this.injectToken(request))
     }
 
     /**
@@ -100,7 +112,7 @@ export class AuthInterceptor implements HttpInterceptor {
         return this.authService
             .refresh()
             .pipe(
-                switchMap(() => next.handle(this.injectToken(request))),
+                switchMap(() => this.handleRequest(request, next)),
                 catchError(error => this.invalidateToken(error)),
             )
     }
