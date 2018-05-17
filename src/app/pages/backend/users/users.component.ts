@@ -16,7 +16,11 @@ export class UsersComponent implements OnInit, OnDestroy {
 
     private alive: boolean = true
 
-    public constructor(private router: Router, private route: ActivatedRoute, private usersService: UsersService) {}
+    public constructor(
+        private router: Router,
+        private route: ActivatedRoute,
+        private usersService: UsersService,
+    ) {}
 
     public ngOnInit(): void {
         this.route.paramMap

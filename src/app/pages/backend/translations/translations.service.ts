@@ -37,6 +37,9 @@ export class TranslationsService {
     public delete(translation: Translation): Observable<void> {
         return this.http
             .delete<ApiResponse>(`${this.baseUri}/translation/${translation.id}`)
-            .pipe(switchMap(response => this.language$), switchMap(language => this.fetchTranslations(language)))
+            .pipe(
+                switchMap(response => this.language$),
+                switchMap(language => this.fetchTranslations(language)),
+            )
     }
 }

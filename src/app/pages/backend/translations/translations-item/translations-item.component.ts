@@ -23,7 +23,10 @@ export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
 
     private alive: boolean = true
 
-    public constructor(private formBuilder: FormBuilder, private translationsService: TranslationsService) {
+    public constructor(
+        private formBuilder: FormBuilder,
+        private translationsService: TranslationsService,
+    ) {
         this.translationForm = this.formBuilder.group({
             input: [null, []],
         })
