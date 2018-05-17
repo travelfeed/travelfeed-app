@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@angular/common/http'
+import { NgProgress } from '@ngx-progressbar/core'
 import { Observable, throwError, of } from 'rxjs'
-import { catchError, switchMap, filter, delayWhen } from 'rxjs/operators'
+import { catchError, switchMap, filter, delayWhen, map } from 'rxjs/operators'
 import { environment } from '../../../environments/environment'
 import { NetworkService } from '../../shared/network/network.service'
 import { AuthService } from './auth.service'
@@ -19,6 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
         private router: Router,
         private networkService: NetworkService,
         private authService: AuthService,
+        private progressService: NgProgress,
     ) {}
 
     /**
@@ -32,6 +34,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // cache requests while we are offline
         if (environment.production && !this.networkService.online) {
             return of(null).pipe(
+                map(() => this.progressService.complete()),
                 delayWhen(() => this.networkService.online$.pipe(filter(online => !!online))),
                 switchMap(() => this.handleRequest(request, next)),
                 catchError(error => {
@@ -64,7 +67,13 @@ export class AuthInterceptor implements HttpInterceptor {
      * @param {HttpHandler} next
      */
     private handleRequest(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
-        return next.handle(this.injectToken(request))
+        this.progressService.start()
+        return next.handle(this.injectToken(request)).pipe(
+            map(response => {
+                this.progressService.set(100)
+                return response
+            }),
+        )
     }
 
     /**
