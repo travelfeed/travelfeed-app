@@ -16,9 +16,11 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
     public constructor(private articlesService: ArticlesService) {}
 
     public ngOnInit(): void {
-        this.articlesService.articles$.pipe(takeWhile(() => this.alive)).subscribe((articles: Array<Article>) => {
-            this.articles = articles
-        })
+        this.articlesService.articles$
+            .pipe(takeWhile(() => this.alive))
+            .subscribe((articles: Array<Article>) => {
+                this.articles = articles
+            })
     }
 
     public ngOnDestroy(): void {
