@@ -10,13 +10,12 @@ $component: 'cmp-users';
     }
 
     &__list {
-        padding: 20px 40px 60px;
+        padding: 20px 0 60px;
         flex: 2;
     }
 
     &__title {
-        margin-bottom: 40px;
-        padding-bottom: 20px;
+        padding: 0 30px 10px;
         border-bottom: 1px dotted rgba($color-grey1, 0.4);
     }
 

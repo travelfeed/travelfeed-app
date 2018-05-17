@@ -1,0 +1,26 @@
+@import '../../../../../scss/shared';
+
+$component: 'cmp-users-list';
+
+@include cmp-base($component) {
+    &__item {
+        height: 120px;
+        border-bottom: 1px solid $color-white3;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: rgba($color-white3, 0.3);
+        }
+
+        &.active {
+            background-color: rgba($color-white3, 0.6);
+        }
+    }
+
+    &__link {
+        width: 100%;
+        height: 100%;
+        display: block;
+        padding: 15px 25px 25px;
+    }
+}

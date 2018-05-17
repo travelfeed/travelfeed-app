@@ -1,0 +1,10 @@
+<div class="cmp-articles-item">
+    <div class="cmp-articles-item__text">
+        {{article.title}}
+    </div>
+    <ul class="cmp-articles-item__actions">
+        <li class="cmp-articles-item__action">
+            <cmp-f-button type="button" theme="secondary, small, no-margin" icon="trash" [text]="text" [disabled]="wait" (click)="delete(article)"></cmp-f-button>
+        </li>
+    </ul>
+</div>

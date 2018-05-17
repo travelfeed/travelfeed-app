@@ -1,7 +1,7 @@
-<div class="cmp-articles-list">
-    <ul>
-        <li routerLinkActive="active" *ngFor="let article of articles">
-            <a [routerLink]="['../', article.id]">{{article.title}}</a>
-        </li>
-    </ul>
-</div>
+<ul class="cmp-articles-list">
+    <li class="cmp-articles-list__item" routerLinkActive="active" *ngFor="let article of articles">
+        <a class="cmp-articles-list__link" [routerLink]="['../', article.id]">
+            <cmp-articles-item [article]="article"></cmp-articles-item>
+        </a>
+    </li>
+</ul>
