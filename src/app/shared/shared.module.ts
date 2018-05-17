@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { TranslateModule } from '@ngx-translate/core'
 import { DynamicComponentsComponent } from './dynamic-components/dynamic-components.component'
 import { DynamicComponentsDirective } from './dynamic-components/dynamic-components.directive'
+import { NotificationService } from './notification/notification.service'
 import { NetworkService } from './network/network.service'
 
 @NgModule({
@@ -15,6 +16,7 @@ export class SharedModule {
         return {
             ngModule: SharedModule,
             providers: [
+                NotificationService,
                 NetworkService,
                 {
                     provide: ANALYZE_FOR_ENTRY_COMPONENTS,
