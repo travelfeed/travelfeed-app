@@ -1,8 +1,8 @@
 import { Component, AfterViewInit, OnDestroy, Input } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { takeWhile, map } from 'rxjs/operators'
+import { FormBuilder, FormGroup } from '@angular/forms'
+import { takeWhile } from 'rxjs/operators'
+import { NotificationService } from '../../../../shared/notification/notification.service'
 import { TranslationsService } from '../translations.service'
-import { ApiResponse } from '../../../../shared/typings'
 import { Translation } from '../typings'
 
 @Component({
@@ -25,6 +25,7 @@ export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
 
     public constructor(
         private formBuilder: FormBuilder,
+        private notificationService: NotificationService,
         private translationsService: TranslationsService,
     ) {
         this.translationForm = this.formBuilder.group({
@@ -52,24 +53,35 @@ export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
     public save(): void {
         const value = this.translationForm.value.input
         const update: Translation = { ...this.translation, value }
+        const key = update.key.key
 
         this.loading = true
         this.translationsService
             .save(update)
             .pipe(takeWhile(() => this.alive))
-            .subscribe(() => {
-                this.loading = false
-                this.changed = false
-            })
+            .subscribe(
+                () => this.notificationService.success(`Successfully saved value for "${key}"`),
+                () => this.notificationService.error(`Failed to save value for "${key}"`),
+                () => {
+                    this.loading = false
+                    this.changed = false
+                },
+            )
     }
 
     public delete(): void {
+        const key = this.translation.key.key
+
         this.loading = true
         this.translationsService
             .delete(this.translation)
             .pipe(takeWhile(() => this.alive))
-            .subscribe(() => {
-                this.loading = false
-            })
+            .subscribe(
+                () => this.notificationService.success(`Successfully deleted "${key}"`),
+                () => this.notificationService.error(`Failed to delete "${key}"`),
+                () => {
+                    this.loading = false
+                },
+            )
     }
 }
