@@ -32,7 +32,11 @@ export class AuthInterceptor implements HttpInterceptor {
      */
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
         // cache requests while we are offline
-        if (environment.production && !this.networkService.online) {
+        if (
+            environment.production &&
+            !this.networkService.online &&
+            this.authService.isAuthenticated()
+        ) {
             return of(null).pipe(
                 map(() => this.progressService.complete()),
                 delayWhen(() => this.networkService.online$.pipe(filter(online => !!online))),
