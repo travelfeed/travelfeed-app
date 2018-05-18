@@ -180,13 +180,13 @@
 }
 
 @mixin cmp-form-button() {
-    min-width: 150px;
-    margin-top: 20px;
     transition: opacity 0.2s;
     cursor: pointer;
 
     &__button {
         width: 100%;
+        min-width: 150px;
+        margin-top: 20px;
         cursor: pointer;
     }
 

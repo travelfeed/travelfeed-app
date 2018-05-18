@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core'
+import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core'
 import { FRowLayouts } from '../typings'
 
 @Component({
@@ -6,6 +6,7 @@ import { FRowLayouts } from '../typings'
     templateUrl: './f-row.component.html',
     styleUrls: ['./f-row.component.scss'],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FRowComponent {
     public static readonly cmpName: string = 'FRowComponent'

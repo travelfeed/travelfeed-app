@@ -1,13 +1,12 @@
-import { Component, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core'
+import { Component, ViewChild, ElementRef } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
-import * as fuzzysearch from 'fuzzysearch'
+import fuzzysearch from 'fuzzysearch'
 import { FInputComponent } from '../f-input/f-input.component'
 
 @Component({
     selector: 'cmp-f-email',
     templateUrl: './f-email.component.html',
     styleUrls: ['./f-email.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FEmailComponent extends FInputComponent {
     public static readonly cmpName: string = 'FEmailComponent'
@@ -63,6 +62,6 @@ export class FEmailComponent extends FInputComponent {
 
     public focusOut(): void {
         super.focusOut()
-        setTimeout(() => this.suggestions$.next([]))
+        setTimeout(() => this.suggestions$.next([]), 10)
     }
 }
