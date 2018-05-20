@@ -1,22 +1,19 @@
+import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { NgModule } from '@angular/core'
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
-import { NgProgressModule } from '@ngx-progressbar/core'
-import { NgProgressHttpModule } from '@ngx-progressbar/http'
-import { NgProgressRouterModule } from '@ngx-progressbar/router'
-import { WebStorageModule } from 'ngx-store'
-import { environment } from '../environments/environment'
 import { AppRoutingModule } from './app-routing.module'
-import { StyleguideModule } from './pages/styleguide/styleguide.module'
+import { CoreModule } from './core/core.module'
 import { AuthModule } from './pages/auth/auth.module'
 import { BackendModule } from './pages/backend/backend.module'
 import { HomeModule } from './pages/home/home.module'
-import { AppComponent } from './app.component'
+import { StyleguideModule } from './pages/styleguide/styleguide.module'
 import { TravelogueModule } from './pages/travelogue/travelogue.module'
+import { environment } from '../environments/environment'
+import { AppComponent } from './app.component'
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, '/assets/translations/')
@@ -38,15 +35,12 @@ export function HttpLoaderFactory(http: HttpClient) {
                 deps: [HttpClient],
             },
         }),
-        NgProgressModule.forRoot(),
-        NgProgressHttpModule,
-        NgProgressRouterModule,
-        WebStorageModule,
         AppRoutingModule,
+        CoreModule,
         AuthModule,
         BackendModule,
-        StyleguideModule,
         HomeModule,
+        StyleguideModule,
         TravelogueModule,
     ],
     providers: [],
