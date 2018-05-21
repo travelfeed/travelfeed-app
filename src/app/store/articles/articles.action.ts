@@ -7,6 +7,9 @@ export enum ArticlesActionTypes {
     LOAD_ARTICLES = '[Articles] Load articles',
     LOAD_ARTICLES_SUCCESS = '[Articles] Load articles success',
     LOAD_ARTICLES_FAIL = '[Articles] Load articles fail',
+    CREATE_ARTICLE = '[Articles] Create article',
+    CREATE_ARTICLE_SUCCESS = '[Articles] Create article success',
+    CREATE_ARTICLE_FAIL = '[Articles] Create article fail',
     SELECT_ARTICLE = '[Articles] Select article',
     SAVE_ARTICLE = '[Articles] Save article',
     SAVE_ARTICLE_SUCCESS = '[Articles] Save article success',
@@ -47,6 +50,26 @@ export class SelectArticle implements Action {
 export type SelectArticleAction = SelectArticle
 
 /**
+ * Create article
+ */
+export class CreateArticle implements Action {
+    public readonly type = ArticlesActionTypes.CREATE_ARTICLE
+    public constructor(public payload: string) {}
+}
+
+export class CreateArticleSuccess implements Action {
+    public readonly type = ArticlesActionTypes.CREATE_ARTICLE_SUCCESS
+    public constructor(public payload: Article) {}
+}
+
+export class CreateArticleFail implements Action {
+    public readonly type = ArticlesActionTypes.CREATE_ARTICLE_FAIL
+    public constructor(public payload: Error) {}
+}
+
+export type CreateArticleAction = CreateArticle | CreateArticleSuccess | CreateArticleFail
+
+/**
  * Save article
  */
 export class SaveArticle implements Action {
@@ -75,6 +98,7 @@ export class DeleteArticle implements Action {
 
 export class DeleteArticleSuccess implements Action {
     public readonly type = ArticlesActionTypes.DELETE_ARTICLE_SUCCESS
+    public constructor(public payload: Article) {}
 }
 
 export class DeleteArticleFail implements Action {
@@ -89,6 +113,7 @@ export type DeleteArticleAction = DeleteArticle | DeleteArticleSuccess | DeleteA
  */
 export type ArticlesAction =
     | LoadArticlesAction
+    | CreateArticleAction
     | SelectArticleAction
     | SaveArticleAction
     | DeleteArticleAction

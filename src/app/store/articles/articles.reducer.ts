@@ -21,6 +21,7 @@ export function articles(state: ArticlesState = initialState, action: ArticlesAc
             return {
                 ...state,
                 loading: true,
+                loaded: false,
             }
 
         case ArticlesActionTypes.LOAD_ARTICLES_SUCCESS:
@@ -33,6 +34,28 @@ export function articles(state: ArticlesState = initialState, action: ArticlesAc
             }
 
         case ArticlesActionTypes.LOAD_ARTICLES_FAIL:
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
+            }
+
+        case ArticlesActionTypes.CREATE_ARTICLE:
+            return {
+                ...state,
+                loading: true,
+                loaded: false,
+            }
+
+        case ArticlesActionTypes.CREATE_ARTICLE_SUCCESS:
+            return {
+                ...state,
+                items: [...state.items, action.payload],
+                loading: false,
+                loaded: true,
+            }
+
+        case ArticlesActionTypes.CREATE_ARTICLE_FAIL:
             return {
                 ...state,
                 loading: false,

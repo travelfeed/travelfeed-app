@@ -15,6 +15,9 @@ import {
     DeleteArticle,
     DeleteArticleSuccess,
     DeleteArticleFail,
+    CreateArticle,
+    CreateArticleSuccess,
+    CreateArticleFail,
 } from './articles.action'
 import { fromActionType } from '../helpers'
 
@@ -38,7 +41,23 @@ export class ArticlesEffects {
         }),
     )
 
-    @Effect({ dispatch: false })
+    @Effect()
+    public createArticle$ = this.actions$.pipe(
+        fromActionType(ArticlesActionTypes.CREATE_ARTICLE, (action: CreateArticle) => {
+            return this.articlesService.create({ title: action.payload }).pipe(
+                map(article => {
+                    this.notificationService.success('Article successfully created!')
+                    return new CreateArticleSuccess(article)
+                }),
+                catchError(error => {
+                    this.notificationService.error('Error while creating new article!')
+                    return of(new CreateArticleFail(error))
+                }),
+            )
+        }),
+    )
+
+    @Effect()
     public saveArticle$ = this.actions$.pipe(
         fromActionType(ArticlesActionTypes.SAVE_ARTICLE, (action: SaveArticle) => {
             return this.articlesService.save(action.payload).pipe(

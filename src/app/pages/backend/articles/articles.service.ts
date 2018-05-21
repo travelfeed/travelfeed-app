@@ -20,8 +20,12 @@ export class ArticlesService {
         )
     }
 
-    public create(article: Article): Observable<void> {
-        return this.http.post<void>(`${this.baseUri}/article`, article)
+    public create(article: Partial<Article>): Observable<Article> {
+        return this.http.post<ApiResponse>(`${this.baseUri}/article`, article).pipe(
+            map((response: ApiResponse) => {
+                return response.data as Article
+            }),
+        )
     }
 
     public save(article: Article): Observable<void> {

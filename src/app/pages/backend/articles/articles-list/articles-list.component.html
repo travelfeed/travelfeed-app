@@ -4,4 +4,22 @@
             <cmp-articles-item [article]="article"></cmp-articles-item>
         </a>
     </li>
+    <li class="cmp-articles-list__new-item">
+        <a class="cmp-articles-list__link">
+            <cmp-f-row (click)="toggle()">
+                <cmp-f-column>
+                    <cmp-icon [name]="createMode ? 'close' : 'plus'"></cmp-icon>
+                    <span class="cmp-articles-list__new-text">Create new article</span>
+                </cmp-f-column>
+            </cmp-f-row>
+            <cmp-f-row class="cmp-articles-list__new-form" layout="2-1" *ngIf="createMode">
+                <cmp-f-column>
+                    <cmp-f-input name="title" label="Article Title" [fc]="title"></cmp-f-input>
+                </cmp-f-column>
+                <cmp-f-column>
+                    <cmp-f-button theme="primary" text="Create" icon="check" [disabled]="title.value.length === 0" (cbClick)="create()"></cmp-f-button>
+                </cmp-f-column>
+            </cmp-f-row>
+        </a>
+    </li>
 </ul>
