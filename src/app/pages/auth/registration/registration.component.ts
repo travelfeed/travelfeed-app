@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'
 import { Router } from '@angular/router'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup } from '@angular/forms'
 import { takeWhile } from 'rxjs/operators'
 import { AuthService } from '../auth.service'
 import { FValidationConfig } from '../../../components/form-elements/typings'
@@ -93,7 +93,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         this.authService
             .register(username, password, email)
             .pipe(takeWhile(() => this.alive))
-            .subscribe(result => {
+            .subscribe(() => {
                 this.router.navigate(['/auth'])
             })
     }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from '../../app-routing.module'
 import { NotificationModule } from '../../components/notification/notification.module'
 import { BackendNavigationModule } from '../../components/backend-navigation/backend-navigation.module'

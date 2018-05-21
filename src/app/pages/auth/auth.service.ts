@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
-import { switchMap, map } from 'rxjs/operators'
+import { map } from 'rxjs/operators'
 import { LocalStorage } from 'ngx-store'
 import { environment } from '../../../environments/environment'
 import { ApiResponse } from '../../shared/typings'
-import { User } from './typings'
 
 @Injectable()
 export class AuthService {
@@ -24,7 +23,7 @@ export class AuthService {
      *
      * @param {string} email
      * @param {string} password
-     * @returns {Observable<User>}
+     * @returns {Observable<void>}
      */
     public signin(email: string, password: string): Observable<any> {
         this.userId = ''

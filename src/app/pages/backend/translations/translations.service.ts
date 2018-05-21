@@ -38,7 +38,7 @@ export class TranslationsService {
         return this.http
             .delete<ApiResponse>(`${this.baseUri}/translation/${translation.id}`)
             .pipe(
-                switchMap(response => this.language$),
+                switchMap(() => this.language$),
                 switchMap(language => this.fetchTranslations(language)),
             )
     }

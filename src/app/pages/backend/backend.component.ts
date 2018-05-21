@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core'
 import { takeWhile } from 'rxjs/operators'
 import { NetworkService } from '../../shared/network/network.service'
 import { NotificationService } from '../../shared/notification/notification.service'
-import { Notification } from '../../shared/typings'
 
 @Component({
     selector: 'cmp-backend',

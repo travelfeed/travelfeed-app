@@ -1,9 +1,7 @@
 import { Component, AfterViewInit, OnDestroy, Input, ViewChild, ElementRef } from '@angular/core'
-import { takeWhile } from 'rxjs/operators'
 import flatpickr from 'flatpickr'
 import { Instance } from 'flatpickr/dist/types/instance'
 import { BaseOptions } from 'flatpickr/dist/types/options'
-import { Locale, CustomLocale } from 'flatpickr/dist/types/locale'
 import { German } from 'flatpickr/dist/l10n/de'
 import { FInputComponent } from '../f-input/f-input.component'
 import { FDateOptions } from '../typings'
@@ -24,14 +22,11 @@ export class FDateComponent extends FInputComponent implements AfterViewInit, On
 
     private selected: Date
 
-    private alive: boolean = true
-
     public ngAfterViewInit(): void {
         this.initFlatpickr()
     }
 
     public ngOnDestroy(): void {
-        this.alive = false
         this.destroyFlatpickr()
     }
 

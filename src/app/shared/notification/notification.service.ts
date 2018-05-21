@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable, timer } from 'rxjs'
-import { v4 } from 'uuid'
 import { Notification, NotificationType, NotificationOptions } from './typings'
 import { first } from 'rxjs/operators'
 
