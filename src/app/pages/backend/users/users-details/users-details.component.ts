@@ -1,11 +1,14 @@
-import { Component } from '@angular/core'
-import { UsersService } from '../users.service'
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
+import { User } from '../../../../store/users/user.model'
 
 @Component({
     selector: 'cmp-users-details',
     templateUrl: './users-details.component.html',
     styleUrls: ['./users-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersDetailsComponent {
-    public constructor(public usersService: UsersService) {}
+    @Input() public user: User
+
+    public constructor() {}
 }

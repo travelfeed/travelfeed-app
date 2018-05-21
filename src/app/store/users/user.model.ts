@@ -1,4 +1,4 @@
-import { Article } from '../articles/typings'
+import { Article } from '../articles/article.model'
 
 export interface User {
     id: number
