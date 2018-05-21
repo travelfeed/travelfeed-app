@@ -73,13 +73,13 @@ export class ArticlesEffects {
         }),
     )
 
-    @Effect({ dispatch: false })
+    @Effect()
     public deleteArticle$ = this.actions$.pipe(
         fromActionType(ArticlesActionTypes.DELETE_ARTICLE, (action: DeleteArticle) => {
             return this.articlesService.delete(action.payload).pipe(
                 map(() => {
                     this.notificationService.success('Article successfully deleted!')
-                    return new DeleteArticleSuccess()
+                    return new DeleteArticleSuccess(action.payload)
                 }),
                 catchError(error => {
                     this.notificationService.error('Error while deleting article!')

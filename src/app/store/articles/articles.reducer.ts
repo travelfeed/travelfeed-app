@@ -99,6 +99,7 @@ export function articles(state: ArticlesState = initialState, action: ArticlesAc
         case ArticlesActionTypes.DELETE_ARTICLE_SUCCESS:
             return {
                 ...state,
+                items: state.items.filter(item => item !== action.payload),
                 loading: false,
                 loaded: true,
             }
