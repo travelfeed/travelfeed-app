@@ -1,10 +1,22 @@
 <div class="cmp-articles-item">
-    <div class="cmp-articles-item__text">
-        <span>{{article.title}}</span>
+    <div class="cmp-articles-item__header">
+        <div class="cmp-articles-item__title">
+            <span>{{article.title}}</span>
+        </div>
+        <div class="cmp-articles-item__content">
+            <ul class="cmp-articles-item__facts">
+                <li class="cmp-articles-item__fact" *ngIf="article.city">
+                    <span>{{article.city}}</span>
+                </li>
+                <li class="cmp-articles-item__fact" *ngIf="article.user.email">
+                    <span>{{article.user.email}}</span>
+                </li>
+            </ul>
+        </div>
     </div>
     <ul class="cmp-articles-item__actions">
-        <li class="cmp-articles-item__action">
-            <cmp-f-button type="button" theme="secondary, small, no-margin" icon="trash" (cbClick)="delete()"></cmp-f-button>
+        <li class="cmp-articles-item__action" (click)="delete()">
+            <cmp-icon name="trash"></cmp-icon>
         </li>
     </ul>
 </div>

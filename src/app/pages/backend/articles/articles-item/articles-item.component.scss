@@ -4,26 +4,60 @@ $component: 'cmp-articles-item';
 
 @include cmp-base($component) {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
 
-    &__text {
-        height: 50px;
-        line-height: 50px;
+    &__header {
+        display: flex;
+        flex-direction: column;
         flex: 1;
-        font-size: 18px;
+        margin-bottom: 10px;
     }
 
-    &__actions {
-        height: 20px;
+    &__title {
+        height: 40px;
+        line-height: 40px;
+        flex: 1;
+        font-size: 18px;
+        color: $color-primary;
+        font-weight: bold;
+    }
+
+    &__actions,
+    &__facts {
+        height: 30px;
         display: flex;
-        font-size: 14px;
+    }
+
+    &__action,
+    &__fact {
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: $color-primary;
+
+        &:not(:last-of-type) {
+            margin-right: 5px;
+
+            &::after {
+                content: '|';
+                margin-left: 5px;
+                display: inline-block;
+            }
+        }
     }
 
     &__action {
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
+        width: 30px;
         font-size: 18px;
-        text-align: center;
+        transition: background-color .3s;
+
+        &:hover {
+            background-color: rgba($color-grey2, .2);
+        }
+    }
+
+    &__fact {
+        font-size: 15px;
     }
 }

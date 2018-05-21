@@ -1,0 +1,9 @@
+@import '../../../../../scss/shared';
+
+$component: 'cmp-articles-details';
+
+@include cmp-base($component) {
+    &__wrapper {
+        padding: 40px;
+    }
+}
