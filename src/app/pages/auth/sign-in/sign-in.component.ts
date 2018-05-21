@@ -37,7 +37,7 @@ export class SignInComponent implements OnInit, OnDestroy {
             },
             {
                 type: 'pattern',
-                value: '(?=^.{8,}$)((?=.*d)|(?=.*W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$',
+                value: '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}',
                 message: 'AUTH_SIGN_IN_FORM_PASSWORD_VALIDATION_PATTERN',
             },
         ],
