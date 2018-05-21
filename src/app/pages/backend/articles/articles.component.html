@@ -1,13 +1,13 @@
-<div class="cmp-articles">
+<div class="cmp-articles" *ngIf="(state$|async) as state">
     <div class="cmp-articles__wrapper">
         <div class="cmp-articles__list">
             <div class="cmp-articles__title">
                 <cmp-headline-h4 text="Articles" icon="file-text-o" iconPosition="left"></cmp-headline-h4>
             </div>
-            <cmp-articles-list></cmp-articles-list>
+            <cmp-articles-list [articles]="state.items"></cmp-articles-list>
         </div>
-        <div class="cmp-articles__details">
-            <cmp-articles-details></cmp-articles-details>
+        <div class="cmp-articles__details" *ngIf="state.selected">
+            <cmp-articles-details [article]="state.selected"></cmp-articles-details>
         </div>
     </div>
 </div>

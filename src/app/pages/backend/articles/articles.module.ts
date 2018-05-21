@@ -1,4 +1,8 @@
 import { NgModule } from '@angular/core'
+import { StoreModule } from '@ngrx/store'
+import { EffectsModule } from '@ngrx/effects'
+import { articles } from '../../../store/articles/articles.reducer'
+import { ArticlesEffects } from '../../../store/articles/articles.effects'
 import { SharedModule } from '../../../shared/shared.module'
 import { FormElementsModule } from '../../../components/form-elements/form-elements.module'
 import { AppRoutingModule } from '../../../app-routing.module'
@@ -11,7 +15,15 @@ import { ArticlesDetailsComponent } from './articles-details/articles-details.co
 import { ArticlesService } from './articles.service'
 
 @NgModule({
-    imports: [SharedModule, FormElementsModule, AppRoutingModule, HeadlinesModule, IconModule],
+    imports: [
+        StoreModule.forFeature('articles', articles),
+        EffectsModule.forFeature([ArticlesEffects]),
+        SharedModule,
+        FormElementsModule,
+        AppRoutingModule,
+        HeadlinesModule,
+        IconModule,
+    ],
     declarations: [
         ArticlesComponent,
         ArticlesListComponent,

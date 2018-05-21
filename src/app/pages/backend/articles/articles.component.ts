@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { Router, ActivatedRoute, ParamMap } from '@angular/router'
-import { takeWhile, switchMap } from 'rxjs/operators'
-import { ArticlesService } from './articles.service'
-import { Article } from './typings'
+import { ActivatedRoute, ParamMap } from '@angular/router'
+import { Store, select } from '@ngrx/store'
+import { Observable } from 'rxjs'
+import { takeWhile, filter } from 'rxjs/operators'
+import { ArticlesState } from '../../../store/articles/articles.reducer'
+import { ArticlesAction, ArticlesActionTypes } from '../../../store/articles/articles.action'
 
 @Component({
     selector: 'cmp-articles',
@@ -10,42 +12,25 @@ import { Article } from './typings'
     styleUrls: ['./articles.component.scss'],
 })
 export class ArticlesComponent implements OnInit, OnDestroy {
-    public articles: Array<Article> = []
-
-    private params: ParamMap
+    public state$: Observable<ArticlesState> = this.store.pipe(select('articles'))
 
     private alive: boolean = true
 
-    public constructor(
-        private router: Router,
-        private route: ActivatedRoute,
-        private articlesService: ArticlesService,
-    ) {}
+    public constructor(private store: Store<ArticlesState>, private route: ActivatedRoute) {}
 
     public ngOnInit(): void {
+        this.store.dispatch<ArticlesAction>({
+            type: ArticlesActionTypes.LOAD_ARTICLES,
+            payload: parseInt(this.route.snapshot.paramMap.get('id') || null, 10),
+        })
+
         this.route.paramMap
-            .pipe(
-                takeWhile(() => this.alive),
-                switchMap((params: ParamMap) => {
-                    this.params = params
-                    return this.articlesService.fetchArticles()
-                }),
-            )
-            .subscribe((articles: Array<Article>) => {
-                // redirect to first article if id is not present
-                if (!this.params.has('id')) {
-                    return this.router.navigate(['/backend/articles', articles[0].id], {
-                        replaceUrl: true,
-                    })
-                }
-
-                // select article of current id
-                const id = this.params.get('id')
-                const article = articles.find(item => item.id === parseInt(id, 10))
-
-                // inject articles into service and select first one
-                this.articlesService.articles$.next(articles)
-                this.articlesService.selected$.next(article)
+            .pipe(takeWhile(() => this.alive), filter((params: ParamMap) => params.has('id')))
+            .subscribe(params => {
+                this.store.dispatch<ArticlesAction>({
+                    type: ArticlesActionTypes.SELECT_ARTICLE,
+                    payload: parseInt(params.get('id'), 10),
+                })
             })
     }
 
