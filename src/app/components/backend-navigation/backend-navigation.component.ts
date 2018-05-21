@@ -7,7 +7,7 @@ import { LocalStorage } from 'ngx-store'
     styleUrls: ['./backend-navigation.component.scss'],
 })
 export class BackendNavigationComponent {
-    @LocalStorage('backendNavExpanded') public expanded: boolean = false
+    @LocalStorage('backendNavExpanded') public expanded: boolean = true
 
     public constructor() {}
 
