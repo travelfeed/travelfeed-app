@@ -1,7 +1,7 @@
 <div class="cmp-articles-details">
     <div class="cmp-articles-details__wrapper">
         <div class="cmp-articles-details__content">
-            <h2>Article {{article.id}}</h2>
+            <cmp-headline-h4 [text]="article.title"></cmp-headline-h4>
             <pre>{{article|json}}</pre>
         </div>
         <div class="cmp-articles-details__actions">
