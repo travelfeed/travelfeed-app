@@ -20,7 +20,7 @@ export class FButtonComponent {
 
     @Input() public disabled: boolean = false
 
-    @Output() public click: EventEmitter<void> = new EventEmitter()
+    @Output() public cbClick: EventEmitter<void> = new EventEmitter()
 
     public constructor() {}
 
