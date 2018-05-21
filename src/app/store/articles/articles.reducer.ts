@@ -44,6 +44,48 @@ export function articles(state: ArticlesState = initialState, action: ArticlesAc
                 ...state,
                 selected: state.items.find(item => item.id === action.payload),
             }
+
+        case ArticlesActionTypes.SAVE_ARTICLE:
+            return {
+                ...state,
+                loading: true,
+                loaded: false,
+            }
+
+        case ArticlesActionTypes.SAVE_ARTICLE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                loaded: true,
+            }
+
+        case ArticlesActionTypes.SAVE_ARTICLE_FAIL:
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
+            }
+
+        case ArticlesActionTypes.DELETE_ARTICLE:
+            return {
+                ...state,
+                loading: true,
+                loaded: false,
+            }
+
+        case ArticlesActionTypes.DELETE_ARTICLE_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                loaded: true,
+            }
+
+        case ArticlesActionTypes.DELETE_ARTICLE_FAIL:
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
+            }
     }
 
     return state

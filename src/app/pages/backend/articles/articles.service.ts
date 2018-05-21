@@ -19,4 +19,16 @@ export class ArticlesService {
             }),
         )
     }
+
+    public create(article: Article): Observable<void> {
+        return this.http.post<void>(`${this.baseUri}/article`, article)
+    }
+
+    public save(article: Article): Observable<void> {
+        return this.http.post<void>(`${this.baseUri}/article/${article.id}`, article)
+    }
+
+    public delete(article: Article): Observable<void> {
+        return this.http.delete<void>(`${this.baseUri}/article/${article.id}`)
+    }
 }
