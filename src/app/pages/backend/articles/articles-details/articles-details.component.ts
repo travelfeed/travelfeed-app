@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Router } from '@angular/router'
 import { Store } from '@ngrx/store'
 import { Article } from '../../../../store/articles/article.model'
@@ -9,26 +9,39 @@ import { ArticlesAction, ArticlesActionTypes } from '../../../../store/articles/
     selector: 'cmp-articles-details',
     templateUrl: './articles-details.component.html',
     styleUrls: ['./articles-details.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlesDetailsComponent {
     @Input() public article: Article
 
     public constructor(private router: Router, private store: Store<ArticlesState>) {}
 
-    public save() {
+    public save(): void {
         this.store.dispatch<ArticlesAction>({
             type: ArticlesActionTypes.SAVE_ARTICLE,
             payload: this.article,
         })
     }
 
-    public delete() {
+    public delete(): void {
         this.store.dispatch<ArticlesAction>({
             type: ArticlesActionTypes.DELETE_ARTICLE,
             payload: this.article,
         })
 
         this.router.navigate(['/backend/articles'])
+    }
+
+    public publish(): void {
+        this.store.dispatch<ArticlesAction>({
+            type: ArticlesActionTypes.PUBLISH_ARTICLE,
+            payload: this.article,
+        })
+    }
+
+    public unpublish(): void {
+        this.store.dispatch<ArticlesAction>({
+            type: ArticlesActionTypes.UNPUBLISH_ARTICLE,
+            payload: this.article,
+        })
     }
 }

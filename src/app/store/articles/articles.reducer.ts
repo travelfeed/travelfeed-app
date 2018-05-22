@@ -110,6 +110,62 @@ export function articles(state: ArticlesState = initialState, action: ArticlesAc
                 loading: false,
                 loaded: false,
             }
+
+        case ArticlesActionTypes.PUBLISH_ARTICLE:
+            return {
+                ...state,
+                loading: true,
+                loaded: false,
+            }
+
+        case ArticlesActionTypes.PUBLISH_ARTICLE_SUCCESS:
+            return {
+                ...state,
+                items: state.items.map(item => {
+                    if (item === action.payload) {
+                        item.published = true
+                    }
+
+                    return item
+                }),
+                loading: false,
+                loaded: true,
+            }
+
+        case ArticlesActionTypes.PUBLISH_ARTICLE_FAIL:
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
+            }
+
+        case ArticlesActionTypes.UNPUBLISH_ARTICLE:
+            return {
+                ...state,
+                loading: true,
+                loaded: false,
+            }
+
+        case ArticlesActionTypes.UNPUBLISH_ARTICLE_SUCCESS:
+            return {
+                ...state,
+                items: state.items.map(item => {
+                    if (item === action.payload) {
+                        item.published = false
+                    }
+
+                    return item
+                }),
+                loading: false,
+                loaded: true,
+            }
+
+        case ArticlesActionTypes.UNPUBLISH_ARTICLE_FAIL:
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
+            }
     }
 
     return state

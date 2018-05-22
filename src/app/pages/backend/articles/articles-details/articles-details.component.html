@@ -1,18 +1,14 @@
 <div class="cmp-articles-details">
+    <div class="cmp-articles-details__actions">
+        <cmp-icon class="cmp-articles-details__action" name="floppy-o" (click)="save()"></cmp-icon>
+        <cmp-icon class="cmp-articles-details__action" name="trash-o" (click)="delete()"></cmp-icon>
+        <cmp-icon class="cmp-articles-details__action" name="toggle-off" (click)="publish() " *ngIf="!article.published"></cmp-icon>
+        <cmp-icon class="cmp-articles-details__action" name="toggle-on" (click)="unpublish() " *ngIf="article.published"></cmp-icon>
+    </div>
     <div class="cmp-articles-details__wrapper">
         <div class="cmp-articles-details__content">
             <cmp-headline-h4 [text]="article.title"></cmp-headline-h4>
             <pre>{{article|json}}</pre>
-        </div>
-        <div class="cmp-articles-details__actions">
-            <cmp-f-row layout="1-1">
-                <cmp-f-column>
-                    <cmp-f-button theme="primary" text="Save" icon="floppy-o" (cbClick)="save()"></cmp-f-button>
-                </cmp-f-column>
-                <cmp-f-column>
-                    <cmp-f-button theme="secondary" text="Delete" icon="trash-o" (cbClick)="delete()"></cmp-f-button>
-                </cmp-f-column>
-            </cmp-f-row>
         </div>
     </div>
 </div>

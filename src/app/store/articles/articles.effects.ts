@@ -18,6 +18,12 @@ import {
     CreateArticle,
     CreateArticleSuccess,
     CreateArticleFail,
+    PublishArticle,
+    PublishArticleSuccess,
+    PublishArticleFail,
+    UnpublishArticle,
+    UnpublishArticleSuccess,
+    UnpublishArticleFail,
 } from './articles.action'
 import { fromActionType } from '../helpers'
 
@@ -84,6 +90,38 @@ export class ArticlesEffects {
                 catchError(error => {
                     this.notificationService.error('Error while deleting article!')
                     return of(new DeleteArticleFail(error))
+                }),
+            )
+        }),
+    )
+
+    @Effect()
+    public publishArticle$ = this.actions$.pipe(
+        fromActionType(ArticlesActionTypes.PUBLISH_ARTICLE, (action: PublishArticle) => {
+            return this.articlesService.publish(action.payload).pipe(
+                map(() => {
+                    this.notificationService.success('Article successfully published!')
+                    return new PublishArticleSuccess(action.payload)
+                }),
+                catchError(error => {
+                    this.notificationService.error('Error while publishing article!')
+                    return of(new PublishArticleFail(error))
+                }),
+            )
+        }),
+    )
+
+    @Effect()
+    public unpublishArticle$ = this.actions$.pipe(
+        fromActionType(ArticlesActionTypes.UNPUBLISH_ARTICLE, (action: UnpublishArticle) => {
+            return this.articlesService.unpublish(action.payload).pipe(
+                map(() => {
+                    this.notificationService.success('Article successfully unpublished!')
+                    return new UnpublishArticleSuccess(action.payload)
+                }),
+                catchError(error => {
+                    this.notificationService.error('Error while unpublishing article!')
+                    return of(new UnpublishArticleFail(error))
                 }),
             )
         }),

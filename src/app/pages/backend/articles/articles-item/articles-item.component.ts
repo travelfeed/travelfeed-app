@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { Article } from '../../../../store/articles/article.model'
 import { ArticlesState } from '../../../../store/articles/articles.reducer'
@@ -8,7 +8,6 @@ import { ArticlesAction, ArticlesActionTypes } from '../../../../store/articles/
     selector: 'cmp-articles-item',
     templateUrl: './articles-item.component.html',
     styleUrls: ['./articles-item.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlesItemComponent {
     @Input() public article: Article
@@ -21,4 +20,13 @@ export class ArticlesItemComponent {
             payload: this.article,
         })
     }
+
+    public publish(): void {
+        this.store.dispatch<ArticlesAction>({
+            type: ArticlesActionTypes.PUBLISH_ARTICLE,
+            payload: this.article,
+        })
+    }
+
+    public unpublish(): void {}
 }

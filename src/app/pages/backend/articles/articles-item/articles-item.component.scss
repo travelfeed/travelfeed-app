@@ -35,16 +35,6 @@ $component: 'cmp-articles-item';
         line-height: 30px;
         text-align: center;
         color: $color-primary;
-
-        &:not(:last-of-type) {
-            margin-right: 5px;
-
-            &::after {
-                content: '|';
-                margin-left: 5px;
-                display: inline-block;
-            }
-        }
     }
 
     &__action {
@@ -59,5 +49,15 @@ $component: 'cmp-articles-item';
 
     &__fact {
         font-size: 15px;
+
+        &:not(:last-of-type) {
+            margin-right: 5px;
+
+            &::after {
+                content: '|';
+                margin-left: 5px;
+                display: inline-block;
+            }
+        }
     }
 }

@@ -15,6 +15,12 @@
         </div>
     </div>
     <ul class="cmp-articles-item__actions">
+        <li class="cmp-articles-item__action" (click)="publish()" *ngIf="!article.published">
+            <cmp-icon name="toggle-off"></cmp-icon>
+        </li>
+        <li class="cmp-articles-item__action" (click)="unpublish()" *ngIf="article.published">
+            <cmp-icon name="toggle-on"></cmp-icon>
+        </li>
         <li class="cmp-articles-item__action" (click)="delete()">
             <cmp-icon name="trash"></cmp-icon>
         </li>

@@ -35,4 +35,18 @@ export class ArticlesService {
     public delete(article: Article): Observable<void> {
         return this.http.delete<void>(`${this.baseUri}/article/${article.id}`)
     }
+
+    public publish(article: Article): Observable<void> {
+        return this.http.post<void>(`${this.baseUri}/article/${article.id}`, {
+            ...article,
+            published: true,
+        })
+    }
+
+    public unpublish(article: Article): Observable<void> {
+        return this.http.post<void>(`${this.baseUri}/article/${article.id}`, {
+            ...article,
+            published: false,
+        })
+    }
 }

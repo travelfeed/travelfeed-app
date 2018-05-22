@@ -17,6 +17,12 @@ export enum ArticlesActionTypes {
     DELETE_ARTICLE = '[Articles] Delete article',
     DELETE_ARTICLE_SUCCESS = '[Articles] Delete article success',
     DELETE_ARTICLE_FAIL = '[Articles] Delete article fail',
+    PUBLISH_ARTICLE = '[Articles] Publish article',
+    PUBLISH_ARTICLE_SUCCESS = '[Articles] Publish article success',
+    PUBLISH_ARTICLE_FAIL = '[Articles] Publish article fail',
+    UNPUBLISH_ARTICLE = '[Articles] Unpublish article',
+    UNPUBLISH_ARTICLE_SUCCESS = '[Articles] Unpublish article success',
+    UNPUBLISH_ARTICLE_FAIL = '[Articles] Unpublish article fail',
 }
 
 /**
@@ -89,6 +95,46 @@ export class SaveArticleFail implements Action {
 export type SaveArticleAction = SaveArticle | SaveArticleSuccess | SaveArticleFail
 
 /**
+ * Publish article
+ */
+export class PublishArticle implements Action {
+    public readonly type = ArticlesActionTypes.PUBLISH_ARTICLE
+    public constructor(public payload: Article) {}
+}
+
+export class PublishArticleSuccess implements Action {
+    public readonly type = ArticlesActionTypes.PUBLISH_ARTICLE_SUCCESS
+    public constructor(public payload: Article) {}
+}
+
+export class PublishArticleFail implements Action {
+    public readonly type = ArticlesActionTypes.PUBLISH_ARTICLE_FAIL
+    public constructor(public payload: Error) {}
+}
+
+export type PublishArticleAction = PublishArticle | PublishArticleSuccess | PublishArticleFail
+
+/**
+ * Unpublish article
+ */
+export class UnpublishArticle implements Action {
+    public readonly type = ArticlesActionTypes.UNPUBLISH_ARTICLE
+    public constructor(public payload: Article) {}
+}
+
+export class UnpublishArticleSuccess implements Action {
+    public readonly type = ArticlesActionTypes.UNPUBLISH_ARTICLE_SUCCESS
+    public constructor(public payload: Article) {}
+}
+
+export class UnpublishArticleFail implements Action {
+    public readonly type = ArticlesActionTypes.UNPUBLISH_ARTICLE_FAIL
+    public constructor(public payload: Error) {}
+}
+
+export type UnpublishArticleAction = UnpublishArticle | UnpublishArticleSuccess | UnpublishArticleFail
+
+/**
  * Delete article
  */
 export class DeleteArticle implements Action {
@@ -116,4 +162,6 @@ export type ArticlesAction =
     | CreateArticleAction
     | SelectArticleAction
     | SaveArticleAction
+    | PublishArticleAction
+    | UnpublishArticleAction
     | DeleteArticleAction

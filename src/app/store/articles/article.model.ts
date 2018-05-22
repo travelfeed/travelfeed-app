@@ -10,4 +10,5 @@ export interface Article {
     articleText: Array<any>
     pictures: Array<any>
     comments: Array<any>
+    published: boolean
 }
