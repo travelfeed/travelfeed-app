@@ -78,6 +78,16 @@ export function articles(state: ArticlesState = initialState, action: ArticlesAc
         case ArticlesActionTypes.SAVE_ARTICLE_SUCCESS:
             return {
                 ...state,
+                items: state.items.map(item => {
+                    if (item === action.payload) {
+                        return {
+                            ...item,
+                            ...action.payload,
+                        }
+                    }
+
+                    return item
+                }),
                 loading: false,
                 loaded: true,
             }
@@ -100,6 +110,7 @@ export function articles(state: ArticlesState = initialState, action: ArticlesAc
             return {
                 ...state,
                 items: state.items.filter(item => item !== action.payload),
+                selected: state.selected === action.payload ? null : state.selected,
                 loading: false,
                 loaded: true,
             }

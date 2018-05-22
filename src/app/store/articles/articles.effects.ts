@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
 import { Actions, Effect } from '@ngrx/effects'
-import { of } from 'rxjs'
+import { of, Observable } from 'rxjs'
 import { map, catchError } from 'rxjs/operators'
 import { NotificationService } from '../../shared/notification/notification.service'
 import { ArticlesService } from '../../pages/backend/articles/articles.service'
@@ -69,7 +70,7 @@ export class ArticlesEffects {
             return this.articlesService.save(action.payload).pipe(
                 map(() => {
                     this.notificationService.success('Article successfully saved!')
-                    return new SaveArticleSuccess()
+                    return new SaveArticleSuccess(action.payload)
                 }),
                 catchError(error => {
                     this.notificationService.error('Error while saving article!')
@@ -92,6 +93,22 @@ export class ArticlesEffects {
                     return of(new DeleteArticleFail(error))
                 }),
             )
+        }),
+    )
+
+    @Effect({ dispatch: false })
+    public deleteArticleSuccess$ = this.actions$.pipe(
+        fromActionType(ArticlesActionTypes.DELETE_ARTICLE_SUCCESS, () => {
+            return new Observable(observer => {
+                this.router
+                    .navigate(['/backend/articles'])
+                    .then(() => {
+                        observer.complete()
+                    })
+                    .catch(error => {
+                        observer.error(error)
+                    })
+            })
         }),
     )
 
@@ -128,6 +145,7 @@ export class ArticlesEffects {
     )
 
     public constructor(
+        private router: Router,
         private actions$: Actions,
         private notificationService: NotificationService,
         private articlesService: ArticlesService,

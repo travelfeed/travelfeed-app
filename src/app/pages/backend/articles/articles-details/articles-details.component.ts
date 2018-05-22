@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core'
-import { Router } from '@angular/router'
 import { Store } from '@ngrx/store'
 import { Article } from '../../../../store/articles/article.model'
 import { ArticlesState } from '../../../../store/articles/articles.reducer'
@@ -13,7 +12,7 @@ import { ArticlesAction, ArticlesActionTypes } from '../../../../store/articles/
 export class ArticlesDetailsComponent {
     @Input() public article: Article
 
-    public constructor(private router: Router, private store: Store<ArticlesState>) {}
+    public constructor(private store: Store<ArticlesState>) {}
 
     public save(): void {
         this.store.dispatch<ArticlesAction>({
@@ -27,8 +26,6 @@ export class ArticlesDetailsComponent {
             type: ArticlesActionTypes.DELETE_ARTICLE,
             payload: this.article,
         })
-
-        this.router.navigate(['/backend/articles'])
     }
 
     public publish(): void {

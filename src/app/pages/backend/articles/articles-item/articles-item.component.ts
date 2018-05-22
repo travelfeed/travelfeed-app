@@ -14,19 +14,30 @@ export class ArticlesItemComponent {
 
     public constructor(private store: Store<ArticlesState>) {}
 
-    public delete(): void {
+    public delete(event: Event): void {
+        event.stopPropagation()
+
         this.store.dispatch<ArticlesAction>({
             type: ArticlesActionTypes.DELETE_ARTICLE,
             payload: this.article,
         })
     }
 
-    public publish(): void {
+    public publish(event: Event): void {
+        event.stopPropagation()
+
         this.store.dispatch<ArticlesAction>({
             type: ArticlesActionTypes.PUBLISH_ARTICLE,
             payload: this.article,
         })
     }
 
-    public unpublish(): void {}
+    public unpublish(event: Event): void {
+        event.stopPropagation()
+
+        this.store.dispatch<ArticlesAction>({
+            type: ArticlesActionTypes.UNPUBLISH_ARTICLE,
+            payload: this.article,
+        })
+    }
 }

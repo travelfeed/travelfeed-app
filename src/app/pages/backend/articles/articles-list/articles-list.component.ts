@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, Input, ChangeDetectionStrategy } from '@angular/core'
+import { Router } from '@angular/router'
 import { FormControl } from '@angular/forms'
 import { Store } from '@ngrx/store'
 import { Article } from '../../../../store/articles/article.model'
@@ -18,10 +19,14 @@ export class ArticlesListComponent implements AfterViewInit {
 
     public title: FormControl = new FormControl()
 
-    public constructor(private store: Store<ArticlesState>) {}
+    public constructor(private router: Router, private store: Store<ArticlesState>) {}
 
     public ngAfterViewInit(): void {
         this.title.setValue('')
+    }
+
+    public select(article: Article): void {
+        this.router.navigate(['/backend/articles/', article.id])
     }
 
     public toggle(): void {

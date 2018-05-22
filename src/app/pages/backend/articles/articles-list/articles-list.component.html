@@ -1,6 +1,6 @@
 <ul class="cmp-articles-list">
     <li class="cmp-articles-list__item" routerLinkActive="active" *ngFor="let article of articles">
-        <a class="cmp-articles-list__link" [routerLink]="['../', article.id]">
+        <a class="cmp-articles-list__link" (click)="select(article)">
             <cmp-articles-item [article]="article"></cmp-articles-item>
         </a>
     </li>

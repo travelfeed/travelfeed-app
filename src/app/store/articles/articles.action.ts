@@ -85,6 +85,7 @@ export class SaveArticle implements Action {
 
 export class SaveArticleSuccess implements Action {
     public readonly type = ArticlesActionTypes.SAVE_ARTICLE_SUCCESS
+    public constructor(public payload: Article) {}
 }
 
 export class SaveArticleFail implements Action {
