@@ -11,6 +11,7 @@ import {
     HostListener,
 } from '@angular/core'
 import * as MediumEditor from 'medium-editor'
+// import * as CustomHtml from 'medium-editor-custom-html'
 
 @Directive({
     selector: '[editable]',
@@ -35,7 +36,12 @@ export class EditableDirective implements AfterViewInit, OnChanges, OnDestroy {
             placeholder: false,
             autoLink: true,
             imageDragging: false,
-            extensions: {},
+            extensions: {
+                // customHtml: new CustomHtml({
+                //     buttonText: 'Instagram',
+                //     htmlToInsert: '(instagram)',
+                // }),
+            },
         })
     }
 
@@ -68,7 +74,16 @@ export class EditableDirective implements AfterViewInit, OnChanges, OnDestroy {
         }
 
         return {
-            buttons: [],
+            buttons: [
+                'bold',
+                'italic',
+                'underline',
+                'anchor',
+                'h2',
+                'h3',
+                'quote',
+                // 'customHtml',
+            ],
         }
     }
 }
