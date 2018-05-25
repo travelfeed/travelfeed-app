@@ -12,11 +12,11 @@ export class AppComponent implements OnDestroy {
     private alive: boolean = true
 
     public constructor(public socketService: SocketService) {
-        this.socketService.connection.pipe(takeWhile(() => this.alive)).subscribe(socket => {
+        this.socketService.connection$.pipe(takeWhile(() => this.alive)).subscribe(socket => {
             console.log(socket)
         })
 
-        this.socketService.all.pipe(takeWhile(() => this.alive)).subscribe((event: SocketEvent) => {
+        this.socketService.all$.pipe(takeWhile(() => this.alive)).subscribe((event: SocketEvent) => {
             console.log('==> all ==>', event)
         })
     }

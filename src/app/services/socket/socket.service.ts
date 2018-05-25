@@ -8,23 +8,19 @@ import { SocketEvent, SocketEventName } from './typings'
 @Injectable()
 export class SocketService {
     private socket: SocketIOClient.Socket = connect(environment.socketUrl)
-    private events: Subject<SocketEvent> = new Subject<SocketEvent>()
+
+    private events$: Subject<SocketEvent> = new Subject<SocketEvent>()
 
     public constructor() {
         const events: Array<SocketEventName> = ['connect', 'disconnect', 'message', 'custom']
-        const transformEvent = (event: SocketEventName): Observable<SocketEvent> => {
-            return fromEvent<any>(this.socket, event).pipe(
-                map(data => ({
-                    name: event,
-                    data: data,
-                })),
-            )
+        const transformEvent = (name: SocketEventName): Observable<SocketEvent> => {
+            return fromEvent<any>(this.socket, name).pipe(map(data => ({ name, data })))
         }
 
         merge(...events.map(event => transformEvent(event)))
             .pipe(filter(value => typeof value !== 'undefined'))
             .subscribe(event => {
-                this.events.next(event)
+                this.events$.next(event)
             })
     }
 
@@ -40,15 +36,15 @@ export class SocketService {
         }
     }
 
-    public get connection(): Observable<SocketIOClient.Socket> {
+    public get connection$(): Observable<SocketIOClient.Socket> {
         return of(this.socket)
     }
 
-    public get messages(): Observable<any> {
-        return this.events.pipe(filter((event: SocketEvent) => event.name === 'message'))
+    public get messages$(): Observable<any> {
+        return this.events$.pipe(filter((event: SocketEvent) => event.name === 'message'))
     }
 
-    public get all(): Observable<any> {
-        return this.events
+    public get all$(): Observable<any> {
+        return this.events$
     }
 }
