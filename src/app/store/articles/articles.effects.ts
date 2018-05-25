@@ -34,9 +34,9 @@ export class ArticlesEffects {
     public getArticles$ = this.actions$.pipe(
         fromActionType(ArticlesActionTypes.LOAD_ARTICLES, (action: LoadArticles) => {
             return this.articlesService.fetchArticles().pipe(
-                map(articles => {
+                map(response => {
                     return new LoadArticlesSuccess({
-                        items: articles,
+                        items: response.data,
                         selected: action.payload,
                     })
                 }),
@@ -52,9 +52,9 @@ export class ArticlesEffects {
     public createArticle$ = this.actions$.pipe(
         fromActionType(ArticlesActionTypes.CREATE_ARTICLE, (action: CreateArticle) => {
             return this.articlesService.create({ title: action.payload }).pipe(
-                map(article => {
+                map(response => {
                     this.notificationService.success('Article successfully created!')
-                    return new CreateArticleSuccess(article)
+                    return new CreateArticleSuccess(response.data)
                 }),
                 catchError(error => {
                     this.notificationService.error('Error while creating new article!')

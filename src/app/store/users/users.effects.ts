@@ -12,9 +12,9 @@ export class UsersEffects {
         ofType(UsersActionTypes.LOAD_USERS),
         exhaustMap((action: LoadUsers) => {
             return this.usersService.fetchUsers().pipe(
-                map(articles => {
+                map(response => {
                     return new LoadUsersSuccess({
-                        items: articles,
+                        items: response.data,
                         selected: action.payload,
                     })
                 }),

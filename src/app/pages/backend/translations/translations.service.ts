@@ -17,26 +17,30 @@ export class TranslationsService {
 
     public constructor(private http: HttpClient) {}
 
-    public fetchLanguages(): Observable<ApiResponse> {
-        return this.http.get<ApiResponse>(`${this.baseUri}/translation`)
+    public fetchLanguages(): Observable<ApiResponse<any>> {
+        return this.http.get<ApiResponse<any>>(`${this.baseUri}/translation`)
     }
 
     public fetchTranslations(language: TranslationLanguage): Observable<void> {
-        return this.http.get<ApiResponse>(`${this.baseUri}/translation/${language.id}`).pipe(
-            map((response: ApiResponse) => response.data as Array<Translation>),
-            map((translations: Array<Translation>) => {
-                this.translations$.next(translations)
-            }),
-        )
+        return this.http
+            .get<ApiResponse<Array<Translation>>>(`${this.baseUri}/translation/${language.id}`)
+            .pipe(
+                map((response: ApiResponse<Array<Translation>>) => {
+                    this.translations$.next(response.data)
+                }),
+            )
     }
 
-    public save(translation: Translation): Observable<ApiResponse> {
-        return this.http.post<ApiResponse>(`${this.baseUri}/translation/${translation.id}`, translation)
+    public save(translation: Translation): Observable<ApiResponse<void>> {
+        return this.http.post<ApiResponse<void>>(
+            `${this.baseUri}/translation/${translation.id}`,
+            translation,
+        )
     }
 
     public delete(translation: Translation): Observable<void> {
         return this.http
-            .delete<ApiResponse>(`${this.baseUri}/translation/${translation.id}`)
+            .delete<ApiResponse<void>>(`${this.baseUri}/translation/${translation.id}`)
             .pipe(
                 switchMap(() => this.language$),
                 switchMap(language => this.fetchTranslations(language)),

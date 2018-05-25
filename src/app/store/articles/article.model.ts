@@ -1,13 +1,15 @@
+import { User } from '../users/user.model'
+
 export interface Article {
     id: number
+    text: string
     title: string
     city: string
     country: string
     latitude: string
     longitude: string
     peaces: string
-    user: any
-    articleText: Array<any>
+    user: User
     pictures: Array<any>
     comments: Array<any>
     published: boolean

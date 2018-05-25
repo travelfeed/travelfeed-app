@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
-import { map } from 'rxjs/operators'
 import { environment } from '../../../../environments/environment'
 import { ApiResponse } from '../../../shared/typings'
 import { Article } from '../../../store/articles/article.model'
@@ -12,20 +11,12 @@ export class ArticlesService {
 
     public constructor(private http: HttpClient) {}
 
-    public fetchArticles(): Observable<Array<Article>> {
-        return this.http.get<ApiResponse>(`${this.baseUri}/article`).pipe(
-            map((response: ApiResponse) => {
-                return response.data as Array<Article>
-            }),
-        )
+    public fetchArticles(): Observable<ApiResponse<Array<Article>>> {
+        return this.http.get<ApiResponse<Array<Article>>>(`${this.baseUri}/article`)
     }
 
-    public create(article: Partial<Article>): Observable<Article> {
-        return this.http.post<ApiResponse>(`${this.baseUri}/article`, article).pipe(
-            map((response: ApiResponse) => {
-                return response.data as Article
-            }),
-        )
+    public create(article: Partial<Article>): Observable<ApiResponse<Article>> {
+        return this.http.post<ApiResponse<Article>>(`${this.baseUri}/article`, article)
     }
 
     public save(article: Article): Observable<void> {

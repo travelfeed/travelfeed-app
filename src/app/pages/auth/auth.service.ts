@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable, of } from 'rxjs'
+import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { LocalStorage } from 'ngx-store'
 import { environment } from '../../../environments/environment'
@@ -25,27 +25,21 @@ export class AuthService {
      * @param {string} password
      * @returns {Observable<void>}
      */
-    public signin(email: string, password: string): Observable<any> {
+    public signin(email: string, password: string): Observable<void> {
         this.userId = ''
         this.authToken = ''
         this.refreshToken = ''
 
         return this.http
-            .post<ApiResponse>(`${this.baseUri}/auth/signin`, {
+            .post<ApiResponse<any>>(`${this.baseUri}/auth/signin`, {
                 email: email,
                 password: password,
             })
             .pipe(
-                map(({ status, data }: ApiResponse) => {
-                    if (status < 200 || status >= 300) {
-                        return of(null)
-                    }
-
-                    this.userId = data.userId
-                    this.authToken = data.authToken
-                    this.refreshToken = data.refreshToken
-
-                    return of(null)
+                map((response: ApiResponse<any>) => {
+                    this.userId = response.data.userId
+                    this.authToken = response.data.authToken
+                    this.refreshToken = response.data.refreshToken
                 }),
             )
     }
@@ -53,33 +47,31 @@ export class AuthService {
     /**
      * Signs the user out of the application.
      *
-     * @returns {Observable<ApiResponse>}
+     * @returns {Observable<ApiResponse<void>>}
      */
-    public signout(): Observable<ApiResponse> {
+    public signout(): Observable<ApiResponse<void>> {
         this.userId = ''
         this.authToken = ''
         this.refreshToken = ''
 
-        return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null)
+        return this.http.post<ApiResponse<void>>(`${this.baseUri}/auth/signout`, null)
     }
 
     /**
      * Tries to refresh the user auth session using the stored refresh token.
      *
-     * @returns {Observable<ApiResponse>}
+     * @returns {Observable<void>}
      */
-    public refresh(): Observable<ApiResponse> {
+    public refresh(): Observable<void> {
         return this.http
-            .post<ApiResponse>(`${this.baseUri}/auth/refresh`, {
+            .post<ApiResponse<any>>(`${this.baseUri}/auth/refresh`, {
                 userId: this.userId,
                 refreshToken: this.refreshToken,
             })
             .pipe(
-                map((response: ApiResponse) => {
+                map((response: ApiResponse<any>) => {
                     this.authToken = response.data.authToken
                     this.refreshToken = response.data.refreshToken
-
-                    return response
                 }),
             )
     }
@@ -90,26 +82,20 @@ export class AuthService {
      * @param {string} username
      * @param {string} password
      * @param {stirng} email
-     * @returns {Observable<ApiResponse>}
+     * @returns {Observable<void>}
      */
-    public register(username: string, password: string, email: string): Observable<any> {
+    public register(username: string, password: string, email: string): Observable<void> {
         return this.http
-            .post<ApiResponse>(`${this.baseUri}/auth/register`, {
+            .post<ApiResponse<any>>(`${this.baseUri}/auth/register`, {
                 username: username,
                 password: password,
                 email: email,
             })
             .pipe(
-                map(({ status, data }: ApiResponse) => {
-                    if (status < 200 || status >= 300) {
-                        return of(null)
-                    }
-
-                    this.userId = data.userId
-                    this.authToken = data.authToken
-                    this.refreshToken = data.refreshToken
-
-                    return of(null)
+                map((response: ApiResponse<any>) => {
+                    this.userId = response.data.userId
+                    this.authToken = response.data.authToken
+                    this.refreshToken = response.data.refreshToken
                 }),
             )
     }

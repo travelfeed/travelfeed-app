@@ -31,8 +31,8 @@ export class TranslationsOverviewComponent implements OnInit, OnDestroy {
             .fetchLanguages()
             .pipe(
                 takeWhile(() => this.alive),
-                map((response: ApiResponse) => {
-                    return response.data.map((item: TranslationLanguage): FSelectOption => ({
+                map((response: ApiResponse<Array<TranslationLanguage>>) => {
+                    return response.data.map((item): FSelectOption => ({
                         label: item.name,
                         value: item,
                     }))
