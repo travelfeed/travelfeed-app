@@ -13,6 +13,7 @@ import { BackendModule } from './pages/backend/backend.module'
 import { HomeModule } from './pages/home/home.module'
 import { AppComponent } from './app.component'
 import { TravelogueModule } from './pages/travelogue/travelogue.module'
+import { AgmCoreModule } from '@agm/core'
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, '/assets/translations/')
@@ -38,7 +39,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         BackendModule,
         StyleguideModule,
         HomeModule,
-        TravelogueModule
+        TravelogueModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyDGMs47f5VhYjhDZ6F-KLk6Pgwh99U4Dz4'
+        })
     ],
     providers: [],
     bootstrap: [AppComponent]

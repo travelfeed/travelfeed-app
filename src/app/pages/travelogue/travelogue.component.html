@@ -1,3 +1,13 @@
-<p>
-  travelogue works!
-</p>
+<div class="cmp-travelogue">
+    <agm-map class="cmp-travelogue__map" [latitude]="latitude" [longitude]="longitude">
+        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+    <cmp-container>
+        <div class="cmp-travelogue__titlecontainer"><!-- TODO: Sicke Hintergrundgrafik -->
+            <h1 class="cmp-travelogue__title">{{title}}</h1>
+        </div>
+        <p class="cmp-travelogue__text text-justify">
+            {{text}}
+        </p>
+    </cmp-container>
+</div>
