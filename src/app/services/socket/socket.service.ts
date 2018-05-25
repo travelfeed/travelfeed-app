@@ -16,8 +16,8 @@ export class SocketService {
             return fromEvent<any>(this.socket, event).pipe(
                 map(data => ({
                     name: event,
-                    data: data
-                }))
+                    data: data,
+                })),
             )
         }
 

@@ -5,7 +5,7 @@ import { SocketService } from './socket.service'
 describe('SocketService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [SocketService]
+            providers: [SocketService],
         })
     })
 
@@ -13,6 +13,6 @@ describe('SocketService', () => {
         'should be created',
         inject([SocketService], (service: SocketService) => {
             expect(service).toBeTruthy()
-        })
+        }),
     )
 })
