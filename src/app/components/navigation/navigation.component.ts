@@ -3,7 +3,7 @@ import { Component } from '@angular/core'
 @Component({
     selector: 'cmp-navigation',
     templateUrl: './navigation.component.html',
-    styleUrls: ['./navigation.component.scss']
+    styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
     public constructor() {}

@@ -6,13 +6,11 @@ describe('FSelectComponent', () => {
     let component: FSelectComponent
     let fixture: ComponentFixture<FSelectComponent>
 
-    beforeEach(
-        async(() => {
-            TestBed.configureTestingModule({
-                declarations: [FSelectComponent]
-            }).compileComponents()
-        })
-    )
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [FSelectComponent],
+        }).compileComponents()
+    }))
 
     beforeEach(() => {
         fixture = TestBed.createComponent(FSelectComponent)

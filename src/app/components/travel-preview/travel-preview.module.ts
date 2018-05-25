@@ -5,6 +5,6 @@ import { TravelPreviewComponent } from './travel-preview.component'
 @NgModule({
     imports: [CommonModule],
     declarations: [TravelPreviewComponent],
-    exports: [TravelPreviewComponent]
+    exports: [TravelPreviewComponent],
 })
 export class TravelPreviewModule {}

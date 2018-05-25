@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable, of } from 'rxjs'
-import { switchMap } from 'rxjs/operators'
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
 import { LocalStorage } from 'ngx-store'
 import { environment } from '../../../environments/environment'
-import { ApiResponse, User } from './typings'
+import { ApiResponse } from '../../shared/typings'
 
 @Injectable()
 export class AuthService {
     @LocalStorage() public userId: string = null
 
     @LocalStorage() public authToken: string = null
+
+    @LocalStorage() public refreshToken: string = null
 
     private readonly baseUri: string = environment.apiBaseUrl
 
@@ -21,45 +23,57 @@ export class AuthService {
      *
      * @param {string} email
      * @param {string} password
-     * @returns {Observable<User>}
+     * @returns {Observable<void>}
      */
-    public signin(email: string, password: string): Observable<User> {
-        console.log('==> AuthService::signin')
-
+    public signin(email: string, password: string): Observable<void> {
         this.userId = ''
         this.authToken = ''
+        this.refreshToken = ''
 
         return this.http
-            .post<ApiResponse>(`${this.baseUri}/auth/signin`, {
+            .post<ApiResponse<any>>(`${this.baseUri}/auth/signin`, {
                 email: email,
-                password: password
+                password: password,
             })
             .pipe(
-                switchMap(({ status, data }: ApiResponse) => {
-                    if (status < 200 || status >= 300) {
-                        return of(null)
-                    }
-
-                    this.userId = data.userId
-                    this.authToken = data.authToken
-
-                    return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
-                })
+                map((response: ApiResponse<any>) => {
+                    this.userId = response.data.userId
+                    this.authToken = response.data.authToken
+                    this.refreshToken = response.data.refreshToken
+                }),
             )
     }
 
     /**
      * Signs the user out of the application.
      *
-     * @returns {Observable<ApiResponse>}
+     * @returns {Observable<ApiResponse<void>>}
      */
-    public signout(): Observable<ApiResponse> {
-        console.log('==> AuthService::signout')
-
+    public signout(): Observable<ApiResponse<void>> {
         this.userId = ''
         this.authToken = ''
+        this.refreshToken = ''
 
-        return this.http.post<ApiResponse>(`${this.baseUri}/auth/signout`, null)
+        return this.http.post<ApiResponse<void>>(`${this.baseUri}/auth/signout`, null)
+    }
+
+    /**
+     * Tries to refresh the user auth session using the stored refresh token.
+     *
+     * @returns {Observable<void>}
+     */
+    public refresh(): Observable<void> {
+        return this.http
+            .post<ApiResponse<any>>(`${this.baseUri}/auth/refresh`, {
+                userId: this.userId,
+                refreshToken: this.refreshToken,
+            })
+            .pipe(
+                map((response: ApiResponse<any>) => {
+                    this.authToken = response.data.authToken
+                    this.refreshToken = response.data.refreshToken
+                }),
+            )
     }
 
     /**
@@ -68,27 +82,21 @@ export class AuthService {
      * @param {string} username
      * @param {string} password
      * @param {stirng} email
-     * @returns {Observable<ApiResponse>}
+     * @returns {Observable<void>}
      */
-    public register(username: string, password: string, email: string): Observable<ApiResponse> {
-        console.log('==> AuthService::register')
+    public register(username: string, password: string, email: string): Observable<void> {
         return this.http
-            .post<ApiResponse>(`${this.baseUri}/auth/register`, {
+            .post<ApiResponse<any>>(`${this.baseUri}/auth/register`, {
                 username: username,
                 password: password,
-                email: email
+                email: email,
             })
             .pipe(
-                switchMap(({ status, data }: ApiResponse) => {
-                    if (status < 200 || status >= 300) {
-                        return of(null)
-                    }
-
-                    this.userId = data.userId
-                    this.authToken = data.authToken
-
-                    return this.http.get<ApiResponse>(`${this.baseUri}/user/${data.userId}`)
-                })
+                map((response: ApiResponse<any>) => {
+                    this.userId = response.data.userId
+                    this.authToken = response.data.authToken
+                    this.refreshToken = response.data.refreshToken
+                }),
             )
     }
 
@@ -97,10 +105,15 @@ export class AuthService {
      *
      * @returns {boolean}
      */
-    public isSignedIn(): boolean {
-        const validAuthToken: boolean = this.authToken !== null && this.authToken !== ''
-        const validUserId: boolean = this.userId !== null && this.userId !== ''
+    public isAuthenticated(): boolean {
+        const emptyUserId = !this.userId || this.userId === ''
+        const emptyAuthToken = !this.authToken || this.authToken === ''
 
-        return validAuthToken && validUserId
+        // validate user data and tokens
+        if (emptyUserId || emptyAuthToken) {
+            return false
+        }
+
+        return true
     }
 }

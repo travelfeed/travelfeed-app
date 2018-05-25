@@ -1,0 +1,33 @@
+<div class="cmp-backend-navigation" [ngClass]="{'cmp-backend-navigation--expanded': expanded}">
+    <div class="cmp-backend-navigation__wrapper">
+        <button class="cmp-backend-navigation__button" type="button" (click)="toggleNavigation()">
+            <cmp-icon name="bars"></cmp-icon>
+        </button>
+        <div class="cmp-backend-navigation__content">
+            <ul class="cmp-backend-navigation__items">
+                <li class="cmp-backend-navigation__item" routerLinkActive="active">
+                    <cmp-link class="cmp-backend-navigation__link" align="left" [routerLink]="['articles']" [inline]="false">
+                        <cmp-icon class="cmp-backend-navigation__icon" name="file-text-o"></cmp-icon>
+                        <span class="cmp-backend-navigation__text">Articles</span>
+                    </cmp-link>
+                </li>
+                <li class="cmp-backend-navigation__item" routerLinkActive="active">
+                    <cmp-link class="cmp-backend-navigation__link" align="left" [routerLink]="['translations']" [inline]="false">
+                        <cmp-icon class="cmp-backend-navigation__icon" name="language"></cmp-icon>
+                        <span class="cmp-backend-navigation__text">Translations</span>
+                    </cmp-link>
+                </li>
+                <li class="cmp-backend-navigation__item" routerLinkActive="active">
+                    <cmp-link class="cmp-backend-navigation__link" align="left" [routerLink]="['users']" [inline]="false">
+                        <cmp-icon class="cmp-backend-navigation__icon" name="users"></cmp-icon>
+                        <span class="cmp-backend-navigation__text">Users</span>
+                    </cmp-link>
+                </li>
+            </ul>
+        </div>
+        <cmp-link class="cmp-backend-navigation__button" align="left" [routerLink]="['/auth/signout']" [inline]="false">
+            <cmp-icon class="cmp-backend-navigation__icon" name="sign-out"></cmp-icon>
+            <span class="cmp-backend-navigation__text">Sign out</span>
+        </cmp-link>
+    </div>
+</div>

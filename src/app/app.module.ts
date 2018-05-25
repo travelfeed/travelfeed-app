@@ -1,19 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { HttpClientModule, HttpClient } from '@angular/common/http'
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core'
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
-import { WebStorageModule } from 'ngx-store'
-import { environment } from '../environments/environment'
 import { AppRoutingModule } from './app-routing.module'
-import { StyleguideModule } from './pages/styleguide/styleguide.module'
+import { CoreModule } from './core/core.module'
 import { AuthModule } from './pages/auth/auth.module'
 import { BackendModule } from './pages/backend/backend.module'
 import { HomeModule } from './pages/home/home.module'
-import { SocketService } from './services/socket/socket.service'
-import { AppComponent } from './app.component'
+import { StyleguideModule } from './pages/styleguide/styleguide.module'
 import { TravelogueModule } from './pages/travelogue/travelogue.module'
+import { environment } from '../environments/environment'
+import { AppComponent } from './app.component'
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, '/assets/translations/')
@@ -23,25 +23,27 @@ export function HttpLoaderFactory(http: HttpClient) {
     declarations: [AppComponent],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         ServiceWorkerModule.register('/ngsw-worker.js', {
-            enabled: environment.production
+            enabled: environment.production,
         }),
+        HttpClientModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
                 useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
+                deps: [HttpClient],
+            },
         }),
-        WebStorageModule,
         AppRoutingModule,
+        CoreModule,
         AuthModule,
         BackendModule,
-        StyleguideModule,
         HomeModule,
-        TravelogueModule
+        StyleguideModule,
+        TravelogueModule,
     ],
-    providers: [SocketService],
-    bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

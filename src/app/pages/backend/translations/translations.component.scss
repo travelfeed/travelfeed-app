@@ -1,0 +1,24 @@
+@import '../../../../scss/shared';
+
+$component: 'cmp-translations';
+
+@include cmp-base($component) {
+    &__wrapper {
+        min-height: 100vh;
+        padding: 20px 0 60px;
+        display: flex;
+        flex-direction: column;
+        background-color: $color-white2;
+    }
+
+    &__title {
+        margin-bottom: 30px;
+        padding: 0 40px 10px;
+        border-bottom: 1px dotted rgba($color-grey1, 0.4);
+    }
+
+    &__overview,
+    &__view {
+        padding: 0 40px 0;
+    }
+}

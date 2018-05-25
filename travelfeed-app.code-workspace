@@ -7,6 +7,9 @@
             "path": "./src/app"
         },
         {
+            "path": "./src/app/store"
+        },
+        {
             "path": "./src/app/components"
         },
         {

@@ -1,0 +1,27 @@
+@import '../../../../scss/shared';
+
+$component: 'cmp-users';
+
+@include cmp-base($component) {
+    &__wrapper {
+        min-height: 100vh;
+        display: flex;
+        background-color: $color-white2;
+    }
+
+    &__list {
+        padding: 20px 0 60px;
+        flex: 2;
+    }
+
+    &__title {
+        padding: 0 40px 10px;
+        border-bottom: 1px dotted rgba($color-grey1, 0.4);
+    }
+
+    &__details {
+        padding: 20px 40px 60px;
+        flex: 3;
+        background-color: $color-white3;
+    }
+}

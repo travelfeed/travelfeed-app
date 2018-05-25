@@ -1,22 +1,17 @@
 import { Component } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { TestFormModel } from './typings'
 
 @Component({
     selector: 'cmp-styleguide',
     templateUrl: './styleguide.component.html',
-    styleUrls: ['./styleguide.component.scss']
+    styleUrls: ['./styleguide.component.scss'],
 })
 export class StyleguideComponent {
     public demoForm: FormGroup
 
-    public model: TestFormModel = {
-        test: ''
-    }
-
     public constructor(private formBuilder: FormBuilder) {
         this.demoForm = this.formBuilder.group({
-            test: [null, [Validators.required]]
+            test: [null, [Validators.required]],
         })
     }
 

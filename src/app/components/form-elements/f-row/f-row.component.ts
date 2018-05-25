@@ -1,14 +1,17 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core'
-import { Layouts } from './typings'
+import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core'
+import { FRowLayouts } from '../typings'
 
 @Component({
     selector: 'cmp-f-row',
     templateUrl: './f-row.component.html',
     styleUrls: ['./f-row.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FRowComponent {
-    @Input() public layout: Layouts = '1'
+    public static readonly cmpName: string = 'FRowComponent'
+
+    @Input() public layout: FRowLayouts = '1'
 
     public constructor() {}
 }

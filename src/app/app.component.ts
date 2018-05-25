@@ -6,7 +6,7 @@ import { SocketEvent } from './services/socket/typings'
 @Component({
     selector: 'cmp-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnDestroy {
     private alive: boolean = true
