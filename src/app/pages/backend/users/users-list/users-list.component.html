@@ -1,0 +1,7 @@
+<ul class="cmp-users-list">
+    <li class="cmp-users-list__item" routerLinkActive="active" *ngFor="let user of users">
+        <a class="cmp-users-list__link" [routerLink]="['../', user.id]">
+            <cmp-users-item [user]="user"></cmp-users-item>
+        </a>
+    </li>
+</ul>

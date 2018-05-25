@@ -1,0 +1,21 @@
+<div class="cmp-articles-details">
+    <div class="cmp-articles-details__actions">
+        <cmp-icon class="cmp-articles-details__action" name="floppy-o" (click)="save()"></cmp-icon>
+        <cmp-icon class="cmp-articles-details__action" name="trash-o" (click)="delete()"></cmp-icon>
+        <cmp-icon class="cmp-articles-details__action" name="toggle-off" (click)="publish() " *ngIf="!article.published"></cmp-icon>
+        <cmp-icon class="cmp-articles-details__action" name="toggle-on" (click)="unpublish() " *ngIf="article.published"></cmp-icon>
+    </div>
+    <div class="cmp-articles-details__wrapper">
+        <cmp-f-row>
+            <cmp-f-column>
+                <h4 class="cmp-articles-details__title" [(editable)]="article.title" [toolbar]="false"></h4>
+                <h5 class="cmp-articles-details__subtitle" [(editable)]="article.title" [toolbar]="false"></h5>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row>
+            <cmp-f-column>
+                <p class="cmp-articles-details__text" [(editable)]="article.text"></p>
+            </cmp-f-column>
+        </cmp-f-row>
+    </div>
+</div>

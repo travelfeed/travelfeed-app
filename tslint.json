@@ -41,7 +41,7 @@
     "label-position": true,
     "max-line-length": [
       true,
-      100
+      105
     ],
     "max-classes-per-file": [
       true,
@@ -146,12 +146,6 @@
       "check-operator",
       "check-separator",
       "check-type"
-    ],
-    "directive-selector": [
-      true,
-      "attribute",
-      "",
-      "kebab-case"
     ],
     "component-selector": [
       true,

@@ -1,0 +1,25 @@
+<ul class="cmp-articles-list">
+    <li class="cmp-articles-list__item" routerLinkActive="active" *ngFor="let article of articles">
+        <a class="cmp-articles-list__link" (click)="select(article)">
+            <cmp-articles-item [article]="article"></cmp-articles-item>
+        </a>
+    </li>
+    <li class="cmp-articles-list__new-item">
+        <a class="cmp-articles-list__link" [title]="'BACKEND_ARTICLES_LIST_NEW_TOGGLE'|translate">
+            <cmp-f-row (click)="toggle()">
+                <cmp-f-column>
+                    <cmp-icon [name]="createMode ? 'chevron-up' : 'chevron-down'"></cmp-icon>
+                    <span class="cmp-articles-list__new-text">{{'BACKEND_ARTICLES_LIST_NEW_TEXT'|translate}}</span>
+                </cmp-f-column>
+            </cmp-f-row>
+            <cmp-f-row class="cmp-articles-list__new-form" layout="2-1" *ngIf="createMode">
+                <cmp-f-column>
+                    <cmp-f-input name="title" [label]="'BACKEND_ARTICLES_LIST_NEW_LABEL'|translate" [fc]="title"></cmp-f-input>
+                </cmp-f-column>
+                <cmp-f-column>
+                    <cmp-f-button theme="primary" [text]="'BACKEND_ARTICLES_LIST_NEW_BUTTON'|translate" icon="check" [disabled]="title.value.length === 0" (cbClick)="create()"></cmp-f-button>
+                </cmp-f-column>
+            </cmp-f-row>
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,33 @@
+@import '../../../../scss/shared';
+
+$component: 'cmp-tabs';
+
+@include cmp-base($component) {
+    &__tabs {
+        display: flex;
+        align-items: center;
+    }
+
+    &__tab {
+        height: 40px;
+        line-height: 30px;
+        padding: 5px 20px;
+        background-color: rgba($color-grey1, .6);
+        transition: background-color .3s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba($color-grey1, .4);
+        }
+
+        &.active {
+            background-color: rgba($color-grey1, .15);
+        }
+    }
+
+    &__content {
+        min-height: 50px;
+        padding: 5px 20px;
+        background-color: rgba($color-grey1, .15);
+    }
+}

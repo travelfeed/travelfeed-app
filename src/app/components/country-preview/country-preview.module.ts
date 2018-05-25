@@ -5,6 +5,6 @@ import { CountryPreviewComponent } from './country-preview.component'
 @NgModule({
     imports: [CommonModule],
     declarations: [CountryPreviewComponent],
-    exports: [CountryPreviewComponent]
+    exports: [CountryPreviewComponent],
 })
 export class CountryPreviewModule {}

@@ -7,29 +7,63 @@ $component: 'cmp-f-button';
 
     &__button {
         height: 40px;
+        line-height: 23px;
         padding: 10px 20px;
+    }
+
+    &__icon {
+        margin-right: 10px;
     }
 }
 
 @include cmp-modifier($component, 'primary') {
     &__button {
-        background: rgba($color-primary, .6);
+        background-color: rgba($color-primary, 0.6);
         color: $color-white1;
-        transition: background .2s;
+        transition: color 0.4s, background-color 0.4s;
 
         &:hover {
-            background: $color-primary;
+            background-color: $color-primary;
         }
     }
 }
 
 @include cmp-modifier($component, 'secondary') {
     &__button {
-        background: $color-white2;
+        background-color: rgba($color-grey1, 0.4);
         color: $color-primary;
+        transition: color 0.4s, background-color 0.4s;
+
+        &:hover {
+            background-color: rgba($color-grey1, 0.6);
+        }
     }
 }
 
 @include cmp-modifier($component, 'disabled') {
+    &__button {
+        background-color: rgba($color-grey1, 0.4);
+        color: rgba($color-grey1, 0.9);
+        transition: color 0.4s, background-color 0.4s;
 
+        &:hover {
+            background-color: rgba($color-grey1, 0.4);
+            color: rgba($color-grey1, 0.9);
+        }
+    }
+}
+
+@include cmp-modifier($component, 'no-margin') {
+    &__button {
+        margin-top: 0;
+    }
+}
+
+@include cmp-modifier($component, 'small') {
+    &__button {
+        min-width: 100px;
+        height: 28px;
+        line-height: 21px;
+        padding: 4px 20px;
+    }
 }

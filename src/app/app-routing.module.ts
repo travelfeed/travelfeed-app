@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from './pages/home/home.component'
 import { StyleguideComponent } from './pages/styleguide/styleguide.component'
 import { BackendComponent } from './pages/backend/backend.component'
+import { TranslationsComponent } from './pages/backend/translations/translations.component'
 import { ArticlesComponent } from './pages/backend/articles/articles.component'
+import { UsersComponent } from './pages/backend/users/users.component'
 import { AuthGuard } from './pages/auth/auth.guard'
 import { AuthComponent } from './pages/auth/auth.component'
 import { SignInComponent } from './pages/auth/sign-in/sign-in.component'
@@ -15,31 +17,59 @@ export const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        component: HomeComponent
+        component: HomeComponent,
     },
     {
         path: 'travelogue',
-        component: TravelogueComponent
+        component: TravelogueComponent,
     },
     {
         path: 'styleguide',
-        component: StyleguideComponent
+        component: StyleguideComponent,
     },
     {
         path: 'backend',
+        canActivate: [AuthGuard],
         component: BackendComponent,
         children: [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'articles'
+                redirectTo: 'articles',
+            },
+            {
+                path: 'translations',
+                component: TranslationsComponent,
             },
             {
                 path: 'articles',
-                canActivate: [AuthGuard],
-                component: ArticlesComponent
-            }
-        ]
+                children: [
+                    {
+                        path: '',
+                        pathMatch: 'full',
+                        component: ArticlesComponent,
+                    },
+                    {
+                        path: ':id',
+                        component: ArticlesComponent,
+                    },
+                ],
+            },
+            {
+                path: 'users',
+                children: [
+                    {
+                        path: '',
+                        pathMatch: 'full',
+                        component: UsersComponent,
+                    },
+                    {
+                        path: ':id',
+                        component: UsersComponent,
+                    },
+                ],
+            },
+        ],
     },
     {
         path: 'auth',
@@ -48,36 +78,36 @@ export const routes: Routes = [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'signin'
+                redirectTo: 'signin',
             },
             {
                 path: 'signin',
-                component: SignInComponent
+                component: SignInComponent,
             },
             {
                 path: 'signout',
-                component: SignOutComponent
+                component: SignOutComponent,
             },
             {
                 path: 'register',
-                component: RegistrationComponent
-            }
-        ]
+                component: RegistrationComponent,
+            },
+        ],
     },
     {
         path: '',
         pathMatch: 'full',
-        component: HomeComponent
+        component: HomeComponent,
     },
     {
         path: '**',
-        redirectTo: ''
-    }
+        redirectTo: '',
+    },
 ]
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
-    declarations: []
+    declarations: [],
 })
 export class AppRoutingModule {}

@@ -122,12 +122,15 @@
   },
   "defaultProject": "travelfeed-app",
   "schematics": {
-    "@schematics/angular:component": {
+    "@ngrx/schematics:component": {
       "prefix": "cmp",
       "styleext": "scss"
     },
-    "@schematics/angular:directive": {
-      "prefix": "cmp"
+    "@ngrx/schematics:directive": {
+      "prefix": ""
     }
+  },
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
   }
 }

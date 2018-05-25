@@ -6,13 +6,11 @@ describe('AuthComponent', () => {
     let component: AuthComponent
     let fixture: ComponentFixture<AuthComponent>
 
-    beforeEach(
-        async(() => {
-            TestBed.configureTestingModule({
-                declarations: [AuthComponent]
-            }).compileComponents()
-        })
-    )
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [AuthComponent],
+        }).compileComponents()
+    }))
 
     beforeEach(() => {
         fixture = TestBed.createComponent(AuthComponent)

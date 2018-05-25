@@ -6,13 +6,11 @@ describe('SignInPageComponent', () => {
     let component: SignInComponent
     let fixture: ComponentFixture<SignInComponent>
 
-    beforeEach(
-        async(() => {
-            TestBed.configureTestingModule({
-                declarations: [SignInComponent]
-            }).compileComponents()
-        })
-    )
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [SignInComponent],
+        }).compileComponents()
+    }))
 
     beforeEach(() => {
         fixture = TestBed.createComponent(SignInComponent)

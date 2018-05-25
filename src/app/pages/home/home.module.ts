@@ -14,9 +14,9 @@ import { CountryPreviewModule } from '../../components/country-preview/country-p
         ContainerModule,
         TravelPreviewModule,
         CountryPreviewModule,
-        FormElementsModule
+        FormElementsModule,
     ],
     declarations: [HomeComponent],
-    exports: []
+    exports: [],
 })
 export class HomeModule {}

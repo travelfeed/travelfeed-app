@@ -1,3 +1,11 @@
 <div class="cmp-backend">
-    <router-outlet></router-outlet>
+    <div class="cmp-backend__navigation">
+        <cmp-backend-navigation></cmp-backend-navigation>
+    </div>
+    <div class="cmp-backend__content">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="cmp-backend__notifications">
+        <cmp-notification></cmp-notification>
+    </div>
 </div>

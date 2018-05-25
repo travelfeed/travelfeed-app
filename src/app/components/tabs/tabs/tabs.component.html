@@ -1,0 +1,10 @@
+<div class="cmp-tabs">
+    <ul class="cmp-tabs__tabs">
+        <li class="cmp-tabs__tab" [class.active]="tab.active" *ngFor="let tab of tabs" (click)="select(tab)">
+            <span class="cmp-tabs__text">{{tab.label}}</span>
+        </li>
+    </ul>
+    <div class="cmp-tabs__content">
+        <ng-content select="cmp-tab"></ng-content>
+    </div>
+</div>

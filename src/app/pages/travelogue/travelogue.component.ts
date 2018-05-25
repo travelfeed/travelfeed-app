@@ -3,7 +3,7 @@ import { Component } from '@angular/core'
 @Component({
     selector: 'cmp-travelogue',
     templateUrl: './travelogue.component.html',
-    styleUrls: ['./travelogue.component.scss']
+    styleUrls: ['./travelogue.component.scss'],
 })
 export class TravelogueComponent {
     public title: string = 'Vietnam'

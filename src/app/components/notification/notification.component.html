@@ -1,0 +1,7 @@
+<div class="cmp-notification cmp-notification--{{notification.type}}" [@fade]="'visible'" (click)="dismiss()" *ngIf="(notificationService.notification$ | async) as notification">
+    <div class="cmp-notification__wrapper">
+        <cmp-icon class="cmp-notification__icon" [name]="notification.icon" *ngIf="notification.icon"></cmp-icon>
+        <span class="cmp-notification__text">{{notification.message}}</span>
+        <cmp-icon class="cmp-notification__icon" name="plus"></cmp-icon>
+    </div>
+</div>
