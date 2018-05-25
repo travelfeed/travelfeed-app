@@ -1,0 +1,12 @@
+@import '../../../scss/shared';
+
+$component: 'cmp-homebutton';
+
+@include cmp-base($component) {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}

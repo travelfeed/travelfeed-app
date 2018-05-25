@@ -6,7 +6,8 @@ import { Component } from '@angular/core'
     styleUrls: ['./travelogue.component.scss']
 })
 export class TravelogueComponent {
-    public title: string = 'Vietnam'
+    public title: string = 'Vietnams verblüffender Süden!'
+    public country: string = 'Vietnam'
     public latitude: number = 10.762622
     public longitude: number = 106.660172
 

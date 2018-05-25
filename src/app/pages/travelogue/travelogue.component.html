@@ -2,12 +2,53 @@
     <agm-map class="cmp-travelogue__map" [latitude]="latitude" [longitude]="longitude">
         <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
     </agm-map>
-    <cmp-container>
-        <div class="cmp-travelogue__titlecontainer"><!-- TODO: Sicke Hintergrundgrafik -->
-            <h1 class="cmp-travelogue__title">{{title}}</h1>
-        </div>
-        <p class="cmp-travelogue__text text-justify">
-            {{text}}
-        </p>
-    </cmp-container>
+    <div class="cmp-travelogue__content">
+        <cmp-container>
+            <div class="cmp-travelogue__countrycontainer"><!-- TODO: Sicke Hintergrundgrafik -->
+                <h1 class="cmp-travelogue__country">{{country}}</h1>
+            </div>
+
+            
+
+            <div class="cmp-travelogue__information">
+                <div>
+                    Beitrag erstellt am <b>25. Mai 2018</b><!-- TODO: Datefunktion? Monat ausgeschrieben -->
+                </div>
+                <div title="Geschätzte Lesezeit">
+                    <cmp-icon name="clock-o"></cmp-icon>&nbsp;<b>3 minuten</b><!-- TODO: Datefunktion? Monat ausgeschrieben -->
+                </div>
+                <div>
+                    <span class="cmp-travelogue__information__user">
+                        @DennisFritsch 
+                        <cmp-icon name="user"></cmp-icon>
+                    </span>
+                </div>
+            </div>
+
+            <div class="cmp-travelogue__peacecontainer">
+                <span class="cmp-travelogue__peacecontainer__peacecounter">
+                    + 41
+                </span>
+                <div class="cmp-travelogue__peacecontainer__peace">
+                    <cmp-icon name="hand-peace-o"></cmp-icon>
+                </div>
+            </div>
+
+            <h2 class="cmp-travelogue__title">
+                {{title}}
+            </h2>
+    
+            <p class="cmp-travelogue__text text-justify">
+                {{text}}
+            </p>
+
+            <cmp-homebutton></cmp-homebutton>
+
+            <cmp-f-text-area></cmp-f-text-area>
+
+            <!-- TODO: Kommentare Anzeigen -->
+
+
+        </cmp-container>
+    </div>
 </div>

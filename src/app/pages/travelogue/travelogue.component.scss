@@ -3,15 +3,23 @@
 $component: 'cmp-travelogue';
 
 @include cmp-base($component, block) {
-    &__map {
-        height: 340px;
+    &__content {
+        position: relative;
+        padding-top: 24px;
     }
 
-    &__titlecontainer {
-        position: relative;
-        top: -45px;
+    &__map {
+        height: 200px;
+
+        @media (min-width: map-get($breakpoint-settings, mini-tablet)) {
+            height: 340px;
+        }
+    }
+
+    &__countrycontainer {
+        position: absolute;
+        top: -50px;
         font-size: 30px;
-        padding: 10px;
 
         width: 40%;
 
@@ -19,13 +27,71 @@ $component: 'cmp-travelogue';
         background-repeat: no-repeat;
     }
 
-    &__title {
+    &__country {
         margin: 0;
     }
 
     &__text {
         position: relative;
-        top: -30px;
         line-height: 0.75cm;
+    }
+
+    &__information {
+        height: 30px;
+        color: #777;
+
+        div {
+            width: 33.333%;
+            float: left;
+        }
+
+        &__user {
+            float: right;
+        }
+    }
+
+    &__peacecontainer {
+        float: right;
+        height: 50px;
+        position: relative;
+
+        &__peacecounter {
+            color: green;
+            font-weight: bold;
+            font-size: 20px;
+            width: 60px;
+            text-align: right;
+
+            position: absolute;
+            top: 18px;
+            left: -70px;
+
+            -moz-transform: rotate(-15deg);
+            -ms-transform: rotate(-15deg);
+            -o-transform: rotate(-15deg);
+            -webkit-transform: rotate(-15deg);
+        }
+
+        &__peace {
+            border: 2px solid #333;
+            width: 50px;
+
+            background-color: lightgreen;
+
+            float: right;
+            top: 0;
+
+            cursor: pointer;
+            text-align: center;
+            padding: 5px 0;
+
+            &:hover {
+                background-color: green;
+            }
+        }
+
+        &__peace cmp-icon {
+            font-size: 30px;
+        }
     }
 }
