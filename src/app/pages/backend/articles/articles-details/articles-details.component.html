@@ -6,9 +6,16 @@
         <cmp-icon class="cmp-articles-details__action" name="toggle-on" (click)="unpublish() " *ngIf="article.published"></cmp-icon>
     </div>
     <div class="cmp-articles-details__wrapper">
-        <div class="cmp-articles-details__content">
-            <cmp-headline-h4 [text]="article.title"></cmp-headline-h4>
-            <pre>{{article|json}}</pre>
-        </div>
+        <cmp-f-row>
+            <cmp-f-column>
+                <h4 class="cmp-articles-details__title" [(editable)]="article.title" [toolbar]="false"></h4>
+                <h5 class="cmp-articles-details__subtitle" [(editable)]="article.title" [toolbar]="false"></h5>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row>
+            <cmp-f-column>
+                <p class="cmp-articles-details__text" [(editable)]="article.text"></p>
+            </cmp-f-column>
+        </cmp-f-row>
     </div>
 </div>

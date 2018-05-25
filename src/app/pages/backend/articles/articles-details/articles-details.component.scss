@@ -5,13 +5,14 @@ $component: 'cmp-articles-details';
 @include cmp-base($component) {
     &__actions {
         height: 60px;
-        padding: 10px 40px;
+        padding: 10px 15px;
         position: sticky;
         top: 0;
         display: flex;
         align-items: center;
         background-color: $color-white3;
         border-bottom: 1px dotted rgba($color-grey1, 0.4);
+        z-index: 1;
     }
 
     &__action {
@@ -29,6 +30,59 @@ $component: 'cmp-articles-details';
     }
 
     &__wrapper {
-        padding: 40px;
+        padding: 20px 100px;
+    }
+
+    &__title,
+    &__subtitle,
+    &__text {
+        position: relative;
+        opacity: .5;
+        transition: opacity .4s;
+
+        &::before {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            padding-right: 10px;
+            display: flex;
+            align-items: center;
+            border-right: 1px rgb(128, 128, 128) solid;
+            font-size: 13px;
+            font-weight: 100;
+            transform: translateX(calc(-100% - 10px));
+            opacity: .5;
+            transition: opacity .4s;
+        }
+
+        &:focus {
+            opacity: 1;
+        }
+
+        &:focus::before {
+            opacity: 1;
+        }
+    }
+
+    &__title {
+        @include use-text(headline-h4);
+
+        &:focus::before {
+            content: 'Title';
+        }
+    }
+
+    &__subtitle {
+        @include use-text(headline-h5);
+
+        &:focus::before {
+            content: 'Subtitle';
+        }
+    }
+
+    &__text {
+        &:focus::before {
+            content: 'Text';
+        }
     }
 }

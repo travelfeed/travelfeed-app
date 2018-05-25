@@ -5,7 +5,7 @@
         </cmp-f-column>
         <cmp-f-column class="cmp-translations-item__actions" align="right" [flex]="true">
             <cmp-f-button class="cmp-translations-item__button" type="button" theme="primary, color1" text="SAVE" [disabled]="loading || !changed" (cbClick)="save()"></cmp-f-button>
-            <cmp-f-button class="cmp-translations-item__button" type="button" theme="secondary, color2" text="DELETE" [disabled]="loading || !changed" (cbClick)="delete()"></cmp-f-button>
+            <cmp-f-button class="cmp-translations-item__button" type="button" theme="secondary, color2" text="DELETE" [disabled]="loading" (cbClick)="delete()"></cmp-f-button>
         </cmp-f-column>
     </cmp-f-row>
 </div>
