@@ -1,0 +1,35 @@
+@import '../../../../scss/shared';
+
+$component: 'cmp-comment-item';
+
+@include cmp-base($component) {
+    position: relative;
+
+    &__wrapper {
+        background-color: #ccc;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+    }
+    &__user {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    &__delete {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        color: #777;
+
+        &:hover {
+            cursor: pointer;
+            color: black;
+        }
+    }
+}
+
+@include cmp-modifier($component, 'even') {
+    &__wrapper {
+        background-color: #fff;
+    }
+}

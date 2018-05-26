@@ -3,10 +3,22 @@
 $component: 'cmp-homebutton';
 
 @include cmp-base($component) {
-    position: absolute;
+    position: fixed;
     left: 10px;
     top: 10px;
-    height: 100px;
-    width: 100px;
-    background-color: red;
+
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    padding-top: 8px;
+
+    font-size: 30px;
+
+    background-color: white;
+
+    border-bottom: 4px solid #777;
+
+    &:hover {
+        background-color: #ccc;
+    }
 }

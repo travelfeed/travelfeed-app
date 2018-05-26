@@ -6,6 +6,14 @@ $component: 'cmp-travelogue';
     &__content {
         position: relative;
         padding-top: 24px;
+
+        &__sendcomment {
+            height: 80px;
+
+            &__btn {
+                float: right;
+            }
+        }
     }
 
     &__map {
@@ -34,6 +42,7 @@ $component: 'cmp-travelogue';
     &__text {
         position: relative;
         line-height: 0.75cm;
+        margin-bottom: 40px;
     }
 
     &__information {
