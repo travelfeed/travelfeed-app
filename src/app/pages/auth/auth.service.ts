@@ -10,6 +10,8 @@ import { ApiResponse } from '../../shared/typings'
 export class AuthService {
     @LocalStorage() public userId: string = null
 
+    @LocalStorage() public userRole: string = null
+
     @LocalStorage() public authToken: string = null
 
     @LocalStorage() public refreshToken: string = null
@@ -26,9 +28,9 @@ export class AuthService {
      * @returns {Observable<void>}
      */
     public signin(email: string, password: string): Observable<void> {
-        this.userId = ''
-        this.authToken = ''
-        this.refreshToken = ''
+        this.userId = null
+        this.authToken = null
+        this.refreshToken = null
 
         return this.http
             .post<ApiResponse<any>>(`${this.baseUri}/auth/signin`, {
@@ -38,6 +40,7 @@ export class AuthService {
             .pipe(
                 map((response: ApiResponse<any>) => {
                     this.userId = response.data.userId
+                    this.userRole = response.data.userRole
                     this.authToken = response.data.authToken
                     this.refreshToken = response.data.refreshToken
                 }),
@@ -50,9 +53,10 @@ export class AuthService {
      * @returns {Observable<ApiResponse<void>>}
      */
     public signout(): Observable<ApiResponse<void>> {
-        this.userId = ''
-        this.authToken = ''
-        this.refreshToken = ''
+        this.userId = null
+        this.userRole = null
+        this.authToken = null
+        this.refreshToken = null
 
         return this.http.post<ApiResponse<void>>(`${this.baseUri}/auth/signout`, null)
     }
@@ -94,6 +98,7 @@ export class AuthService {
             .pipe(
                 map((response: ApiResponse<any>) => {
                     this.userId = response.data.userId
+                    this.userRole = response.data.userRole
                     this.authToken = response.data.authToken
                     this.refreshToken = response.data.refreshToken
                 }),
@@ -115,5 +120,9 @@ export class AuthService {
         }
 
         return true
+    }
+
+    public isAdmin(): boolean {
+        return this.userRole === 'admin'
     }
 }
