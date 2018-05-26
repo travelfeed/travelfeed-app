@@ -6,6 +6,7 @@ import { NgProgressHttpModule } from '@ngx-progressbar/http'
 import { NgProgressRouterModule } from '@ngx-progressbar/router'
 import { AgmCoreModule } from '@agm/core'
 import { WebStorageModule } from 'ngx-store'
+import { environment } from '../../environments/environment'
 
 @NgModule({
     declarations: [],
@@ -16,7 +17,7 @@ import { WebStorageModule } from 'ngx-store'
         NgProgressHttpModule,
         NgProgressRouterModule,
         AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyDGMs47f5VhYjhDZ6F-KLk6Pgwh99U4Dz4',
+            apiKey: environment.mapsApiKey,
         }),
         WebStorageModule,
     ],
