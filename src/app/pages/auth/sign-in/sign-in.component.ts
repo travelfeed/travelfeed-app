@@ -89,7 +89,11 @@ export class SignInComponent implements OnInit, OnDestroy {
             .signin(email, password)
             .pipe(takeWhile(() => this.alive))
             .subscribe(() => {
-                this.router.navigate(['../backend'])
+                if (this.authService.isAdmin()) {
+                    this.router.navigate(['../backend'])
+                }
+
+                this.location.back()
             })
     }
 }
