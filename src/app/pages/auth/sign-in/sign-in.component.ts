@@ -91,9 +91,10 @@ export class SignInComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 if (this.authService.isAdmin()) {
                     this.router.navigate(['../backend'])
+                    return
                 }
 
-                this.location.back()
+                this.router.navigate(['/'])
             })
     }
 }
