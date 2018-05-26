@@ -1,6 +1,18 @@
 <div class="cmp-users-details">
+    <div class="cmp-users-details__actions">
+        <cmp-icon class="cmp-users-details__action" name="floppy-o" (click)="save()"></cmp-icon>
+        <cmp-icon class="cmp-users-details__action" name="trash-o" (click)="delete()"></cmp-icon>
+    </div>
     <div class="cmp-users-details__wrapper">
-        <h2>User {{user.id}}</h2>
-        <pre>{{user|json}}</pre>
+        <cmp-f-row>
+            <cmp-f-column>
+                <h4 class="cmp-users-details__title">{{user.id}}</h4>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row>
+            <cmp-f-column>
+                <pre>{{user|json}}</pre>
+            </cmp-f-column>
+        </cmp-f-row>
     </div>
 </div>

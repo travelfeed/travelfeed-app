@@ -1,10 +1,19 @@
 <div class="cmp-users-item">
-    <div class="cmp-users-item__text">
-        {{user.email}}
+    <div class="cmp-users-item__header">
+        <div class="cmp-users-item__title">
+            <span>{{user.email}}</span>
+        </div>
+        <div class="cmp-users-item__content">
+            <ul class="cmp-users-item__facts">
+                <li class="cmp-users-item__fact" *ngIf="user.role.name">
+                    <span>{{user.role.name}}</span>
+                </li>
+            </ul>
+        </div>
     </div>
     <ul class="cmp-users-item__actions">
-        <li class="cmp-users-item__action">
-            <cmp-f-button type="button" theme="secondary, small, no-margin" icon="trash" (cbClick)="delete(user)"></cmp-f-button>
+        <li class="cmp-users-item__action" [title]="'BACKEND_USERS_LIST_ACTION_DELETE'|translate" (click)="delete($event)">
+            <cmp-icon name="trash"></cmp-icon>
         </li>
     </ul>
 </div>

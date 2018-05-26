@@ -14,4 +14,16 @@ export class UsersService {
     public fetchUsers(): Observable<ApiResponse<Array<User>>> {
         return this.http.get<ApiResponse<Array<User>>>(`${this.baseUri}/user`)
     }
+
+    public create(user: Partial<User>): Observable<ApiResponse<User>> {
+        return this.http.post<ApiResponse<User>>(`${this.baseUri}/user`, user)
+    }
+
+    public save(user: User): Observable<void> {
+        return this.http.post<void>(`${this.baseUri}/user/${user.id}`, user)
+    }
+
+    public delete(user: User): Observable<void> {
+        return this.http.delete<void>(`${this.baseUri}/user/${user.id}`)
+    }
 }

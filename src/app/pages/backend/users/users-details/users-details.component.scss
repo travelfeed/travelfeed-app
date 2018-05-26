@@ -1,0 +1,35 @@
+@import '../../../../../scss/shared';
+
+$component: 'cmp-users-details';
+
+@include cmp-base($component) {
+    &__actions {
+        height: 60px;
+        padding: 10px 15px;
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        background-color: $color-white3;
+        border-bottom: 1px dotted rgba($color-grey1, 0.4);
+        z-index: 1;
+    }
+
+    &__action {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: $color-white3;
+        transition: background-color .3s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba($color-grey1, .2);
+        }
+    }
+
+    &__wrapper {
+        padding: 20px;
+    }
+}
