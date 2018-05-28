@@ -30,6 +30,11 @@ $component: 'cmp-users-details';
     }
 
     &__wrapper {
-        padding: 20px;
+        padding: 20px 100px;
+    }
+
+    &__title {
+        @include use-text(headline-h4);
+        margin-bottom: 30px;
     }
 }

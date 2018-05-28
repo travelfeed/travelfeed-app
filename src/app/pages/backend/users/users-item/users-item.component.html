@@ -1,12 +1,15 @@
 <div class="cmp-users-item">
     <div class="cmp-users-item__header">
         <div class="cmp-users-item__title">
-            <span>{{user.email}}</span>
+            <span>{{user.firstname}} {{user.lastname}}</span>
         </div>
         <div class="cmp-users-item__content">
             <ul class="cmp-users-item__facts">
-                <li class="cmp-users-item__fact" *ngIf="user.role.name">
-                    <span>{{user.role.name}}</span>
+                <li class="cmp-users-item__fact" *ngIf="user.email">
+                    <span>{{user.email}}</span>
+                </li>
+                <li class="cmp-users-item__fact" *ngIf="user.username">
+                    <span>{{user.username}}</span>
                 </li>
             </ul>
         </div>

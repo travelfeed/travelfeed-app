@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+import { ReactiveFormsModule } from '@angular/forms'
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 import { users } from '../../../store/users/users.reducer'
@@ -16,6 +17,7 @@ import { UsersService } from './users.service'
 
 @NgModule({
     imports: [
+        ReactiveFormsModule,
         StoreModule.forFeature('users', users),
         EffectsModule.forFeature([UsersEffects]),
         SharedModule,

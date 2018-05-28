@@ -27,7 +27,7 @@ export class UsersEffects {
     @Effect()
     public getUsers$ = this.actions$.pipe(
         fromActionType(UsersActionTypes.LOAD_USERS, (action: LoadUsers) => {
-            return this.usersService.fetchUsers().pipe(
+            return this.usersService.fetchAll().pipe(
                 map(response => {
                     return new LoadUsersSuccess({
                         items: response.data,

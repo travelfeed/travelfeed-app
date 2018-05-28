@@ -4,15 +4,30 @@
         <cmp-icon class="cmp-users-details__action" name="trash-o" (click)="delete()"></cmp-icon>
     </div>
     <div class="cmp-users-details__wrapper">
-        <cmp-f-row>
-            <cmp-f-column>
-                <h4 class="cmp-users-details__title">{{user.id}}</h4>
-            </cmp-f-column>
-        </cmp-f-row>
-        <cmp-f-row>
-            <cmp-f-column>
-                <pre>{{user|json}}</pre>
-            </cmp-f-column>
-        </cmp-f-row>
+        <form [formGroup]="userForm">
+            <cmp-f-row>
+                <cmp-f-column>
+                    <h4 class="cmp-users-details__title">{{user.firstname}} {{user.lastname}}</h4>
+                </cmp-f-column>
+            </cmp-f-row>
+            <cmp-f-row layout="1-1">
+                <cmp-f-column>
+                    <cmp-f-input name="firstname" [label]="'BACKEND_USERS_DETAILS_FORM_FIRSTNAME'|translate" [fc]="firstname"></cmp-f-input>
+                </cmp-f-column>
+                <cmp-f-column>
+                    <cmp-f-input name="lastname" [label]="'BACKEND_USERS_DETAILS_FORM_LASTNAME'|translate" [fc]="lastname"></cmp-f-input>
+                </cmp-f-column>
+            </cmp-f-row>
+            <cmp-f-row>
+                <cmp-f-column>
+                    <cmp-f-input name="username" [label]="'BACKEND_USERS_DETAILS_FORM_USERNAME'|translate" [fc]="username"></cmp-f-input>
+                </cmp-f-column>
+            </cmp-f-row>
+            <cmp-f-row>
+                <cmp-f-column>
+                    <cmp-f-email name="email" [label]="'BACKEND_USERS_DETAILS_FORM_EMAIL'|translate" [fc]="email"></cmp-f-email>
+                </cmp-f-column>
+            </cmp-f-row>
+        </form>
     </div>
 </div>
