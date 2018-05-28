@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core'
+import { ReactiveFormsModule } from '@angular/forms'
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
-import { articles } from '../../../store/articles/articles.reducer'
-import { ArticlesEffects } from '../../../store/articles/articles.effects'
+import { ArticlesEffects, articles } from '../../../store/articles'
 import { SharedModule } from '../../../shared/shared.module'
 import { FormElementsModule } from '../../../components/form-elements/form-elements.module'
 import { AppRoutingModule } from '../../../app-routing.module'
@@ -16,6 +16,7 @@ import { ArticlesService } from './articles.service'
 
 @NgModule({
     imports: [
+        ReactiveFormsModule,
         StoreModule.forFeature('articles', articles),
         EffectsModule.forFeature([ArticlesEffects]),
         SharedModule,

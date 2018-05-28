@@ -3,8 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router'
 import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { takeWhile, filter } from 'rxjs/operators'
-import { ArticlesState } from '../../../store/articles/articles.reducer'
-import { ArticlesAction, ArticlesActionTypes } from '../../../store/articles/articles.action'
+import { ArticlesState, ArticlesAction, ArticlesActionTypes } from '../../../store/articles'
 
 @Component({
     selector: 'cmp-articles',

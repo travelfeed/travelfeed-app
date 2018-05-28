@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
 import { environment } from '../../../../environments/environment'
 import { ApiResponse } from '../../../shared/typings'
-import { Article } from '../../../store/articles/article.model'
+import { Article } from '../../../store/articles'
 
 @Injectable()
 export class ArticlesService {
