@@ -7,6 +7,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { AppRoutingModule } from './app-routing.module'
 import { CoreModule } from './core/core.module'
+import { NotificationModule } from './components/notification/notification.module'
 import { AuthModule } from './pages/auth/auth.module'
 import { BackendModule } from './pages/backend/backend.module'
 import { HomeModule } from './pages/home/home.module'
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         }),
         AppRoutingModule,
         CoreModule,
+        NotificationModule,
         AuthModule,
         BackendModule,
         HomeModule,
