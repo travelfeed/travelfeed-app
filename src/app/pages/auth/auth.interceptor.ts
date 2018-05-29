@@ -105,9 +105,9 @@ export class AuthInterceptor implements HttpInterceptor {
      * @returns {Observable<any>}
      */
     private invalidateToken(error: HttpErrorResponse): Observable<any> {
-        this.authService.userId = ''
-        this.authService.authToken = ''
-        this.authService.refreshToken = ''
+        this.authService.userId = null
+        this.authService.authToken = null
+        this.authService.refreshToken = null
 
         this.router.navigate(['/auth/signin'])
 

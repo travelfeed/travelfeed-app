@@ -1,23 +1,34 @@
 <div class="cmp-registration">
-    <form [formGroup]="registrationForm" (submit)="register()">
+    <form class="cmp-registration__wrapper" [formGroup]="registrationForm" (submit)="register()">
         <cmp-f-row>
             <cmp-f-column>
-                    <cmp-f-input class="cmp-registration__input" name="username" label="username" [fc]="username" [validation]="validation.username" autocomplete="username" icon="user"></cmp-f-input>
+                <cmp-headline-h2 [text]="'AUTH_REGISTRATION_FORM_HEADLINE'|translate"></cmp-headline-h2>
             </cmp-f-column>
         </cmp-f-row>
         <cmp-f-row>
             <cmp-f-column>
-                <cmp-f-email class="cmp-registration__input" name="email" label="email" [fc]="email" [validation]="validation.email" autocomplete="email" icon="user"></cmp-f-email>
+                    <cmp-f-input name="username" [label]="'AUTH_REGISTRATION_FORM_LABEL_USERNAME'|translate" [fc]="username" [validation]="validation['username']" autocomplete="username" icon="user"></cmp-f-input>
             </cmp-f-column>
         </cmp-f-row>
         <cmp-f-row>
             <cmp-f-column>
-                <cmp-f-password class="cmp-registration__input" name="password" label="password" [fc]="password" [validation]="validation.password" autocomplete="new-password" icon="key"></cmp-f-password>
+                <cmp-f-email name="email" [label]="'AUTH_REGISTRATION_FORM_LABEL_EMAIL'|translate" [fc]="email" [validation]="validation['email']" autocomplete="email" icon="user"></cmp-f-email>
             </cmp-f-column>
         </cmp-f-row>
-        <cmp-f-row>
-            <cmp-f-column align="right">
-                <cmp-f-button class="cmp-registration__button" type="submit" theme="color2" text="Register"></cmp-f-button>
+        <cmp-f-row layout="1-1">
+            <cmp-f-column>
+                <cmp-f-password name="password" [label]="'AUTH_REGISTRATION_FORM_LABEL_PASSWORD'|translate" [fc]="password" [validation]="validation['password']" autocomplete="new-password" icon="key"></cmp-f-password>
+            </cmp-f-column>
+            <cmp-f-column>
+                <cmp-f-password name="passwordrepeat" [label]="'AUTH_REGISTRATION_FORM_LABEL_PASSWORD_REPEAT'|translate" [fc]="passwordrepeat" [validation]="validation['passwordrepeat']" icon="key"></cmp-f-password>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row layout="1-1">
+            <cmp-f-column>
+                <cmp-f-button type="button" theme="secondary" [text]="'AUTH_REGISTRATION_FORM_BUTTON_BACK'|translate" icon="arrow-left" (cbClick)="back()"></cmp-f-button>
+            </cmp-f-column>
+            <cmp-f-column>
+                <cmp-f-button type="submit" theme="primary" [text]="'AUTH_REGISTRATION_FORM_BUTTON_SUBMIT'|translate" [disabled]="registrationForm.invalid"></cmp-f-button>
             </cmp-f-column>
         </cmp-f-row>
     </form>

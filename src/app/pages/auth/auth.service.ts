@@ -8,7 +8,7 @@ import { ApiResponse } from '../../shared/typings'
 
 @Injectable()
 export class AuthService {
-    @LocalStorage() public userId: string = null
+    @LocalStorage() public userId: number = null
 
     @LocalStorage() public userRole: string = null
 
@@ -27,7 +27,7 @@ export class AuthService {
      * @param {string} password
      * @returns {Observable<void>}
      */
-    public signin(email: string, password: string): Observable<void> {
+    public signin(email: string, password: string): Observable<ApiResponse<any>> {
         this.userId = null
         this.authToken = null
         this.refreshToken = null
@@ -43,6 +43,8 @@ export class AuthService {
                     this.userRole = response.data.userRole
                     this.authToken = response.data.authToken
                     this.refreshToken = response.data.refreshToken
+
+                    return response
                 }),
             )
     }
@@ -88,12 +90,12 @@ export class AuthService {
      * @param {stirng} email
      * @returns {Observable<void>}
      */
-    public register(username: string, password: string, email: string): Observable<void> {
+    public register(username: string, email: string, password: string): Observable<void> {
         return this.http
             .post<ApiResponse<any>>(`${this.baseUri}/auth/register`, {
                 username: username,
-                password: password,
                 email: email,
+                password: password,
             })
             .pipe(
                 map((response: ApiResponse<any>) => {
@@ -111,8 +113,8 @@ export class AuthService {
      * @returns {boolean}
      */
     public isAuthenticated(): boolean {
-        const emptyUserId = !this.userId || this.userId === ''
-        const emptyAuthToken = !this.authToken || this.authToken === ''
+        const emptyUserId = !this.userId || this.userId === null
+        const emptyAuthToken = !this.authToken || this.authToken === null
 
         // validate user data and tokens
         if (emptyUserId || emptyAuthToken) {

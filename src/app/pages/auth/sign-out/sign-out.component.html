@@ -1,21 +1,25 @@
-<div class="cmp-sign-out">
+<div class="cmp-sign-out" *ngIf="(state$ | async) as state">
     <div class="cmp-sign-out__wrapper">
         <cmp-f-row>
             <cmp-f-column>
-                <cmp-headline-h2 text="Abmelden"></cmp-headline-h2>
+                <cmp-headline-h2 [text]="'AUTH_SIGN_OUT_FORM_HEADLINE'|translate"></cmp-headline-h2>
             </cmp-f-column>
         </cmp-f-row>
-        <cmp-f-row>
+        <cmp-f-row *ngIf="state.user">
             <cmp-f-column>
-                <div>Du bist angemeldet als <cmp-link icon="user" [target]="['/backend/users', user.id]" [text]="user.email"></cmp-link>.</div>
+                <p>
+                    <span>{{'AUTH_SIGN_OUT_FORM_CURRENT_USER_MESSAGE'|translate}}</span>
+                    <cmp-link icon="user" [target]="['/backend/users', state.user.id]" [text]="state.user.email"></cmp-link>
+                    <span>.</span>
+                </p>
             </cmp-f-column>
         </cmp-f-row>
         <cmp-f-row layout="1-1">
             <cmp-f-column>
-                <cmp-f-button type="button" theme="secondary" text="Zurück" icon="arrow-left" (cbClick)="back()"></cmp-f-button>
+                <cmp-f-button type="button" theme="secondary" [text]="'AUTH_SIGN_OUT_FORM_BUTTON_BACK'|translate" icon="arrow-left" (cbClick)="back()"></cmp-f-button>
             </cmp-f-column>
             <cmp-f-column>
-                <cmp-f-button type="submit" theme="primary" text="Abmelden" icon="sign-out" (cbClick)="signout()"></cmp-f-button>
+                <cmp-f-button type="submit" theme="primary" [text]="'AUTH_SIGN_OUT_FORM_BUTTON_SUBMIT'|translate" icon="sign-out" (cbClick)="signout()"></cmp-f-button>
             </cmp-f-column>
         </cmp-f-row>
     </div>
