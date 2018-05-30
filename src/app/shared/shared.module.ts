@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core'
 import { DynamicComponentsComponent } from './dynamic-components/dynamic-components.component'
 import { DynamicComponentsDirective } from './dynamic-components/dynamic-components.directive'
 import { EditableDirective } from './editable/editable.directive'
+import { LanguagesService } from './languages/languages.service'
 import { NotificationService } from './notification/notification.service'
 import { NetworkService } from './network/network.service'
 
@@ -23,6 +24,7 @@ export class SharedModule {
         return {
             ngModule: SharedModule,
             providers: [
+                LanguagesService,
                 NotificationService,
                 NetworkService,
                 {
