@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input, ChangeDetectionStrategy } from '@angular/core'
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
 import { Router } from '@angular/router'
 import { FormControl } from '@angular/forms'
 import { Store } from '@ngrx/store'
@@ -10,29 +10,25 @@ import { Article, ArticlesState, ArticlesAction, ArticlesActionTypes } from '../
     styleUrls: ['./articles-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ArticlesListComponent implements AfterViewInit {
+export class ArticlesListComponent {
     @Input() public articles: Array<Article>
 
     public createMode: boolean = false
 
-    public title: FormControl = new FormControl()
+    public title: FormControl = new FormControl('')
 
     public constructor(private router: Router, private store: Store<ArticlesState>) {}
-
-    public ngAfterViewInit(): void {
-        this.title.setValue('')
-    }
 
     public select(article: Article): void {
         this.router.navigate(['/backend/articles/', article.id])
     }
 
     public toggle(): void {
-        this.createMode = !this.createMode
-
-        if (this.title.touched) {
-            this.title.setValue('')
+        if (this.createMode) {
+            this.title.reset('')
         }
+
+        this.createMode = !this.createMode
     }
 
     public create(): void {
@@ -41,7 +37,6 @@ export class ArticlesListComponent implements AfterViewInit {
             payload: this.title.value,
         })
 
-        this.createMode = false
-        this.title.setValue('')
+        this.toggle()
     }
 }

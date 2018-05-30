@@ -21,11 +21,11 @@ $component: 'cmp-users-details';
         line-height: 40px;
         text-align: center;
         background-color: $color-white3;
-        transition: background-color .3s;
+        transition: background-color 0.3s;
         cursor: pointer;
 
         &:hover {
-            background-color: rgba($color-grey1, .2);
+            background-color: rgba($color-grey1, 0.2);
         }
     }
 

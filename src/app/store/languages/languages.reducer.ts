@@ -47,11 +47,6 @@ export function languages(
                 ...state,
                 selected: state.items.find(item => item.id === action.payload),
             }
-
-        case LanguagesActionTypes.REFRESH_LANGUAGE:
-            return {
-                ...state,
-            }
     }
 
     return state

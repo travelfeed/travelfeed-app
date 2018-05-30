@@ -16,10 +16,15 @@ export class AppComponent implements OnInit {
     public constructor(private store: Store<AppState>, private translationService: TranslateService) {}
 
     public ngOnInit(): void {
-        this.translationService.use('en')
+        this.translationService.setDefaultLang('en')
 
         this.store.dispatch<LanguagesAction>({
             type: LanguagesActionTypes.LOAD_LANGUAGES,
+        })
+
+        this.store.dispatch<LanguagesAction>({
+            type: LanguagesActionTypes.SELECT_LANGUAGE,
+            payload: 'en',
         })
     }
 }

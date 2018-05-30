@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input } from '@angular/core'
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
 import { Router } from '@angular/router'
 import { FormControl } from '@angular/forms'
 import { Store } from '@ngrx/store'
@@ -10,30 +10,27 @@ import { UsersAction, UsersActionTypes } from '../../../../store/users/users.act
     selector: 'cmp-users-list',
     templateUrl: './users-list.component.html',
     styleUrls: ['./users-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UsersListComponent implements AfterViewInit {
+export class UsersListComponent {
     @Input() public users: Array<User>
 
     public createMode: boolean = false
 
-    public email: FormControl = new FormControl()
+    public email: FormControl = new FormControl('')
 
     public constructor(private router: Router, private store: Store<UsersState>) {}
-
-    public ngAfterViewInit(): void {
-        this.email.setValue('')
-    }
 
     public select(user: User): void {
         this.router.navigate(['/backend/users/', user.id])
     }
 
     public toggle(): void {
-        this.createMode = !this.createMode
-
-        if (this.email.touched) {
-            this.email.setValue('')
+        if (this.createMode) {
+            this.email.reset('')
         }
+
+        this.createMode = !this.createMode
     }
 
     public create(): void {
@@ -42,7 +39,6 @@ export class UsersListComponent implements AfterViewInit {
             payload: this.email.value,
         })
 
-        this.createMode = false
-        this.email.setValue('')
+        this.toggle()
     }
 }

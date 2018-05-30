@@ -8,7 +8,6 @@ export enum LanguagesActionTypes {
     LOAD_LANGUAGES_SUCCESS = '[Languages] Load languages success',
     LOAD_LANGUAGES_FAIL = '[Languages] Load languages fail',
     SELECT_LANGUAGE = '[Languages] Select language',
-    REFRESH_LANGUAGE = '[Languages] Refresh language',
 }
 
 /**
@@ -42,15 +41,6 @@ export class SelectLanguage implements Action {
 export type SelectLanguageAction = SelectLanguage
 
 /**
- * Refresh language
- */
-export class RefreshLanguage implements Action {
-    public readonly type = LanguagesActionTypes.REFRESH_LANGUAGE
-}
-
-export type RefreshLanguageAction = RefreshLanguage
-
-/**
  * All actions
  */
-export type LanguagesAction = LoadLanguagesAction | SelectLanguageAction | RefreshLanguageAction
+export type LanguagesAction = LoadLanguagesAction | SelectLanguageAction

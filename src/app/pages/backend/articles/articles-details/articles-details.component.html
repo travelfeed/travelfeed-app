@@ -9,7 +9,7 @@
         <cmp-f-row>
             <cmp-f-column>
                 <h4 class="cmp-articles-details__title" [(editable)]="article.title" [toolbar]="false"></h4>
-                <h5 class="cmp-articles-details__subtitle" [(editable)]="article.title" [toolbar]="false"></h5>
+                <h5 class="cmp-articles-details__subtitle" [(editable)]="article.subtitle" [toolbar]="false" *ngIf="article.subtitle"></h5>
             </cmp-f-column>
         </cmp-f-row>
         <cmp-f-row>

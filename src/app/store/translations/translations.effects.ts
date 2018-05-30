@@ -25,6 +25,7 @@ import {
     CreateTranslationKeySuccess,
     CreateTranslationKeyFail,
 } from './translations.action'
+import { RefreshLanguage } from '../languages'
 
 @Injectable()
 export class TranslationsEffects {
@@ -68,9 +69,8 @@ export class TranslationsEffects {
 
     @Effect()
     public saveTranslationSuccess$ = this.actions$.pipe(
-        fromActionType(TranslationsActionTypes.SAVE_TRANSLATION, (action: SaveTranslation) => {
-            // TODO: dispatch REFRESH_TRANSLATION
-            return of(null)
+        fromActionType(TranslationsActionTypes.SAVE_TRANSLATION_SUCCESS, () => {
+            return of(new RefreshLanguage())
         }),
     )
 

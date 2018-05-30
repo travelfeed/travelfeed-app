@@ -40,10 +40,10 @@ $component: 'cmp-users-item';
     &__action {
         width: 30px;
         font-size: 18px;
-        transition: background-color .3s;
+        transition: background-color 0.3s;
 
         &:hover {
-            background-color: rgba($color-grey2, .2);
+            background-color: rgba($color-grey2, 0.2);
         }
     }
 
