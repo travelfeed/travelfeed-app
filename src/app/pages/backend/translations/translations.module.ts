@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
 import { ReactiveFormsModule } from '@angular/forms'
+import { StoreModule } from '@ngrx/store'
+import { EffectsModule } from '@ngrx/effects'
+import { translations, TranslationsEffects } from '../../../store/translations'
+import { SharedModule } from '../../../shared/shared.module'
 import { FormElementsModule } from '../../../components/form-elements/form-elements.module'
 import { HeadlinesModule } from '../../../components/headlines/headlines.module'
 import { IconModule } from '../../../components/icon/icon.module'
@@ -11,7 +14,15 @@ import { TranslationsService } from './translations.service'
 import { TranslationsItemComponent } from './translations-item/translations-item.component'
 
 @NgModule({
-    imports: [CommonModule, ReactiveFormsModule, FormElementsModule, HeadlinesModule, IconModule],
+    imports: [
+        ReactiveFormsModule,
+        StoreModule.forFeature('translations', translations),
+        EffectsModule.forFeature([TranslationsEffects]),
+        SharedModule,
+        FormElementsModule,
+        HeadlinesModule,
+        IconModule,
+    ],
     declarations: [
         TranslationsComponent,
         TranslationsOverviewComponent,

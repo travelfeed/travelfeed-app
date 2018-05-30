@@ -16,8 +16,8 @@ import { TravelogueModule } from './pages/travelogue/travelogue.module'
 import { environment } from '../environments/environment'
 import { AppComponent } from './app.component'
 
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http, '/assets/translations/')
+export function translationLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http, `${environment.apiBaseUrl}/translation/`, '')
 }
 
 @NgModule({
@@ -32,7 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
+                useFactory: translationLoaderFactory,
                 deps: [HttpClient],
             },
         }),
