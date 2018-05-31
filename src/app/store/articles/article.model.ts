@@ -3,6 +3,7 @@ import { User } from '../users/user.model'
 export interface Article {
     id: number
     title: string
+    subtitle: string
     text: string
     city: string
     country: string

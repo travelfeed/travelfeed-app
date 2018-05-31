@@ -5,4 +5,8 @@ $component: 'cmp-f-text-area';
 @include cmp-base($component, block) {
     @include cmp-form-element();
     @include cmp-form-textarea();
+
+    /*&__input {
+        min-height: 60px;
+    }*/
 }
