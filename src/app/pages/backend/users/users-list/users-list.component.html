@@ -1,0 +1,25 @@
+<ul class="cmp-users-list">
+    <li class="cmp-users-list__item" routerLinkActive="active" *ngFor="let user of users">
+        <a class="cmp-users-list__link" [routerLink]="['../', user.id]">
+            <cmp-users-item [user]="user"></cmp-users-item>
+        </a>
+    </li>
+    <li class="cmp-users-list__new-item">
+            <a class="cmp-users-list__link" [title]="'BACKEND_USERS_LIST_NEW_TOGGLE'|translate">
+                <cmp-f-row (click)="toggle()">
+                    <cmp-f-column>
+                        <cmp-icon [name]="createMode ? 'chevron-up' : 'chevron-down'"></cmp-icon>
+                        <span class="cmp-users-list__new-text">{{'BACKEND_USERS_LIST_NEW_TEXT'|translate}}</span>
+                    </cmp-f-column>
+                </cmp-f-row>
+                <cmp-f-row class="cmp-users-list__new-form" layout="2-1" *ngIf="createMode">
+                    <cmp-f-column>
+                        <cmp-f-email name="email" [label]="'BACKEND_USERS_LIST_NEW_LABEL'|translate" [fc]="email"></cmp-f-email>
+                    </cmp-f-column>
+                    <cmp-f-column>
+                        <cmp-f-button theme="primary" [text]="'BACKEND_USERS_LIST_NEW_BUTTON'|translate" icon="check" [disabled]="email.value.length === 0" (cbClick)="create()"></cmp-f-button>
+                    </cmp-f-column>
+                </cmp-f-row>
+            </a>
+        </li>
+</ul>

@@ -1,16 +1,14 @@
-import { Component } from '@angular/core'
-import { ListService } from './list.service'
+import { Component, Input } from '@angular/core'
 
 @Component({
     selector: 'cmp-list',
     templateUrl: './list.component.html',
-    styleUrls: ['./list.component.scss']
+    styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-    public title: string = 'Mein Liste'
-    public listElements: Array<string> = []
+    @Input() public title: string
 
-    public constructor(private listService: ListService) {
-        this.listElements = listService.getListContent()
-    }
+    @Input() public items: Array<string> = []
+
+    public constructor() {}
 }

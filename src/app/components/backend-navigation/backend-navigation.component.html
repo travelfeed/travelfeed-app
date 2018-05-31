@@ -1,0 +1,33 @@
+<div class="cmp-backend-navigation" [ngClass]="{'cmp-backend-navigation--expanded': expanded}">
+    <div class="cmp-backend-navigation__wrapper">
+        <button class="cmp-backend-navigation__button" type="button" (click)="toggleNavigation()">
+            <cmp-icon name="bars"></cmp-icon>
+        </button>
+        <div class="cmp-backend-navigation__content">
+            <ul class="cmp-backend-navigation__items">
+                <li class="cmp-backend-navigation__item" routerLinkActive="active">
+                    <cmp-link class="cmp-backend-navigation__link" align="left" [routerLink]="['articles']" [inline]="false">
+                        <cmp-icon class="cmp-backend-navigation__icon" name="file-text-o"></cmp-icon>
+                        <span class="cmp-backend-navigation__text">{{'BACKEND_NAVIGATION_TITLE_ARTICLES'|translate}}</span>
+                    </cmp-link>
+                </li>
+                <li class="cmp-backend-navigation__item" routerLinkActive="active">
+                    <cmp-link class="cmp-backend-navigation__link" align="left" [routerLink]="['translations']" [inline]="false">
+                        <cmp-icon class="cmp-backend-navigation__icon" name="language"></cmp-icon>
+                        <span class="cmp-backend-navigation__text">{{'BACKEND_NAVIGATION_TITLE_TRANSLATIONS'|translate}}</span>
+                    </cmp-link>
+                </li>
+                <li class="cmp-backend-navigation__item" routerLinkActive="active">
+                    <cmp-link class="cmp-backend-navigation__link" align="left" [routerLink]="['users']" [inline]="false">
+                        <cmp-icon class="cmp-backend-navigation__icon" name="users"></cmp-icon>
+                        <span class="cmp-backend-navigation__text">{{'BACKEND_NAVIGATION_TITLE_USERS'|translate}}</span>
+                    </cmp-link>
+                </li>
+            </ul>
+        </div>
+        <cmp-link class="cmp-backend-navigation__button" align="left" [routerLink]="['/auth/signout']" [inline]="false">
+            <cmp-icon class="cmp-backend-navigation__icon" name="sign-out"></cmp-icon>
+            <span class="cmp-backend-navigation__text">{{'BACKEND_NAVIGATION_SIGN_OUT'|translate}}</span>
+        </cmp-link>
+    </div>
+</div>

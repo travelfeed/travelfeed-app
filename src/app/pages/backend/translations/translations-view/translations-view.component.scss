@@ -1,0 +1,23 @@
+@import '../../../../../scss/shared';
+
+$component: 'cmp-translations-view';
+
+@include cmp-base($component) {
+    &__item {
+        margin-top: 30px;
+    }
+
+    &__form {
+        margin-top: 30px;
+        display: block;
+    }
+
+    &__field {
+        width: auto;
+        flex: 1;
+    }
+
+    &__submit {
+        max-width: 320px;
+    }
+}

@@ -1,0 +1,27 @@
+<div class="cmp-sign-in">
+    <form class="cmp-sign-in__wrapper" [formGroup]="signInForm" (submit)="signin()">
+        <cmp-f-row>
+            <cmp-f-column>
+                <cmp-headline-h2 [text]="'AUTH_SIGN_IN_FORM_HEADLINE'|translate"></cmp-headline-h2>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row>
+            <cmp-f-column>
+                <cmp-f-email name="email" [label]="'AUTH_SIGN_IN_FORM_LABEL_EMAIL'|translate" [fc]="email" [validation]="validation['email']" autocomplete="email" icon="user"></cmp-f-email>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row>
+            <cmp-f-column>
+                <cmp-f-password name="password" [label]="'AUTH_SIGN_IN_FORM_LABEL_PASSWORD'|translate" [fc]="password" [validation]="validation['password']" autocomplete="current-password" icon="key"></cmp-f-password>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row layout="1-1">
+            <cmp-f-column>
+                <cmp-f-button type="button" theme="secondary" [text]="'AUTH_SIGN_IN_FORM_BUTTON_BACK'|translate" icon="arrow-left" (cbClick)="back()"></cmp-f-button>
+            </cmp-f-column>
+            <cmp-f-column>
+                <cmp-f-button type="submit" theme="primary" [text]="'AUTH_SIGN_IN_FORM_BUTTON_SUBMIT'|translate" icon="paper-plane-o"></cmp-f-button>
+            </cmp-f-column>
+        </cmp-f-row>
+    </form>
+</div>

@@ -1,0 +1,9 @@
+@import '../scss/shared';
+
+$component: 'cmp-root';
+
+@include cmp-base($component) {
+}
+
+@include cmp-modifier($component, 'activated') {
+}

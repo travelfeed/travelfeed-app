@@ -1,0 +1,22 @@
+@import '../../../../../scss/shared';
+
+$component: 'cmp-translations-item';
+
+@include cmp-base($component) {
+    &__value {
+        width: auto;
+        flex: 1;
+    }
+
+    &__actions {
+        max-width: 320px;
+    }
+
+    &__input {
+        flex: 1;
+    }
+
+    &__button {
+        margin-left: 20px;
+    }
+}

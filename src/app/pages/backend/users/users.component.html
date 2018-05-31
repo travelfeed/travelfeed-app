@@ -1,0 +1,13 @@
+<div class="cmp-users" *ngIf="(state$|async) as state">
+    <div class="cmp-users__wrapper">
+        <div class="cmp-users__list">
+            <div class="cmp-users__title">
+                <cmp-headline-h4 [text]="'BACKEND_USERS_TITLE'|translate" icon="users" iconPosition="left"></cmp-headline-h4>
+            </div>
+            <cmp-users-list [users]="state.items"></cmp-users-list>
+        </div>
+        <div class="cmp-users__details" *ngIf="state.selected">
+            <cmp-users-details [user]="state.selected"></cmp-users-details>
+        </div>
+    </div>
+</div>

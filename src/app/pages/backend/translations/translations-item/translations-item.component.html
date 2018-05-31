@@ -1,0 +1,11 @@
+<div class="cmp-translations-item" [ngClass]="{'cmp-translations-item--changed': changed}" *ngIf="(state$ | async) as state">
+    <cmp-f-row layout="2-1" *ngIf="translation">
+        <cmp-f-column class="cmp-translations-item__value">
+            <cmp-f-input class="cmp-translations-item__input" name="input" [label]="translation.key.key" [fc]="input"></cmp-f-input>
+        </cmp-f-column>
+        <cmp-f-column class="cmp-translations-item__actions" align="right" [flex]="true">
+            <cmp-f-button class="cmp-translations-item__button" type="button" theme="primary, color1" text="SAVE" [disabled]="state.loading || !changed" (cbClick)="save()"></cmp-f-button>
+            <cmp-f-button class="cmp-translations-item__button" type="button" theme="secondary, color2" text="DELETE" [disabled]="state.loading" (cbClick)="delete()"></cmp-f-button>
+        </cmp-f-column>
+    </cmp-f-row>
+</div>

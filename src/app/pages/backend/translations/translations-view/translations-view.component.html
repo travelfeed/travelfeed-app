@@ -1,0 +1,11 @@
+<div class="cmp-translations-view" *ngIf="(state$ | async) as state">
+    <cmp-translations-item class="cmp-translations-view__item" [translation]="item" *ngFor="let item of state.items"></cmp-translations-item>
+    <cmp-f-row class="cmp-translations-view__form" layout="2-1" *ngIf="state.language">
+        <cmp-f-column class="cmp-translations-view__field">
+            <cmp-f-input name="key" label="Key" [fc]="key"></cmp-f-input>
+        </cmp-f-column>
+        <cmp-f-column class="cmp-translations-view__submit">
+            <cmp-f-button theme="primary" text="Create" (cbClick)="create()"></cmp-f-button>
+        </cmp-f-column>
+    </cmp-f-row>
+</div>

@@ -6,13 +6,11 @@ describe('NewsletterComponent', () => {
     let component: NewsletterComponent
     let fixture: ComponentFixture<NewsletterComponent>
 
-    beforeEach(
-        async(() => {
-            TestBed.configureTestingModule({
-                declarations: [NewsletterComponent]
-            }).compileComponents()
-        })
-    )
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [NewsletterComponent],
+        }).compileComponents()
+    }))
 
     beforeEach(() => {
         fixture = TestBed.createComponent(NewsletterComponent)

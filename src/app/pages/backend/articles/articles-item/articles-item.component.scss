@@ -1,0 +1,63 @@
+@import '../../../../../scss/shared';
+
+$component: 'cmp-articles-item';
+
+@include cmp-base($component) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-bottom: 10px;
+    }
+
+    &__title {
+        height: 40px;
+        line-height: 40px;
+        flex: 1;
+        font-size: 18px;
+        color: $color-primary;
+        font-weight: bold;
+    }
+
+    &__actions,
+    &__facts {
+        height: 30px;
+        display: flex;
+    }
+
+    &__action,
+    &__fact {
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: $color-primary;
+    }
+
+    &__action {
+        width: 30px;
+        font-size: 18px;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: rgba($color-grey2, 0.2);
+        }
+    }
+
+    &__fact {
+        font-size: 15px;
+
+        &:not(:last-of-type) {
+            margin-right: 5px;
+
+            &::after {
+                content: '|';
+                margin-left: 5px;
+                display: inline-block;
+            }
+        }
+    }
+}
