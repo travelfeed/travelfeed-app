@@ -6,7 +6,7 @@ import { DynamicComponentsDirective } from './dynamic-components/dynamic-compone
 import { EditableDirective } from './editable/editable.directive'
 import { NotificationService } from './notification/notification.service'
 import { NetworkService } from './network/network.service'
-import { SocketService } from '../services/socket/socket.service'
+import { SocketService } from './socket/socket.service'
 
 @NgModule({
     imports: [CommonModule, TranslateModule],

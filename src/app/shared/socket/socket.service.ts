@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
-import { connect } from 'socket.io-client'
 import { Subject, Observable, of, fromEvent, merge } from 'rxjs'
 import { filter, map } from 'rxjs/operators'
+import { connect } from 'socket.io-client'
 import { environment } from '../../../environments/environment'
 import { SocketEvent, SocketEventName } from './typings'
 
