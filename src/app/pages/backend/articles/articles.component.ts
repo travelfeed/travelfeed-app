@@ -3,8 +3,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router'
 import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { takeWhile, filter } from 'rxjs/operators'
-import { ArticlesState } from '../../../store/articles/articles.reducer'
-import { ArticlesAction, ArticlesActionTypes } from '../../../store/articles/articles.action'
+import { AppState } from '../../../store'
+import { ArticlesState, ArticlesAction, ArticlesActionTypes } from '../../../store/articles'
 
 @Component({
     selector: 'cmp-articles',
@@ -16,7 +16,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
 
     private alive: boolean = true
 
-    public constructor(private store: Store<ArticlesState>, private route: ActivatedRoute) {}
+    public constructor(private store: Store<AppState>, private route: ActivatedRoute) {}
 
     public ngOnInit(): void {
         this.store.dispatch<ArticlesAction>({

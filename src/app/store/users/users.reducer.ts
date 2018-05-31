@@ -21,6 +21,7 @@ export function users(state: UsersState = initialState, action: UsersAction): Us
             return {
                 ...state,
                 loading: true,
+                loaded: false,
             }
 
         case UsersActionTypes.LOAD_USERS_SUCCESS:
@@ -39,10 +40,86 @@ export function users(state: UsersState = initialState, action: UsersAction): Us
                 loaded: false,
             }
 
+        case UsersActionTypes.CREATE_USER:
+            return {
+                ...state,
+                loading: true,
+                loaded: false,
+            }
+
+        case UsersActionTypes.CREATE_USER_SUCCESS:
+            return {
+                ...state,
+                items: [...state.items, action.payload],
+                loading: false,
+                loaded: true,
+            }
+
+        case UsersActionTypes.CREATE_USER_FAIL:
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
+            }
+
         case UsersActionTypes.SELECT_USER:
             return {
                 ...state,
                 selected: state.items.find(item => item.id === action.payload),
+            }
+
+        case UsersActionTypes.SAVE_USER:
+            return {
+                ...state,
+                loading: true,
+                loaded: false,
+            }
+
+        case UsersActionTypes.SAVE_USER_SUCCESS:
+            return {
+                ...state,
+                items: state.items.map(item => {
+                    if (item === action.payload) {
+                        return {
+                            ...item,
+                            ...action.payload,
+                        }
+                    }
+
+                    return item
+                }),
+                loading: false,
+                loaded: true,
+            }
+
+        case UsersActionTypes.SAVE_USER_FAIL:
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
+            }
+
+        case UsersActionTypes.DELETE_USER:
+            return {
+                ...state,
+                loading: true,
+                loaded: false,
+            }
+
+        case UsersActionTypes.DELETE_USER_SUCCESS:
+            return {
+                ...state,
+                items: state.items.filter(item => item !== action.payload),
+                selected: state.selected === action.payload ? null : state.selected,
+                loading: false,
+                loaded: true,
+            }
+
+        case UsersActionTypes.DELETE_USER_FAIL:
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
             }
     }
 

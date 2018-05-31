@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { Location } from '@angular/common'
-import { Router } from '@angular/router'
+import { Store, select } from '@ngrx/store'
+import { Observable } from 'rxjs'
+import { AuthState } from '../../../store/auth/auth.reducer'
 import { AuthService } from '../auth.service'
+import { AuthAction, AuthActionTypes } from '../../../store/auth/auth.action'
 
 @Component({
     selector: 'cmp-sign-out',
@@ -9,9 +12,11 @@ import { AuthService } from '../auth.service'
     styleUrls: ['./sign-out.component.scss'],
 })
 export class SignOutComponent implements OnInit {
+    public state$: Observable<AuthState> = this.store.pipe(select('auth'))
+
     public constructor(
         private location: Location,
-        private router: Router,
+        private store: Store<AuthState>,
         public authService: AuthService,
     ) {}
 
@@ -26,8 +31,8 @@ export class SignOutComponent implements OnInit {
     }
 
     public signout(): void {
-        this.authService.signout().subscribe(() => {
-            this.router.navigate(['/auth/signin'])
+        this.store.dispatch<AuthAction>({
+            type: AuthActionTypes.SIGN_OUT,
         })
     }
 }

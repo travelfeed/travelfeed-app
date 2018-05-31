@@ -4,21 +4,31 @@ $component: 'cmp-translations';
 
 @include cmp-base($component) {
     &__wrapper {
-        min-height: 100vh;
-        padding: 20px 0 60px;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         background-color: $color-white2;
     }
 
     &__title {
-        margin-bottom: 30px;
-        padding: 0 40px 10px;
+        height: 60px;
+        margin-bottom: 25px;
+        padding: 10px 40px 0;
+        position: sticky;
+        top: 0;
+        background-color: rgb(242, 242, 242);
         border-bottom: 1px dotted rgba($color-grey1, 0.4);
+        z-index: 1;
     }
 
     &__overview,
     &__view {
         padding: 0 40px 0;
+    }
+
+    &__overview {
+        margin-bottom: 5px;
+        padding-bottom: 20px;
+        border-bottom: 1px $color-white3 dashed;
     }
 }

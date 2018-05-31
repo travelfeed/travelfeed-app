@@ -1,8 +1,14 @@
-import { Article } from '../articles/article.model'
+export interface UserRole {
+    id: number
+    name: string
+}
 
 export interface User {
     id: number
+    username: string
     email: string
-    userRole: any
-    articles: Array<Article>
+    firstname: string
+    lastname: string
+    active: boolean
+    role: UserRole
 }

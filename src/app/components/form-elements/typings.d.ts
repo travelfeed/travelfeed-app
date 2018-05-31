@@ -1,8 +1,19 @@
+import { AbstractControl } from '@angular/forms'
+
 export const MODULE = 'form-elements'
 
 export interface FValidation {
-    type: 'min' | 'max' | 'required' | 'requiredTrue' | 'email' | 'minLength' | 'maxLength' | 'pattern'
-    value?: string | number
+    type:
+        | 'min'
+        | 'max'
+        | 'required'
+        | 'requiredTrue'
+        | 'email'
+        | 'minLength'
+        | 'maxLength'
+        | 'pattern'
+        | 'function'
+    value?: string | number | ((control: AbstractControl) => any)
     message: string
 }
 

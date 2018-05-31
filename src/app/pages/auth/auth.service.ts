@@ -8,7 +8,9 @@ import { ApiResponse } from '../../shared/typings'
 
 @Injectable()
 export class AuthService {
-    @LocalStorage() public userId: string = null
+    @LocalStorage() public userId: number = null
+
+    @LocalStorage() public userRole: string = null
 
     @LocalStorage() public authToken: string = null
 
@@ -25,10 +27,10 @@ export class AuthService {
      * @param {string} password
      * @returns {Observable<void>}
      */
-    public signin(email: string, password: string): Observable<void> {
-        this.userId = ''
-        this.authToken = ''
-        this.refreshToken = ''
+    public signin(email: string, password: string): Observable<ApiResponse<any>> {
+        this.userId = null
+        this.authToken = null
+        this.refreshToken = null
 
         return this.http
             .post<ApiResponse<any>>(`${this.baseUri}/auth/signin`, {
@@ -38,8 +40,11 @@ export class AuthService {
             .pipe(
                 map((response: ApiResponse<any>) => {
                     this.userId = response.data.userId
+                    this.userRole = response.data.userRole
                     this.authToken = response.data.authToken
                     this.refreshToken = response.data.refreshToken
+
+                    return response
                 }),
             )
     }
@@ -50,9 +55,10 @@ export class AuthService {
      * @returns {Observable<ApiResponse<void>>}
      */
     public signout(): Observable<ApiResponse<void>> {
-        this.userId = ''
-        this.authToken = ''
-        this.refreshToken = ''
+        this.userId = null
+        this.userRole = null
+        this.authToken = null
+        this.refreshToken = null
 
         return this.http.post<ApiResponse<void>>(`${this.baseUri}/auth/signout`, null)
     }
@@ -84,16 +90,17 @@ export class AuthService {
      * @param {stirng} email
      * @returns {Observable<void>}
      */
-    public register(username: string, password: string, email: string): Observable<void> {
+    public register(username: string, email: string, password: string): Observable<void> {
         return this.http
             .post<ApiResponse<any>>(`${this.baseUri}/auth/register`, {
                 username: username,
-                password: password,
                 email: email,
+                password: password,
             })
             .pipe(
                 map((response: ApiResponse<any>) => {
                     this.userId = response.data.userId
+                    this.userRole = response.data.userRole
                     this.authToken = response.data.authToken
                     this.refreshToken = response.data.refreshToken
                 }),
@@ -106,8 +113,8 @@ export class AuthService {
      * @returns {boolean}
      */
     public isAuthenticated(): boolean {
-        const emptyUserId = !this.userId || this.userId === ''
-        const emptyAuthToken = !this.authToken || this.authToken === ''
+        const emptyUserId = !this.userId || this.userId === null
+        const emptyAuthToken = !this.authToken || this.authToken === null
 
         // validate user data and tokens
         if (emptyUserId || emptyAuthToken) {
@@ -115,5 +122,9 @@ export class AuthService {
         }
 
         return true
+    }
+
+    public isAdmin(): boolean {
+        return this.userRole === 'admin'
     }
 }

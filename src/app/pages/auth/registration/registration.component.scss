@@ -3,17 +3,22 @@
 $component: 'cmp-registration';
 
 @include cmp-base($component) {
-    background-color: #f5deb3;
-    width: 35%;
-    padding: 50px 100px 20px;
-    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &__input {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    &__button {
-        margin-top: 10px;
+    &__wrapper {
+        width: 50vw;
+        height: 70vh;
+        min-width: 550px;
+        max-height: 500px;
+        min-height: 450px;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: $color-white3;
     }
 }

@@ -21,11 +21,11 @@ $component: 'cmp-articles-details';
         line-height: 40px;
         text-align: center;
         background-color: $color-white3;
-        transition: background-color .3s;
+        transition: background-color 0.3s;
         cursor: pointer;
 
         &:hover {
-            background-color: rgba($color-grey1, .2);
+            background-color: rgba($color-grey1, 0.2);
         }
     }
 
@@ -37,8 +37,8 @@ $component: 'cmp-articles-details';
     &__subtitle,
     &__text {
         position: relative;
-        opacity: .5;
-        transition: opacity .4s;
+        opacity: 0.5;
+        transition: opacity 0.4s;
 
         &::before {
             height: 100%;
@@ -51,8 +51,8 @@ $component: 'cmp-articles-details';
             font-size: 13px;
             font-weight: 100;
             transform: translateX(calc(-100% - 10px));
-            opacity: .5;
-            transition: opacity .4s;
+            opacity: 0.5;
+            transition: opacity 0.4s;
         }
 
         &:focus {
@@ -84,5 +84,9 @@ $component: 'cmp-articles-details';
         &:focus::before {
             content: 'Text';
         }
+    }
+
+    &__additionals {
+        margin-top: 20px;
     }
 }

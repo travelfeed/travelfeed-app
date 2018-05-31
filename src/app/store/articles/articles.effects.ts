@@ -102,12 +102,8 @@ export class ArticlesEffects {
             return new Observable(observer => {
                 this.router
                     .navigate(['/backend/articles'])
-                    .then(() => {
-                        observer.complete()
-                    })
-                    .catch(error => {
-                        observer.error(error)
-                    })
+                    .then(() => observer.complete())
+                    .catch(error => observer.error(error))
             })
         }),
     )

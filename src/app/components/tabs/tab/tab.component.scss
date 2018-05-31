@@ -2,4 +2,5 @@
 
 $component: 'cmp-tab';
 
-@include cmp-base($component) {}
+@include cmp-base($component) {
+}

@@ -2,7 +2,7 @@
     <div class="cmp-users__wrapper">
         <div class="cmp-users__list">
             <div class="cmp-users__title">
-                <cmp-headline-h4 text="Users" icon="users" iconPosition="left"></cmp-headline-h4>
+                <cmp-headline-h4 [text]="'BACKEND_USERS_TITLE'|translate" icon="users" iconPosition="left"></cmp-headline-h4>
             </div>
             <cmp-users-list [users]="state.items"></cmp-users-list>
         </div>

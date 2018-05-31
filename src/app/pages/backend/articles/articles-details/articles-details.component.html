@@ -9,7 +9,7 @@
         <cmp-f-row>
             <cmp-f-column>
                 <h4 class="cmp-articles-details__title" [(editable)]="article.title" [toolbar]="false"></h4>
-                <h5 class="cmp-articles-details__subtitle" [(editable)]="article.title" [toolbar]="false"></h5>
+                <h5 class="cmp-articles-details__subtitle" [(editable)]="article.subtitle" [toolbar]="false" *ngIf="article.subtitle"></h5>
             </cmp-f-column>
         </cmp-f-row>
         <cmp-f-row>
@@ -17,5 +17,23 @@
                 <p class="cmp-articles-details__text" [(editable)]="article.text"></p>
             </cmp-f-column>
         </cmp-f-row>
+        <form class="cmp-articles-details__additionals" [formGroup]="articleForm">
+            <cmp-f-row layout="1-1">
+                <cmp-f-column>
+                    <cmp-f-input name="country" [label]="'BACKEND_ARTICLES_DETAILS_FORM_COUNTRY'|translate" [fc]="country"></cmp-f-input>
+                </cmp-f-column>
+                <cmp-f-column>
+                    <cmp-f-input name="city" [label]="'BACKEND_ARTICLES_DETAILS_FORM_CITY'|translate" [fc]="city"></cmp-f-input>
+                </cmp-f-column>
+            </cmp-f-row>
+            <cmp-f-row layout="1-1">
+                <cmp-f-column>
+                    <cmp-f-input name="latitude" [label]="'BACKEND_ARTICLES_DETAILS_FORM_LATITUDE'|translate" [fc]="latitude"></cmp-f-input>
+                </cmp-f-column>
+                <cmp-f-column>
+                    <cmp-f-input name="longitude" [label]="'BACKEND_ARTICLES_DETAILS_FORM_LONGITUDE'|translate" [fc]="longitude"></cmp-f-input>
+                </cmp-f-column>
+            </cmp-f-row>
+        </form>
     </div>
 </div>

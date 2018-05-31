@@ -1,10 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { AbstractControl, FormControl } from '@angular/forms'
-import { takeWhile, map } from 'rxjs/operators'
-import { TranslationsService } from '../translations.service'
-import { ApiResponse } from '../../../../shared/typings'
+import { Store, select } from '@ngrx/store'
+import { Observable } from 'rxjs'
+import { takeWhile } from 'rxjs/operators'
+import { AppState } from '../../../../store'
+import {
+    TranslationsState,
+    TranslationsAction,
+    TranslationsActionTypes,
+} from '../../../../store/translations'
+import { Language, LanguagesState } from '../../../../store/languages'
 import { FSelectOption, FSelectPlaceholder } from '../../../../components/form-elements/typings'
-import { TranslationLanguage } from '../typings'
 
 @Component({
     selector: 'cmp-translations-overview',
@@ -12,6 +18,10 @@ import { TranslationLanguage } from '../typings'
     styleUrls: ['./translations-overview.component.scss'],
 })
 export class TranslationsOverviewComponent implements OnInit, OnDestroy {
+    public state$: Observable<TranslationsState> = this.store.pipe(select('translations'))
+
+    public languages$: Observable<LanguagesState> = this.store.pipe(select('languages'))
+
     public select: AbstractControl = new FormControl()
 
     public options: Array<FSelectOption> = []
@@ -24,26 +34,21 @@ export class TranslationsOverviewComponent implements OnInit, OnDestroy {
 
     private alive: boolean = true
 
-    public constructor(private translationsService: TranslationsService) {}
+    public constructor(private store: Store<AppState>) {}
 
     public ngOnInit(): void {
-        this.translationsService
-            .fetchLanguages()
-            .pipe(
-                takeWhile(() => this.alive),
-                map((response: ApiResponse<Array<TranslationLanguage>>) => {
-                    return response.data.map((item): FSelectOption => ({
-                        label: item.name,
-                        value: item,
-                    }))
-                }),
-            )
-            .subscribe((options: Array<FSelectOption>) => {
-                this.options = options
-            })
+        this.languages$.pipe(takeWhile(() => this.alive)).subscribe((state: LanguagesState) => {
+            this.options = state.items.map((item): FSelectOption => ({
+                label: item.name,
+                value: item,
+            }))
+        })
 
-        this.select.valueChanges.pipe(takeWhile(() => this.alive)).subscribe(value => {
-            this.translationsService.language$.next(value)
+        this.select.valueChanges.pipe(takeWhile(() => this.alive)).subscribe((value: Language) => {
+            this.store.dispatch<TranslationsAction>({
+                type: TranslationsActionTypes.SELECT_LANGUAGE,
+                payload: value,
+            })
         })
     }
 

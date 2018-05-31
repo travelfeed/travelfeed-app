@@ -1,8 +1,10 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core'
 import { Location } from '@angular/common'
 import { Router } from '@angular/router'
 import { FormBuilder, FormGroup } from '@angular/forms'
-import { takeWhile } from 'rxjs/operators'
+import { Store } from '@ngrx/store'
+import { AuthState } from '../../../store/auth/auth.reducer'
+import { AuthAction, AuthActionTypes } from '../../../store/auth/auth.action'
 import { AuthService } from '../auth.service'
 import { FValidationConfig } from '../../../components/form-elements/typings'
 
@@ -11,7 +13,7 @@ import { FValidationConfig } from '../../../components/form-elements/typings'
     templateUrl: './sign-in.component.html',
     styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent implements OnInit, OnDestroy {
+export class SignInComponent implements OnInit {
     public signInForm: FormGroup
 
     public validation: FValidationConfig = {
@@ -43,13 +45,12 @@ export class SignInComponent implements OnInit, OnDestroy {
         ],
     }
 
-    private alive: boolean = true
-
     public constructor(
         private changeDetectorRef: ChangeDetectorRef,
         private location: Location,
         private router: Router,
         private formBuilder: FormBuilder,
+        private store: Store<AuthState>,
         public authService: AuthService,
     ) {}
 
@@ -64,10 +65,6 @@ export class SignInComponent implements OnInit, OnDestroy {
         if (this.authService.isAuthenticated()) {
             this.router.navigate(['../backend'])
         }
-    }
-
-    public ngOnDestroy(): void {
-        this.alive = false
     }
 
     public get email() {
@@ -85,11 +82,9 @@ export class SignInComponent implements OnInit, OnDestroy {
     public signin(): void {
         const { email, password } = this.signInForm.value
 
-        this.authService
-            .signin(email, password)
-            .pipe(takeWhile(() => this.alive))
-            .subscribe(() => {
-                this.router.navigate(['../backend'])
-            })
+        this.store.dispatch<AuthAction>({
+            type: AuthActionTypes.SIGN_IN,
+            payload: { email, password },
+        })
     }
 }

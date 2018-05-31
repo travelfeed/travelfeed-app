@@ -1,44 +1,39 @@
-import { Component, AfterViewInit, OnDestroy, Input } from '@angular/core'
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { Component, OnInit, OnDestroy, Input } from '@angular/core'
+import { FormControl } from '@angular/forms'
+import { Store, select } from '@ngrx/store'
+import { Observable } from 'rxjs'
 import { takeWhile } from 'rxjs/operators'
-import { NotificationService } from '../../../../shared/notification/notification.service'
-import { TranslationsService } from '../translations.service'
-import { Translation } from '../typings'
+import { AppState } from '../../../../store'
+import {
+    Translation,
+    TranslationsState,
+    TranslationsAction,
+    TranslationsActionTypes,
+} from '../../../../store/translations'
 
 @Component({
     selector: 'cmp-translations-item',
     templateUrl: './translations-item.component.html',
     styleUrls: ['./translations-item.component.scss'],
 })
-export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
+export class TranslationsItemComponent implements OnInit, OnDestroy {
     @Input() public translation: Translation
 
-    public translationForm: FormGroup
+    public state$: Observable<TranslationsState> = this.store.pipe(select('translations'))
 
-    public model: string = null
-
-    public loading: boolean = false
+    public input: FormControl = new FormControl()
 
     public changed: boolean = false
 
     private alive: boolean = true
 
-    public constructor(
-        private formBuilder: FormBuilder,
-        private notificationService: NotificationService,
-        private translationsService: TranslationsService,
-    ) {
-        this.translationForm = this.formBuilder.group({
-            input: [null, []],
-        })
-        this.translationForm.valueChanges.pipe(takeWhile(() => this.alive)).subscribe(() => {
-            this.changed = this.translationForm.dirty
-        })
-    }
+    public constructor(private store: Store<AppState>) {}
 
-    public ngAfterViewInit(): void {
-        this.translationForm.setValue({
-            input: this.translation.value,
+    public ngOnInit(): void {
+        this.input.setValue(this.translation.value)
+
+        this.input.valueChanges.pipe(takeWhile(() => this.alive)).subscribe(() => {
+            this.changed = this.input.dirty
         })
     }
 
@@ -46,42 +41,21 @@ export class TranslationsItemComponent implements AfterViewInit, OnDestroy {
         this.alive = false
     }
 
-    public get input() {
-        return this.translationForm.get('input')
-    }
-
     public save(): void {
-        const value = this.translationForm.value.input
-        const update: Translation = { ...this.translation, value }
-        const key = update.key.key
+        const { value } = this.input
 
-        this.loading = true
-        this.translationsService
-            .save(update)
-            .pipe(takeWhile(() => this.alive))
-            .subscribe(
-                () => this.notificationService.success(`Successfully saved value for "${key}"`),
-                () => this.notificationService.error(`Failed to save value for "${key}"`),
-                () => {
-                    this.loading = false
-                    this.changed = false
-                },
-            )
+        this.changed = false
+
+        this.store.dispatch<TranslationsAction>({
+            type: TranslationsActionTypes.SAVE_TRANSLATION,
+            payload: { ...this.translation, value },
+        })
     }
 
     public delete(): void {
-        const key = this.translation.key.key
-
-        this.loading = true
-        this.translationsService
-            .delete(this.translation)
-            .pipe(takeWhile(() => this.alive))
-            .subscribe(
-                () => this.notificationService.success(`Successfully deleted "${key}"`),
-                () => this.notificationService.error(`Failed to delete "${key}"`),
-                () => {
-                    this.loading = false
-                },
-            )
+        this.store.dispatch<TranslationsAction>({
+            type: TranslationsActionTypes.DELETE_TRANSLATION,
+            payload: this.translation,
+        })
     }
 }
