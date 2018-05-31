@@ -7,6 +7,6 @@ import { IconModule } from '../../components/icon/icon.module'
 @NgModule({
     imports: [CommonModule, AppRoutingModule, IconModule],
     declarations: [HomebuttonComponent],
-    exports: [HomebuttonComponent]
+    exports: [HomebuttonComponent],
 })
 export class HomebuttonModule {}

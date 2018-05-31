@@ -7,6 +7,6 @@ import { IconModule } from './../icon/icon.module'
 @NgModule({
     imports: [CommonModule, IconModule],
     declarations: [CommentsComponent, CommentItemComponent],
-    exports: [CommentsComponent]
+    exports: [CommentsComponent],
 })
 export class CommentsModule {}

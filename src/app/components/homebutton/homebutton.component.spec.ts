@@ -8,7 +8,7 @@ describe('HomebuttonComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [HomebuttonComponent]
+            declarations: [HomebuttonComponent],
         }).compileComponents()
     }))
 
