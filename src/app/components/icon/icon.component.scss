@@ -3,4 +3,5 @@
 $component: 'cmp-icon';
 
 @include cmp-base($component, inline-block) {
+    color: inherit;
 }

@@ -1,13 +1,21 @@
 <div class="cmp-travel-preview">
-    <a 
-        href="travelogue?travelogue=122" 
-        class="cmp-travel-preview--img" 
-        *ngFor="let index of [1,2,3,4,5,6]" 
-        style="background-image:url(https://images.pexels.com/photos/614974/pexels-photo-614974.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb)"
-    >
-        <h3 class="cmp-travel-preview--title">Kanadadische Jungferninseln</h3>
-        <p class="cmp-travel-preview--text text-justify">
-            Kanada (englisch und französisch Canada) ist ein Staat in Nordamerika, der zwischen dem Atlantik im Osten und dem Pazifik im Westen liegt und nordwärts bis zum Arktischen Ozean reicht. Die einzige Landgrenze ist jene zu den USA im Süden und im Nordwesten.
-        </p>
-    </a>
+    <div *ngIf="orderby == 'rating'; then rating else new"></div>
+    <ng-template #new><h1>Die neusten Beiträge</h1></ng-template>
+    <ng-template #rating><h1>Bestbewertete Beiträge</h1></ng-template>
+
+    <div class="cmp-travel-preview--element" *ngFor="let index of [1,2,3,4,5,6]">
+        <div class="cmp-travel-preview--imgcontainer">
+            <a routerLink="/travelogue">
+                <img class="cmp-travel-preview--img" src="https://images.pexels.com/photos/614974/pexels-photo-614974.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" alt="test" title="test" />
+            </a>
+        </div>
+
+        <div class="cmp-travel-preview--infocontainer">
+            <h3 class="cmp-travel-preview--title">Kanadadische Jungferninseln</h3>
+            <div class="cmp-travel-preview--infobottom">
+                <cmp-icon name="clock-o"></cmp-icon> 3 Minuten
+                <span class="cmp-travel-preview--infoautor">@DennisFritsch</span>
+            </div>
+        </div>
+    </div>
 </div>
