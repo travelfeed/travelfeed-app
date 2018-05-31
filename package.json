@@ -53,6 +53,7 @@
     "normalize-scss": "^7.0.1",
     "rxjs": "^6.2.0",
     "rxjs-compat": "^6.2.0",
+    "socket.io-client": "^2.1.1",
     "susy": "^3.0.5",
     "zone.js": "^0.8.26"
   },
@@ -68,6 +69,7 @@
     "@types/lodash-es": "^4.17.0",
     "@types/medium-editor": "^5.0.3",
     "@types/node": "^10.1.2",
+    "@types/socket.io-client": "^1.4.32",
     "codelyzer": "^4.3.0",
     "husky": "^0.14.3",
     "jasmine-core": "~3.1.0",

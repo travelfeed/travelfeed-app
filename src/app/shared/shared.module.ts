@@ -7,6 +7,7 @@ import { EditableDirective } from './editable/editable.directive'
 import { LanguagesService } from './languages/languages.service'
 import { NotificationService } from './notification/notification.service'
 import { NetworkService } from './network/network.service'
+import { SocketService } from './socket/socket.service'
 
 @NgModule({
     imports: [CommonModule, TranslateModule],
@@ -27,6 +28,7 @@ export class SharedModule {
                 LanguagesService,
                 NotificationService,
                 NetworkService,
+                SocketService,
                 {
                     provide: ANALYZE_FOR_ENTRY_COMPONENTS,
                     useValue: components,
