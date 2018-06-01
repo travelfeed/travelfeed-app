@@ -17,6 +17,7 @@
   "lint-staged": {
     "{e2e,src}/**/*.{ts,scss,md}": [
       "prettier --write",
+      "ng lint travelfeed-app --fix",
       "git add"
     ]
   },
