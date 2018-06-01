@@ -6,7 +6,6 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 import { auth } from '../../store/auth/auth.reducer'
 import { AuthEffects } from '../../store/auth/auth.effects'
 import { SharedModule } from '../../shared/shared.module'
-import { AppRoutingModule } from '../../app-routing.module'
 import { SignInModule } from './sign-in/sign-in.module'
 import { SignOutPageModule } from './sign-out/sign-out.module'
 import { RegistrationPageModule } from './registration/registration.module'
@@ -25,7 +24,6 @@ export function jwtHelperServiceFactory() {
         EffectsModule.forFeature([AuthEffects]),
         SharedModule,
         HttpClientModule,
-        AppRoutingModule,
         SignInModule,
         SignOutPageModule,
         RegistrationPageModule,

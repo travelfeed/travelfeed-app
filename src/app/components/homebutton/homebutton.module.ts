@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { HomebuttonComponent } from './homebutton.component'
-import { AppRoutingModule } from '../../app-routing.module'
+import { SharedModule } from '../../shared/shared.module'
 import { IconModule } from '../../components/icon/icon.module'
+import { HomebuttonComponent } from './homebutton.component'
 
 @NgModule({
-    imports: [CommonModule, AppRoutingModule, IconModule],
+    imports: [SharedModule, IconModule],
     declarations: [HomebuttonComponent],
     exports: [HomebuttonComponent],
 })

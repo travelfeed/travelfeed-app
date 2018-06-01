@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { TravelPreviewComponent } from './travel-preview.component'
+import { SharedModule } from '../../shared/shared.module'
 import { IconModule } from '../../components/icon/icon.module'
-import { AppRoutingModule } from '../../app-routing.module'
+import { TravelPreviewComponent } from './travel-preview.component'
 
 @NgModule({
-    imports: [CommonModule, IconModule, AppRoutingModule],
+    imports: [SharedModule, IconModule],
     declarations: [TravelPreviewComponent],
     exports: [TravelPreviewComponent],
 })

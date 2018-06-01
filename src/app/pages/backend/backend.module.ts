@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { AppRoutingModule } from '../../app-routing.module'
+import { SharedModule } from '../../shared/shared.module'
 import { BackendNavigationModule } from '../../components/backend-navigation/backend-navigation.module'
 import { TranslationsModule } from './translations/translations.module'
 import { ArticlesModule } from './articles/articles.module'
@@ -12,14 +11,7 @@ import { AuthInterceptor } from '../auth/auth.interceptor'
 import { BackendComponent } from './backend.component'
 
 @NgModule({
-    imports: [
-        CommonModule,
-        AppRoutingModule,
-        BackendNavigationModule,
-        TranslationsModule,
-        ArticlesModule,
-        UsersModule,
-    ],
+    imports: [SharedModule, BackendNavigationModule, TranslationsModule, ArticlesModule, UsersModule],
     declarations: [BackendComponent],
     providers: [
         AuthService,

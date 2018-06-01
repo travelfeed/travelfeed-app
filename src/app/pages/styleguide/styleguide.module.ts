@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { ReactiveFormsModule } from '@angular/forms'
+import { SharedModule } from '../../shared/shared.module'
 import { HeadlinesModule } from '../../components/headlines/headlines.module'
 import { ContainerModule } from '../../components/container/container.module'
 import { NavigationModule } from '../../components/navigation/navigation.module'
@@ -14,8 +13,7 @@ import { StyleguideComponent } from './styleguide.component'
 
 @NgModule({
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
+        SharedModule,
         HeadlinesModule,
         ContainerModule,
         NavigationModule,

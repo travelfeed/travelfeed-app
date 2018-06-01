@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core'
-import { ReactiveFormsModule } from '@angular/forms'
 import { SharedModule } from '../../shared/shared.module'
 import { IconModule } from '../icon/icon.module'
 import { FRowComponent } from './f-row/f-row.component'
@@ -19,7 +18,6 @@ import { FExplanationComponent } from './f-explanation/f-explanation.component'
 
 @NgModule({
     imports: [
-        ReactiveFormsModule,
         SharedModule.registerDynamicComponents([
             FRowComponent,
             FColumnComponent,

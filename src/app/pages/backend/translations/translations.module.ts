@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core'
-import { ReactiveFormsModule } from '@angular/forms'
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 import { translations, TranslationsEffects } from '../../../store/translations'
@@ -15,7 +14,6 @@ import { TranslationsItemComponent } from './translations-item/translations-item
 
 @NgModule({
     imports: [
-        ReactiveFormsModule,
         StoreModule.forFeature('translations', translations),
         EffectsModule.forFeature([TranslationsEffects]),
         SharedModule,

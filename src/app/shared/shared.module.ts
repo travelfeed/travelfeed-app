@@ -1,6 +1,8 @@
 import { NgModule, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
+import { AppRoutingModule } from '../app-routing.module'
 import { DynamicComponentsComponent } from './dynamic-components/dynamic-components.component'
 import { DynamicComponentsDirective } from './dynamic-components/dynamic-components.directive'
 import { EditableDirective } from './editable/editable.directive'
@@ -10,11 +12,13 @@ import { NetworkService } from './network/network.service'
 import { SocketService } from './socket/socket.service'
 
 @NgModule({
-    imports: [CommonModule, TranslateModule],
+    imports: [CommonModule, ReactiveFormsModule, TranslateModule, AppRoutingModule],
     declarations: [DynamicComponentsComponent, DynamicComponentsDirective, EditableDirective],
     exports: [
         CommonModule,
+        ReactiveFormsModule,
         TranslateModule,
+        AppRoutingModule,
         DynamicComponentsComponent,
         DynamicComponentsDirective,
         EditableDirective,

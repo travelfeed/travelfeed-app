@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
 import { AgmCoreModule } from '@agm/core'
-import { TravelogueComponent } from './travelogue.component'
+import { SharedModule } from '../../shared/shared.module'
 import { ContainerModule } from '../../components/container/container.module'
 import { IconModule } from '../../components/icon/icon.module'
 import { HomebuttonModule } from '../../components/homebutton/homebutton.module'
 import { FormElementsModule } from '../../components/form-elements/form-elements.module'
 import { CommentsModule } from '../../components/comments/comments.module'
+import { TravelogueComponent } from './travelogue.component'
 
 @NgModule({
     imports: [
-        CommonModule,
+        SharedModule,
         AgmCoreModule,
         ContainerModule,
         IconModule,
