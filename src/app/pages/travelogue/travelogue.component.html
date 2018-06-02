@@ -1,11 +1,11 @@
-<div class="cmp-travelogue">
-    <agm-map class="cmp-travelogue__map" [latitude]="latitude" [longitude]="longitude">
-        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+<div class="cmp-travelogue" *ngIf="(article$ | async) as article">
+    <agm-map class="cmp-travelogue__map" [latitude]="article.latitude" [longitude]="article.longitude">
+        <agm-marker [latitude]="article.latitude" [longitude]="article.longitude"></agm-marker>
     </agm-map>
     <div class="cmp-travelogue__content">
         <cmp-container>
             <div class="cmp-travelogue__countrycontainer"><!-- TODO: Sicke Hintergrundgrafik -->
-                <h1 class="cmp-travelogue__country">{{country}}</h1>
+                <h1 class="cmp-travelogue__country">{{article.country}}</h1>
             </div>
 
 
@@ -15,7 +15,8 @@
                     Beitrag erstellt am <b>25. Mai 2018</b><!-- TODO: Datefunktion? Monat ausgeschrieben -->
                 </div>
                 <div title="Geschätzte Lesezeit">
-                    <cmp-icon name="clock-o"></cmp-icon>&nbsp;<b>3 minuten</b><!-- TODO: Datefunktion? Monat ausgeschrieben -->
+                    <cmp-icon name="clock-o"></cmp-icon>
+                    <b>{{article.readingtime}} minuten</b><!-- TODO: Datefunktion? Monat ausgeschrieben -->
                 </div>
                 <div>
                     <span class="cmp-travelogue__information__user">
@@ -35,12 +36,10 @@
             </div>
 
             <h2 class="cmp-travelogue__title">
-                {{title}}
+                {{article.title}}
             </h2>
 
-            <p class="cmp-travelogue__text text-justify">
-                {{text}}
-            </p>
+            <p class="cmp-travelogue__text text-justify" [innerHTML]="article.text"></p>
 
             <cmp-homebutton></cmp-homebutton>
 

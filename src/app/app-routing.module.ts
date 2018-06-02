@@ -21,7 +21,17 @@ export const routes: Routes = [
     },
     {
         path: 'travelogue',
-        component: TravelogueComponent,
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: '/',
+            },
+            {
+                path: ':id',
+                component: TravelogueComponent,
+            },
+        ],
     },
     {
         path: 'styleguide',

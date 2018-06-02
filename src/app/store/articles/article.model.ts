@@ -7,8 +7,8 @@ export interface Article {
     text: string
     city: string
     country: string
-    latitude: string
-    longitude: string
+    latitude: number
+    longitude: number
     peaces: string
     readingtime: number
     published: boolean

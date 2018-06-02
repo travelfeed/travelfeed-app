@@ -37,11 +37,11 @@ export class AppComponent implements OnInit, OnDestroy {
         })
 
         this.socketService.connection$.pipe(takeWhile(() => this.alive)).subscribe(socket => {
-            console.log(socket)
+            console.log('==> connection', socket)
         })
 
         this.socketService.all$.pipe(takeWhile(() => this.alive)).subscribe((event: SocketEvent) => {
-            console.log('==> all ==>', event)
+            console.log('==> all socket events', event)
         })
     }
 

@@ -7,6 +7,7 @@ import { HomebuttonModule } from '../../components/homebutton/homebutton.module'
 import { FormElementsModule } from '../../components/form-elements/form-elements.module'
 import { CommentsModule } from '../../components/comments/comments.module'
 import { TravelogueComponent } from './travelogue.component'
+import { TravelogueService } from './travelogue.service'
 
 @NgModule({
     imports: [
@@ -19,5 +20,6 @@ import { TravelogueComponent } from './travelogue.component'
         CommentsModule,
     ],
     declarations: [TravelogueComponent],
+    providers: [TravelogueService],
 })
 export class TravelogueModule {}
