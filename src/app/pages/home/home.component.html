@@ -1,10 +1,9 @@
 <cmp-navigation></cmp-navigation>
 
 <cmp-container>
-  <cmp-travel-preview orderby="new" elementsshown="6"></cmp-travel-preview>
-  <cmp-travel-preview orderby="rating" elementsshown="4"></cmp-travel-preview>
+    <cmp-travel-preview type="newest" [limit]="6"></cmp-travel-preview>
+    <cmp-travel-preview type="best-rated" [limit]="4"></cmp-travel-preview>
 
-  <!-- TODO: Einbauen wenn noch Zeit -->
-  <!-- <cmp-country-preview></cmp-country-preview> -->
-
+    <!-- TODO: Einbauen wenn noch Zeit -->
+    <!-- <cmp-country-preview></cmp-country-preview> -->
 </cmp-container>

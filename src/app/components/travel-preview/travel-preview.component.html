@@ -1,21 +1,20 @@
-<div class="cmp-travel-preview">
-    <div *ngIf="orderby == 'rating'; then rating else new"></div>
-    <ng-template #new><h1>Die neusten Beiträge</h1></ng-template>
-    <ng-template #rating><h1>Bestbewertete Beiträge</h1></ng-template>
+<div class="cmp-travel-preview" *ngIf="(articles$ | async) as articles">
+    <div [ngSwitch]="type">
+        <cmp-headline-h2 [text]="'Die neusten Beiträge'" *ngSwitchCase="'newest'"></cmp-headline-h2>
+        <cmp-headline-h2 [text]="'Bestbewertete Beiträge'" *ngSwitchCase="'best-rated'"></cmp-headline-h2>
+    </div>
 
-    <div class="cmp-travel-preview--element" *ngFor="let index of [1,2,3,4,5,6]">
-        <div class="cmp-travel-preview--imgcontainer">
-            <a routerLink="/travelogue">
-                <img class="cmp-travel-preview--img" src="https://images.pexels.com/photos/614974/pexels-photo-614974.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" alt="test" title="test" />
-            </a>
+    <a class="cmp-travel-preview__element" [routerLink]="['/travelogue', article.id]" *ngFor="let article of articles">
+        <div class="cmp-travel-preview__image">
+            <img class="cmp-travel-preview__img" src="https://images.pexels.com/photos/614974/pexels-photo-614974.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" />
         </div>
-
-        <div class="cmp-travel-preview--infocontainer">
-            <h3 class="cmp-travel-preview--title">Kanadadische Jungferninseln</h3>
-            <div class="cmp-travel-preview--infobottom">
-                <cmp-icon name="clock-o"></cmp-icon> 3 Minuten
-                <span class="cmp-travel-preview--infoautor">@DennisFritsch</span>
+        <div class="cmp-travel-preview__info">
+            <h3 class="cmp-travel-preview__title">{{article.title}}</h3>
+            <div class="cmp-travel-preview__additionals">
+                <cmp-icon name="clock-o"></cmp-icon>
+                <span>{{article.readingtime}} Minuten</span>
+                <span class="cmp-travel-preview__author">{{article.user.username}}</span>
             </div>
         </div>
-    </div>
+    </a>
 </div>
