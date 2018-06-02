@@ -10,6 +10,7 @@ export interface Article {
     latitude: string
     longitude: string
     peaces: string
+    readingtime: number
     published: boolean
     created: number
     updated: number
