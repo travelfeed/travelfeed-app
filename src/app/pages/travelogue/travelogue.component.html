@@ -12,23 +12,24 @@
 
             <div class="cmp-travelogue__information">
                 <div>
-                    Beitrag erstellt am <b>25. Mai 2018</b><!-- TODO: Datefunktion? Monat ausgeschrieben -->
+                    <span>Beitrag erstellt am </span>
+                    <b>{{article.created|toLocale}}</b>
                 </div>
                 <div title="Geschätzte Lesezeit">
                     <cmp-icon name="clock-o"></cmp-icon>
-                    <b>{{article.readingtime}} minuten</b><!-- TODO: Datefunktion? Monat ausgeschrieben -->
+                    <b>{{article.readingtime}} minuten</b>
                 </div>
                 <div>
                     <span class="cmp-travelogue__information__user">
-                        @DennisFritsch
+                        <span>@{{article.user.username}}</span>
                         <cmp-icon name="user"></cmp-icon>
                     </span>
                 </div>
             </div>
 
             <div class="cmp-travelogue__peacecontainer">
-                <span class="cmp-travelogue__peacecontainer__peacecounter">
-                    + 41
+                <span class="cmp-travelogue__peacecontainer__peacecounter" *ngIf="article.peaces > 0">
+                    + {{article.peaces}}
                 </span>
                 <div class="cmp-travelogue__peacecontainer__peace">
                     <cmp-icon name="hand-peace-o"></cmp-icon>

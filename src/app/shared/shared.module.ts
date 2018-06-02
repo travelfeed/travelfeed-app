@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
 import { AppRoutingModule } from '../app-routing.module'
+import { ToLocalePipe } from './to-locale/to-locale.pipe'
 import { DynamicComponentsComponent } from './dynamic-components/dynamic-components.component'
 import { DynamicComponentsDirective } from './dynamic-components/dynamic-components.directive'
 import { EditableDirective } from './editable/editable.directive'
@@ -13,12 +14,18 @@ import { SocketService } from './socket/socket.service'
 
 @NgModule({
     imports: [CommonModule, ReactiveFormsModule, TranslateModule, AppRoutingModule],
-    declarations: [DynamicComponentsComponent, DynamicComponentsDirective, EditableDirective],
+    declarations: [
+        ToLocalePipe,
+        DynamicComponentsComponent,
+        DynamicComponentsDirective,
+        EditableDirective,
+    ],
     exports: [
         CommonModule,
         ReactiveFormsModule,
         TranslateModule,
         AppRoutingModule,
+        ToLocalePipe,
         DynamicComponentsComponent,
         DynamicComponentsDirective,
         EditableDirective,
