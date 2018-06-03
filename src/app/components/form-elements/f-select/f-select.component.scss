@@ -22,4 +22,8 @@ $component: 'cmp-f-select';
     &__placeholder {
         color: rgba($color-grey1, 0.8);
     }
+
+    &__bgwhite {
+        background-color: white;
+    }
 }

@@ -14,6 +14,8 @@ export class FSelectComponent extends FInputComponent {
 
     @Input() public options: Array<FSelectOption> = []
 
+    @Input() public bgcolor: string = ''
+
     public getClasses(baseClass: string): object {
         const prefixed = modifier => `${baseClass}--${modifier}`
         const results = super.getClasses(baseClass)
