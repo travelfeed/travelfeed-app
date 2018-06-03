@@ -1,7 +1,7 @@
 <div class="cmp-travel-preview" *ngIf="(articles$ | async) as articles">
     <div [ngSwitch]="type">
-        <cmp-headline-h2 [text]="'Die neusten Beiträge'" *ngSwitchCase="'newest'"></cmp-headline-h2>
-        <cmp-headline-h2 [text]="'Bestbewertete Beiträge'" *ngSwitchCase="'best-rated'"></cmp-headline-h2>
+        <cmp-headline-h2 [text]="'TRAVEL_PREVIEW_NEWEST'|translate" *ngSwitchCase="'newest'"></cmp-headline-h2><!-- Die neusten Beiträge -->
+        <cmp-headline-h2 [text]="'TRAVEL_PREVIEW_BEST'|translate" *ngSwitchCase="'best-rated'"></cmp-headline-h2><!-- Bestbewertete Beiträge -->
     </div>
 
     <a class="cmp-travel-preview__element" [routerLink]="['/travelogue', article.id]" *ngFor="let article of articles">
@@ -12,7 +12,7 @@
             <h3 class="cmp-travel-preview__title">{{article.title}}</h3>
             <div class="cmp-travel-preview__additionals">
                 <cmp-icon name="clock-o"></cmp-icon>
-                <span>{{article.readingtime}} Minuten</span>
+                <span>{{article.readingtime}} {{'GLOBAL_MINUTES'|translate}}</span> <!-- minuten -->
                 <span class="cmp-travel-preview__author">{{article.user.username}}</span>
             </div>
         </div>

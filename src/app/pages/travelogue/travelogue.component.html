@@ -4,20 +4,17 @@
     </agm-map>
     <div class="cmp-travelogue__content">
         <cmp-container>
-            <div class="cmp-travelogue__countrycontainer"><!-- TODO: Sicke Hintergrundgrafik -->
+            <div class="cmp-travelogue__countrycontainer">
                 <h1 class="cmp-travelogue__country">{{article.country}}</h1>
             </div>
-
-
-
             <div class="cmp-travelogue__information">
                 <div>
-                    <span>Beitrag erstellt am </span>
+                    <span>{{'TRAVELOGUE_INFORMATION_CREATEDTIME'|translate}}</span> <!-- Beitrag erstellt am -->
                     <b>{{article.created|toLocale}}</b>
                 </div>
                 <div title="Geschätzte Lesezeit">
                     <cmp-icon name="clock-o"></cmp-icon>
-                    <b>{{article.readingtime}} minuten</b>
+                    <b>{{article.readingtime}} {{'TRAVELOGUE_INFORMATION_MINUTES'|translate}}</b> <!-- minuten-->
                 </div>
                 <div>
                     <span class="cmp-travelogue__information__user">
@@ -47,7 +44,7 @@
             <cmp-f-text-area [fc]="commentfield" name="comment" label="Kommentar schreiben"></cmp-f-text-area>
 
             <div *ngIf="commentfield.value.length > 0" class="cmp-travelogue__content__sendcomment">
-                <cmp-f-button text="Kommentar senden" theme="primary" class="cmp-travelogue__content__sendcomment__btn"></cmp-f-button>
+                <cmp-f-button [text]="'TRAVELOGUE_COMMENT_SEND'|translate" theme="primary" class="cmp-travelogue__content__sendcomment__btn"></cmp-f-button> <!-- Kommentar senden -->
             </div>
 
             <cmp-comments></cmp-comments>

@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common'
 import { CommentsComponent } from './comments.component'
 import { CommentItemComponent } from './comment-item/comment-item.component'
 import { IconModule } from './../icon/icon.module'
+import { SharedModule } from '../../shared/shared.module'
 
 @NgModule({
-    imports: [CommonModule, IconModule],
+    imports: [CommonModule, IconModule, SharedModule],
     declarations: [CommentsComponent, CommentItemComponent],
     exports: [CommentsComponent],
 })

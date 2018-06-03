@@ -6,9 +6,7 @@ import { NavigationModule } from '../../components/navigation/navigation.module'
 import { FormElementsModule } from '../../components/form-elements/form-elements.module'
 import { IconModule } from '../../components/icon/icon.module'
 import { ListModule } from '../../components/list/list.module'
-import { NewsletterModule } from '../../components/newsletter/newsletter.module'
 import { TravelPreviewModule } from '../../components/travel-preview/travel-preview.module'
-import { CountryPreviewModule } from '../../components/country-preview/country-preview.module'
 import { StyleguideComponent } from './styleguide.component'
 
 @NgModule({
@@ -20,9 +18,7 @@ import { StyleguideComponent } from './styleguide.component'
         FormElementsModule,
         IconModule,
         ListModule,
-        NewsletterModule,
         TravelPreviewModule,
-        CountryPreviewModule,
     ],
     declarations: [StyleguideComponent],
     exports: [],
