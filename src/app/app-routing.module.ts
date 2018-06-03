@@ -13,6 +13,7 @@ import { SignOutComponent } from './pages/auth/sign-out/sign-out.component'
 import { RegistrationComponent } from './pages/auth/registration/registration.component'
 import { TravelogueComponent } from './pages/travelogue/travelogue.component'
 import { ImpressumComponent } from './pages/impressum/impressum.component'
+import { CountryComponent } from './pages/country/country.component'
 
 export const routes: Routes = [
     {
@@ -37,6 +38,10 @@ export const routes: Routes = [
     {
         path: 'styleguide',
         component: StyleguideComponent,
+    },
+    {
+        path: 'countries',
+        component: CountryComponent,
     },
     {
         path: 'impressum',

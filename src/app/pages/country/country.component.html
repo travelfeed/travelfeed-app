@@ -1,0 +1,14 @@
+<cmp-navigation></cmp-navigation>
+<cmp-homebutton></cmp-homebutton>
+<cmp-container>
+  <h1>Anzahl der Artikel pro Land</h1>
+  <div class="cmp-country">
+    <div class="cmp-country__element" *ngFor="let article of ['Schweden','Deutschland','Vietnam','Gurgunlata','Testland','Kanada','Indonesien','Türkei','Aland','Mexiko','Turkmenistan']">
+      <div class="cmp-country__element__countryname">{{article}}</div>
+      <div class="cmp-country__element__counter">
+        <span>1</span>
+      </div>
+    </div>
+  </div>
+</cmp-container>
+<cmp-footer></cmp-footer>

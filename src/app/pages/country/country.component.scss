@@ -1,0 +1,38 @@
+@import '../../../scss/shared';
+
+$component: 'cmp-country';
+
+@include cmp-base($component, block) {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 40px 0;
+
+    &__element {
+        background-color: #ccc;
+        border-bottom: 4px solid #888;
+        width: 23%;
+        margin: 1%;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+
+        box-shadow: 0 9px 15px -4px rgba(0, 0, 0, 0.5);
+
+        &:hover {
+            background-color: #ddd;
+        }
+
+        &__countryname {
+            float: left;
+            width: 75%;
+        }
+
+        &__counter {
+            float: right;
+            width: 24%;
+            background-color: #aaa;
+        }
+    }
+}

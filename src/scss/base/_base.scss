@@ -92,3 +92,7 @@ html [type='submit'] {
 .word-break {
     word-wrap: break-word;
 }
+
+.noselect {
+    user-select: none;
+}
