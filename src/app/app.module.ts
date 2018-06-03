@@ -15,6 +15,7 @@ import { StyleguideModule } from './pages/styleguide/styleguide.module'
 import { TravelogueModule } from './pages/travelogue/travelogue.module'
 import { environment } from '../environments/environment'
 import { AppComponent } from './app.component'
+import { ImpressumModule } from './pages/impressum/impressum.module'
 
 export function translationLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, `${environment.apiBaseUrl}/translation/`, '')
@@ -44,6 +45,7 @@ export function translationLoaderFactory(http: HttpClient) {
         HomeModule,
         StyleguideModule,
         TravelogueModule,
+        ImpressumModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

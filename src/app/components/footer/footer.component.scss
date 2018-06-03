@@ -1,0 +1,25 @@
+@import '../../../scss/shared';
+
+$component: 'cmp-footer';
+
+@include cmp-base($component) {
+    background-color: #444;
+    bottom: 0;
+    border-top: 4px solid #888;
+    height: 60px;
+    position: sticky;
+    width: 100%;
+
+    &__links {
+        color: #ccc;
+        text-align: center;
+        padding-top: 20px;
+
+        &__impressum {
+            color: inherit;
+        }
+        &__home {
+            color: inherit;
+        }
+    }
+}

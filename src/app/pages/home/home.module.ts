@@ -6,6 +6,7 @@ import { ContainerModule } from '../../components/container/container.module'
 import { TravelPreviewModule } from '../../components/travel-preview/travel-preview.module'
 import { CountryPreviewModule } from '../../components/country-preview/country-preview.module'
 import { HomeComponent } from './home.component'
+import { FooterModule } from '../../components/footer/footer.module'
 
 @NgModule({
     imports: [
@@ -15,6 +16,7 @@ import { HomeComponent } from './home.component'
         TravelPreviewModule,
         CountryPreviewModule,
         FormElementsModule,
+        FooterModule,
     ],
     declarations: [HomeComponent],
     exports: [],

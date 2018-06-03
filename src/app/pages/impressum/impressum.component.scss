@@ -1,0 +1,7 @@
+@import '../../../scss/shared';
+
+$component: 'cmp-impressum';
+
+@include cmp-base($component, block) {
+    padding: 20px 0;
+}
