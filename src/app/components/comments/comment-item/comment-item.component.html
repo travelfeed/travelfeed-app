@@ -1,6 +1,9 @@
-<div class="cmp-comment-item" [class.cmp-comment-item--even]="even">
-  <div class="cmp-comment-item__wrapper">
-    <p><span class="cmp-comment-item__user">@DennisFritsch</span>Das ist mein Text</p>
-    <cmp-icon name="trash" class="cmp-comment-item__delete" [title]="'COMMENTS_COMMENTITEM_DELETE'|translate"></cmp-icon><!-- Kommentar loeschen -->
-  </div>
+<div class="cmp-comment-item" [class.cmp-comment-item--even]="even" *ngIf="comment">
+    <div class="cmp-comment-item__wrapper">
+        <p class="cmp-comment-item__content">
+            <span class="cmp-comment-item__user">@{{comment.user.username}}</span>
+            <span class="cmp-comment-item__text">{{comment.text}}</span>
+        </p>
+        <cmp-icon class="cmp-comment-item__delete" name="trash" [title]="'COMMENTS_COMMENTITEM_DELETE'|translate" (click)="delete(comment)"></cmp-icon> <!-- Kommentar loeschen -->
+    </div>
 </div>

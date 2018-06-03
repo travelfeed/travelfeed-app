@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { FormControl } from '@angular/forms'
 import { Observable } from 'rxjs'
 import { takeWhile } from 'rxjs/operators'
 import { TravelogueService } from './travelogue.service'
@@ -13,8 +12,6 @@ import { Article } from '../../store/articles'
 })
 export class TravelogueComponent implements OnInit, OnDestroy {
     public article$: Observable<Article>
-
-    public commentfield: FormControl = new FormControl('')
 
     private alive: boolean = true
 

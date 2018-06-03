@@ -6,24 +6,28 @@ $component: 'cmp-comment-item';
     position: relative;
 
     &__wrapper {
-        background-color: #ccc;
         padding: 5px 10px;
         margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        background-color: #ccc;
     }
+
+    &__content {
+        flex: 1;
+    }
+
     &__user {
         font-weight: bold;
         margin-right: 10px;
     }
 
     &__delete {
-        position: absolute;
-        right: 10px;
-        top: 5px;
         color: #777;
 
         &:hover {
-            cursor: pointer;
             color: black;
+            cursor: pointer;
         }
     }
 }

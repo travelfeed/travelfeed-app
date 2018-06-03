@@ -1,0 +1,7 @@
+<div class="cmp-comment-new">
+    <cmp-f-text-area [fc]="input" name="comment" label="Kommentar schreiben"></cmp-f-text-area>
+
+    <div class="cmp-travelogue__content__sendcomment" *ngIf="input.value.length > 0">
+        <cmp-f-button class="cmp-travelogue__content__sendcomment__btn" theme="primary" [text]="'TRAVELOGUE_COMMENT_SEND'|translate" (cbClick)="submit()"></cmp-f-button> <!-- Kommentar senden -->
+    </div>
+</div>

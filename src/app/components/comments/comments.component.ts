@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
+import { Article } from '../../store/articles'
+import { CommentsService } from './comments.service'
 
 @Component({
     selector: 'cmp-comments',
@@ -6,12 +8,11 @@ import { Component, OnInit } from '@angular/core'
     styleUrls: ['./comments.component.scss'],
 })
 export class CommentsComponent implements OnInit {
-    public comments: Array<any> = [
-        { user: 'DennisFritsch', text: 'Testtexte', updated: '26.05.2018' },
-        { user: 'IvanNikic', text: 'Ein richtig geiler Text', updated: '22.05.2018' },
-    ]
+    @Input() public article: Article
 
-    public constructor() {}
+    public constructor(public commentsService: CommentsService) {}
 
-    public ngOnInit() {}
+    public ngOnInit() {
+        this.commentsService.fetchAll(this.article)
+    }
 }

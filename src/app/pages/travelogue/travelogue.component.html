@@ -41,13 +41,7 @@
 
             <cmp-homebutton></cmp-homebutton>
 
-            <cmp-f-text-area [fc]="commentfield" name="comment" label="Kommentar schreiben"></cmp-f-text-area>
-
-            <div *ngIf="commentfield.value.length > 0" class="cmp-travelogue__content__sendcomment">
-                <cmp-f-button [text]="'TRAVELOGUE_COMMENT_SEND'|translate" theme="primary" class="cmp-travelogue__content__sendcomment__btn"></cmp-f-button> <!-- Kommentar senden -->
-            </div>
-
-            <cmp-comments></cmp-comments>
+            <cmp-comments [article]="article"></cmp-comments>
 
         </cmp-container>
     </div>

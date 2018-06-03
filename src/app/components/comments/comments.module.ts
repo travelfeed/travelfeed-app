@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import { SharedModule } from '../../shared/shared.module'
+import { FormElementsModule } from '../form-elements/form-elements.module'
+import { IconModule } from './../icon/icon.module'
 import { CommentsComponent } from './comments.component'
 import { CommentItemComponent } from './comment-item/comment-item.component'
-import { IconModule } from './../icon/icon.module'
-import { SharedModule } from '../../shared/shared.module'
+import { CommentNewComponent } from './comment-new/comment-new.component'
+import { CommentsService } from './comments.service'
 
 @NgModule({
-    imports: [CommonModule, IconModule, SharedModule],
-    declarations: [CommentsComponent, CommentItemComponent],
+    imports: [SharedModule, FormElementsModule, IconModule],
+    declarations: [CommentsComponent, CommentItemComponent, CommentNewComponent],
     exports: [CommentsComponent],
+    providers: [CommentsService],
 })
 export class CommentsModule {}

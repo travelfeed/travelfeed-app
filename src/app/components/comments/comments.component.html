@@ -1,6 +1,8 @@
-<cmp-comment-item></cmp-comment-item>
-<cmp-comment-item [even]="true"></cmp-comment-item>
-<cmp-comment-item></cmp-comment-item>
-<cmp-comment-item [even]="true"></cmp-comment-item>
-<cmp-comment-item></cmp-comment-item>
-<cmp-comment-item [even]="true"></cmp-comment-item>
+<div class="cmp-comments">
+    <div class="cmp-comments__form">
+        <cmp-comment-new [article]="article"></cmp-comment-new>
+    </div>
+    <div class="cmp-comments__comments" *ngIf="(commentsService.comments$ | async) as comments">
+        <cmp-comment-item [article]="article" [comment]="comment" [even]="!(i % 2)" *ngFor="let comment of comments; let i = index"></cmp-comment-item>
+    </div>
+</div>
