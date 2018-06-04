@@ -1,0 +1,19 @@
+<div class="cmp-countries-item">
+    <div class="cmp-countries-item__header">
+        <div class="cmp-countries-item__title">
+            <span>{{country.name}}</span>
+        </div>
+        <div class="cmp-countries-item__content">
+            <ul class="cmp-countries-item__facts">
+                <li class="cmp-countries-item__fact" *ngIf="country.code">
+                    <span>{{country.code}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <ul class="cmp-countries-item__actions">
+        <li class="cmp-countries-item__action" [title]="'BACKEND_ARTICLES_LIST_ACTION_DELETE'|translate" (click)="delete($event)">
+            <cmp-icon name="trash"></cmp-icon>
+        </li>
+    </ul>
+</div>

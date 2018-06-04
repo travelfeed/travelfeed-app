@@ -22,12 +22,4 @@ export class FSelectComponent extends FInputComponent {
 
         return results
     }
-
-    public isSelected(option: FSelectOption): boolean {
-        if (option && option.value && option.value.id && this.fc.value && this.fc.value.id) {
-            return option.value.id === this.fc.value.id
-        }
-
-        return false
-    }
 }

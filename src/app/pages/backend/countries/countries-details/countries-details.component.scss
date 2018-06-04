@@ -1,0 +1,40 @@
+@import '../../../../../scss/shared';
+
+$component: 'cmp-countries-details';
+
+@include cmp-base($component) {
+    &__actions {
+        height: 60px;
+        padding: 10px 15px;
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        background-color: $color-white3;
+        border-bottom: 1px dotted rgba($color-grey1, 0.4);
+        z-index: 1;
+    }
+
+    &__action {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: $color-white3;
+        transition: background-color 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba($color-grey1, 0.2);
+        }
+    }
+
+    &__wrapper {
+        padding: 20px 100px;
+    }
+
+    &__name {
+        @include use-text(headline-h4);
+        margin-bottom: 30px;
+    }
+}

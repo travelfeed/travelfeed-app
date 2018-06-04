@@ -1,5 +1,5 @@
 import { User } from '../users/user.model'
-import { Country } from '../../pages/country/country.service'
+import { Country } from '../countries'
 
 export interface Article {
     id: number
