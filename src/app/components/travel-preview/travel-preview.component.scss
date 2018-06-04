@@ -3,8 +3,10 @@
 $component: 'cmp-travel-preview';
 
 @include cmp-base($component) {
-    @include use-breakpoint(mini-tablet) {
-        height: 1050px; /* TODO: Den scheiß aus der Welt schaffen*/
+    &::after {
+        content: ' ';
+        display: table;
+        clear: both;
     }
 
     &__element {
@@ -42,7 +44,12 @@ $component: 'cmp-travel-preview';
     }
 
     &__info {
-        padding-left: 10px;
+        padding-top: 10px;
+        padding-left: 15px;
+    }
+
+    &__time {
+        margin-right: 10px;
     }
 
     &__title {
