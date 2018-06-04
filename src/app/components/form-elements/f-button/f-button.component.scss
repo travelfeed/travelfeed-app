@@ -26,6 +26,10 @@ $component: 'cmp-f-button';
             background-color: $color-primary;
         }
     }
+
+    &__text {
+        color: $color-white1;
+    }
 }
 
 @include cmp-modifier($component, 'secondary') {
@@ -38,6 +42,10 @@ $component: 'cmp-f-button';
             background-color: rgba($color-grey1, 0.6);
         }
     }
+
+    &__text {
+        color: $color-primary;
+    }
 }
 
 @include cmp-modifier($component, 'disabled') {
@@ -48,6 +56,14 @@ $component: 'cmp-f-button';
 
         &:hover {
             background-color: rgba($color-grey1, 0.4);
+            color: rgba($color-grey1, 0.9);
+        }
+    }
+
+    &__text {
+        transition: color 0.4s, background-color 0.4s;
+
+        &:hover {
             color: rgba($color-grey1, 0.9);
         }
     }
