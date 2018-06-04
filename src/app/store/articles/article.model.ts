@@ -1,4 +1,5 @@
 import { User } from '../users/user.model'
+import { Country } from '../../pages/country/country.service'
 
 export interface Article {
     id: number
@@ -6,7 +7,7 @@ export interface Article {
     subtitle: string
     text: string
     city: string
-    country: string
+    country: Country
     latitude: number
     longitude: number
     peaces: string

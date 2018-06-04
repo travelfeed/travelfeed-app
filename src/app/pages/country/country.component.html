@@ -1,14 +1,14 @@
 <cmp-navigation></cmp-navigation>
 <cmp-homebutton></cmp-homebutton>
-<cmp-container>
-  <h1>{{'COUNTRY_HEADLINE'|translate}}</h1><!-- Anzahl der Artikel pro Land -->
-  <div class="cmp-country">
-    <div class="cmp-country__element" *ngFor="let article of ['Schweden','Deutschland','Vietnam','Gurgunlata','Testland','Kanada','Indonesien','Türkei','Aland','Mexiko','Turkmenistan']">
-      <div class="cmp-country__element__countryname">{{article}}</div>
-      <div class="cmp-country__element__counter">
-        <span>1</span>
-      </div>
+<cmp-container *ngIf="(countries$ | async) as countries">
+    <h1>{{'COUNTRY_HEADLINE'|translate}}</h1>
+    <div class="cmp-country">
+        <div class="cmp-country__element" *ngFor="let country of countries">
+            <div class="cmp-country__element__countryname">{{country.name}}</div>
+            <div class="cmp-country__element__counter">
+                <span>{{country.articles}}</span>
+            </div>
+        </div>
     </div>
-  </div>
 </cmp-container>
 <cmp-footer></cmp-footer>

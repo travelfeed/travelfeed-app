@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ) {}
 
     public ngOnInit(): void {
-        this.translationService.setDefaultLang('en')
+        this.translationService.setDefaultLang('de')
 
         this.store.dispatch<LanguagesAction>({
             type: LanguagesActionTypes.LOAD_LANGUAGES,
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
         this.store.dispatch<LanguagesAction>({
             type: LanguagesActionTypes.SELECT_LANGUAGE,
-            payload: 'en',
+            payload: 'de',
         })
 
         this.languageService.language$.pipe(takeWhile(() => this.alive)).subscribe(language => {

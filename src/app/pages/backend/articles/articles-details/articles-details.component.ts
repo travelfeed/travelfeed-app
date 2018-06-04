@@ -20,7 +20,7 @@ export class ArticlesDetailsComponent implements OnInit, OnChanges, OnDestroy {
 
     public ngOnInit(): void {
         this.articleForm = this.formBuilder.group({
-            country: this.article.country,
+            country: this.article.country.name,
             city: this.article.city,
             latitude: this.article.latitude,
             longitude: this.article.longitude,
