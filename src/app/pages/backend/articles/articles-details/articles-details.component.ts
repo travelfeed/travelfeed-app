@@ -39,7 +39,7 @@ export class ArticlesDetailsComponent implements OnInit, OnChanges, OnDestroy {
         }
 
         this.articleForm.setValue({
-            country: currentValue.country,
+            country: currentValue.country.name,
             city: currentValue.city,
             latitude: currentValue.latitude,
             longitude: currentValue.longitude,
