@@ -1,0 +1,7 @@
+@import '../../../scss/shared';
+
+$component: 'cmp-language-switch';
+
+@include cmp-base($component) {
+    background-color: #fff;
+}

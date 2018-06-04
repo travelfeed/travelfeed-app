@@ -1,11 +1,10 @@
-import { FormElementsModule } from './../form-elements/form-elements.module'
 import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { FooterComponent } from './footer.component'
 import { SharedModule } from '../../shared/shared.module'
+import { LanguageSwitchModule } from '../language-switch/language-switch.module'
+import { FooterComponent } from './footer.component'
 
 @NgModule({
-    imports: [CommonModule, SharedModule, FormElementsModule],
+    imports: [SharedModule, LanguageSwitchModule],
     declarations: [FooterComponent],
     exports: [FooterComponent],
 })

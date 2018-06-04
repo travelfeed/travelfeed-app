@@ -1,11 +1,11 @@
 <footer class="cmp-footer">
-  <div class="cmp-footer__links noselect">
-    <a class="cmp-footer__links__home" routerLink="/">{{'FOOTER_LINKS_HOME'|translate}}</a> <!-- Home -->
-    &nbsp;|&nbsp;
-    <a class="cmp-footer__links__countries" routerLink="/countries">{{'FOOTER_LINKS_COUNTRYLIST'|translate}}</a> <!-- Laenderliste -->
-    &nbsp;|&nbsp;
-    <a class="cmp-footer__links__impressum" routerLink="/impressum">{{'FOOTER_LINKS_IMPRESSUM'|translate}}</a> <!-- Impressum -->
-  </div>
+    <div class="cmp-footer__links noselect">
+        <a class="cmp-footer__links__home" routerLink="/">{{'FOOTER_LINKS_HOME'|translate}}</a> <!-- Home -->
+        &nbsp;|&nbsp;
+        <a class="cmp-footer__links__countries" routerLink="/countries">{{'FOOTER_LINKS_COUNTRYLIST'|translate}}</a> <!-- Laenderliste -->
+        &nbsp;|&nbsp;
+        <a class="cmp-footer__links__impressum" routerLink="/impressum">{{'FOOTER_LINKS_IMPRESSUM'|translate}}</a> <!-- Impressum -->
+    </div>
 
-  <cmp-f-select class="cmp-footer__languageselect" name="languageselect" [options]="[{value:'1',label:'Deutsch'},{value:'2',label:'English'}]" bgcolor="white"></cmp-f-select>
+    <cmp-language-switch class="cmp-footer__languageselect"></cmp-language-switch>
 </footer>

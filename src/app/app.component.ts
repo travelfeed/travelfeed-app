@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import { takeWhile } from 'rxjs/operators'
 import { AppState } from './store'
 import { LanguagesState, LanguagesAction, LanguagesActionTypes } from './store/languages'
+import { LanguagesService } from './shared/languages/languages.service'
 import { SocketService } from './shared/socket/socket.service'
 import { SocketEvent } from './shared/typings'
 
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public constructor(
         private store: Store<AppState>,
         private translationService: TranslateService,
+        private languageService: LanguagesService,
         private socketService: SocketService,
     ) {}
 
@@ -34,6 +36,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.store.dispatch<LanguagesAction>({
             type: LanguagesActionTypes.SELECT_LANGUAGE,
             payload: 'en',
+        })
+
+        this.languageService.language$.pipe(takeWhile(() => this.alive)).subscribe(language => {
+            this.translationService.use(language)
         })
 
         this.socketService.connection$.pipe(takeWhile(() => this.alive)).subscribe(socket => {
