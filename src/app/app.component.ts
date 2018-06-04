@@ -33,10 +33,12 @@ export class AppComponent implements OnInit, OnDestroy {
             type: LanguagesActionTypes.LOAD_LANGUAGES,
         })
 
-        this.store.dispatch<LanguagesAction>({
-            type: LanguagesActionTypes.SELECT_LANGUAGE,
-            payload: 'de',
-        })
+        setTimeout(() => {
+            this.store.dispatch<LanguagesAction>({
+                type: LanguagesActionTypes.SELECT_LANGUAGE,
+                payload: 'de',
+            })
+        }, 200)
 
         this.languageService.language$.pipe(takeWhile(() => this.alive)).subscribe(language => {
             this.translationService.use(language)
