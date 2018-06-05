@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
-import { CountryService, Country } from './country.service'
+import { map } from 'rxjs/operators'
+import { Country } from '../../store/countries'
+import { CountriesService } from '../backend/countries/countries.service'
 
 @Component({
     selector: 'cmp-country',
@@ -10,9 +12,9 @@ import { CountryService, Country } from './country.service'
 export class CountryComponent implements OnInit {
     public countries$: Observable<Array<Country>>
 
-    public constructor(private countryService: CountryService) {}
+    public constructor(private countriesService: CountriesService) {}
 
     public ngOnInit() {
-        this.countries$ = this.countryService.fetchAll()
+        this.countries$ = this.countriesService.fetchCount().pipe(map(response => response.data))
     }
 }

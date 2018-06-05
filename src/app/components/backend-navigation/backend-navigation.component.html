@@ -12,6 +12,12 @@
                     </cmp-link>
                 </li>
                 <li class="cmp-backend-navigation__item" routerLinkActive="active">
+                    <cmp-link class="cmp-backend-navigation__link" align="left" [routerLink]="['countries']" [inline]="false">
+                        <cmp-icon class="cmp-backend-navigation__icon" name="flag"></cmp-icon>
+                        <span class="cmp-backend-navigation__text">{{'BACKEND_NAVIGATION_TITLE_COUNTRIES'|translate}}</span>
+                    </cmp-link>
+                </li>
+                <li class="cmp-backend-navigation__item" routerLinkActive="active">
                     <cmp-link class="cmp-backend-navigation__link" align="left" [routerLink]="['translations']" [inline]="false">
                         <cmp-icon class="cmp-backend-navigation__icon" name="language"></cmp-icon>
                         <span class="cmp-backend-navigation__text">{{'BACKEND_NAVIGATION_TITLE_TRANSLATIONS'|translate}}</span>

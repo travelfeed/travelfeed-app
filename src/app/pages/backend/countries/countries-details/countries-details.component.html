@@ -1,0 +1,21 @@
+<div class="cmp-countries-details">
+    <div class="cmp-countries-details__actions">
+        <cmp-icon class="cmp-countries-details__action" name="floppy-o" (click)="save()"></cmp-icon>
+        <cmp-icon class="cmp-countries-details__action" name="trash-o" (click)="delete()"></cmp-icon>
+    </div>
+    <div class="cmp-countries-details__wrapper">
+        <cmp-f-row>
+            <cmp-f-column>
+                <h4 class="cmp-countries-details__name">{{country.name}}</h4>
+            </cmp-f-column>
+        </cmp-f-row>
+        <cmp-f-row layout="1-1">
+            <cmp-f-column>
+                <cmp-f-input name="name" [label]="'BACKEND_COUNTRIES_DETAILS_FORM_NAME'|translate" [fc]="name"></cmp-f-input>
+            </cmp-f-column>
+            <cmp-f-column>
+                <cmp-f-input name="code" [label]="'BACKEND_COUNTRIES_DETAILS_FORM_CODE'|translate" [fc]="code"></cmp-f-input>
+            </cmp-f-column>
+        </cmp-f-row>
+    </div>
+</div>

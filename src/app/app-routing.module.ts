@@ -5,6 +5,7 @@ import { StyleguideComponent } from './pages/styleguide/styleguide.component'
 import { BackendComponent } from './pages/backend/backend.component'
 import { TranslationsComponent } from './pages/backend/translations/translations.component'
 import { ArticlesComponent } from './pages/backend/articles/articles.component'
+import { CountriesComponent } from './pages/backend/countries/countries.component'
 import { UsersComponent } from './pages/backend/users/users.component'
 import { AuthGuard } from './pages/auth/auth.guard'
 import { AuthComponent } from './pages/auth/auth.component'
@@ -72,6 +73,20 @@ export const routes: Routes = [
                     {
                         path: ':id',
                         component: ArticlesComponent,
+                    },
+                ],
+            },
+            {
+                path: 'countries',
+                children: [
+                    {
+                        path: '',
+                        pathMatch: 'full',
+                        component: CountriesComponent,
+                    },
+                    {
+                        path: ':id',
+                        component: CountriesComponent,
                     },
                 ],
             },

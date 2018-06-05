@@ -20,7 +20,7 @@
         <form class="cmp-articles-details__additionals" [formGroup]="articleForm">
             <cmp-f-row layout="1-1">
                 <cmp-f-column>
-                    <cmp-f-input name="country" [label]="'BACKEND_ARTICLES_DETAILS_FORM_COUNTRY'|translate" [fc]="country"></cmp-f-input>
+                    <cmp-f-select name="country" [label]="'BACKEND_ARTICLES_DETAILS_FORM_COUNTRY'|translate" [fc]="country" [options]="(options$ | async)" [placeholder]="placeholder"></cmp-f-select>
                 </cmp-f-column>
                 <cmp-f-column>
                     <cmp-f-input name="city" [label]="'BACKEND_ARTICLES_DETAILS_FORM_CITY'|translate" [fc]="city"></cmp-f-input>

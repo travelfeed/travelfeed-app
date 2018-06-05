@@ -23,6 +23,11 @@
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
         "tslint.autoFixOnSave": true,
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/bower_components": true,
+            "**/docs": true
+        },
         "[json]": {
             "editor.formatOnSave": false,
             "editor.formatOnType": false

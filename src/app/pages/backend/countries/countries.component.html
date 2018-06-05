@@ -1,0 +1,13 @@
+<div class="cmp-countries" *ngIf="(state$ | async) as state">
+    <div class="cmp-countries__wrapper">
+        <div class="cmp-countries__list">
+            <div class="cmp-countries__title">
+                <cmp-headline-h4 [text]="'BACKEND_COUNTRIES_TITLE'|translate" icon="flag" iconPosition="left"></cmp-headline-h4>
+            </div>
+            <cmp-countries-list [countries]="state.items"></cmp-countries-list>
+        </div>
+        <div class="cmp-countries__details" *ngIf="state.selected">
+            <cmp-countries-details [country]="state.selected"></cmp-countries-details>
+        </div>
+    </div>
+</div>
